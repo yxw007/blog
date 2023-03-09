@@ -8,8 +8,10 @@ export default defineConfig({
 	themeConfig: {
 		// https://vitepress.vuejs.org/reference/default-theme-config
 		nav: [
-			{ text: "Home", link: "/" },
-			{ text: "Examples", link: "/markdown-examples" },
+			{ text: "首页", link: "/" },
+			{ text: "计算机基础", link: "/markdown-examples" },
+			{ text: "前端", link: "/markdown-examples" },
+			{ text: "关于我", link: "/markdown-examples" },
 		],
 
 		sidebar: [
