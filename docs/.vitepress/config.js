@@ -1,29 +1,11 @@
 import { defineConfig } from "vitepress";
+import themeConfig from "./config/themeConfig";
 
 // https://vitepress.vuejs.org/reference/site-config
 export default defineConfig({
 	title: "Potter's Blog",
-	description: "A VitePress Site",
+	description: "个人技术知识库",
 	srcDir: "../src",
-	themeConfig: {
-		// https://vitepress.vuejs.org/reference/default-theme-config
-		nav: [
-			{ text: "Home", link: "/" },
-			{ text: "Examples", link: "/markdown-examples" },
-		],
-
-		sidebar: [
-			{
-				text: "Examples",
-				items: [
-					{ text: "Markdown Examples", link: "/markdown-examples" },
-					{ text: "Runtime API Examples", link: "/api-examples" },
-				],
-			},
-		],
-
-		socialLinks: [
-			{ icon: "github", link: "https://github.com/vuejs/vitepress" },
-		],
-	},
+	lastUpdated: true,
+	themeConfig,
 });
