@@ -17,5 +17,8 @@
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
     "vitepress": "1.0.0-alpha.50"
+  },
+  "dependencies": {
+    "vue": "^3.2.47"
   }
 }
