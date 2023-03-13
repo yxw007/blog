@@ -280,4 +280,3 @@ let heroProxy = new Proxy(hero, handler);
 - [深入实践 ES6 Proxy & Reflect](https://zhuanlan.zhihu.com/p/60126477)
 - [how-to-watch-for-array-changes](https://stackoverflow.com/questions/5100376/how-to-watch-for-array-changes)
 
-> 以上：如发现有问题，欢迎留言指出，我及时更正

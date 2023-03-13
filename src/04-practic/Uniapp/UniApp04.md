@@ -201,5 +201,5 @@ categories:
 - [wx.canvasToTempFilePath文档](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/wx.canvasToTempFilePath.html)
 - [canvasToTempFilePath: fail canvas is empty 的坑](https://developers.weixin.qq.com/community/develop/article/doc/000cca357f07e0be99eacad095bc13)
 
-> 以上：如发现有问题，欢迎留言指出，我及时更正
+
 >

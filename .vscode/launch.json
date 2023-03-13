@@ -5,16 +5,13 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "Launch via NPM",
+			"type": "node",
 			"request": "launch",
-			"runtimeArgs": [
-				"dev",
-			],
-			"runtimeExecutable": "pnpm",
+			"name": "Debugger current file",
 			"skipFiles": [
 				// "<node_internals>/**"
 			],
-			"type": "node"
-		},
+			"program": "${file}"
+		}
 	]
 }

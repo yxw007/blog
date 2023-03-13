@@ -24,4 +24,4 @@
 
 - **[Deep selector not working](https://forum.vuejs.org/t/deep-selector-not-working/68037)**
 
-> 以上：如发现有问题，欢迎留言指出，我及时更正
+

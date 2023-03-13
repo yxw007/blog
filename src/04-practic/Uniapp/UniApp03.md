@@ -121,4 +121,3 @@ export default {
 - [富文本/渲染/显示/图文混排方案。rich-text、uparse、v-html的区别](https://ask.dcloud.net.cn/article/35772)
 - [rich-text 文档](https://uniapp.dcloud.io/component/rich-text)
 
-> 以上：如发现有问题，欢迎留言指出，我及时更正

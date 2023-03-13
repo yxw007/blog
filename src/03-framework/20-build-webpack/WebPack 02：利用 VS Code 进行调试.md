@@ -124,5 +124,3 @@ categories:
 - **[Debugging Webpack with VS Code](https://medium.com/@jsilvax/debugging-webpack-with-vs-code-b14694db4f8e)**
 - **[VSCode 调试 Webpack 指南](https://zhuanlan.zhihu.com/p/108939782)**
 
-> 以上：如发现有问题，欢迎留言指出，我及时更正
->
