@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /markdown-examples
+      link: /01-basic/01-network/01-各种概念
     - theme: alt
       text: Github
-      link: /api-examples
+      link: https://github.com/yxw007/blog
 
 features:
   - icon:

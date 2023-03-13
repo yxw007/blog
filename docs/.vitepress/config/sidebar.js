@@ -6,25 +6,24 @@ let SRC_ROOT_PATH = "";
 let sidebar = generateSideBar();
 
 function generateSideBar() {
-	let subs = ["01-basic", "02-frontend", "03-misc"];
-	for (let sub of subs) {
-		sidebar[`${sub}/`] = getItems(sub);
-	}
+	let res = {};
+	sync("src/*", { onlyDirectories: true, objectMode: true }).forEach(
+		({ name }) => {
+			res[`${name}/`] = getItems(name);
+		}
+	);
+	return res;
 }
 
 /**
  * 根据 某小课/序号-分组/序号-xxx.md 的目录格式, 获取侧边栏分组及分组下标题
- *
  * courses/mybatis/01-MyBatis基础/01-xxx.md
- *
  * @param path 扫描基础路径
  * @returns {[]}
  */
 function getItems(path) {
 	// 侧边栏分组数组
 	let groups = [];
-	// 侧边栏分组下标题数组
-	let items = [];
 	let total = 0;
 	// 当分组内文章数量少于 2 篇或文章总数显示超过 20 篇时，自动折叠分组
 	const groupCollapsedSize = 2;
@@ -35,6 +34,7 @@ function getItems(path) {
 		onlyDirectories: true,
 		objectMode: true,
 	}).forEach(({ name }) => {
+		let items = [];
 		let groupName = name;
 		// 2.获取分组下的所有文章
 		sync(`src/${path}/${groupName}/*`, {
@@ -61,13 +61,8 @@ function getItems(path) {
 			collapsed:
 				items.length < groupCollapsedSize || total > titleCollapsedSize,
 		});
-
-		// 4.清空侧边栏分组下标题数组
-		items = [];
 	});
 
-	// 添加序号
-	addOrderNumber(groups);
 	return groups;
 }
 
