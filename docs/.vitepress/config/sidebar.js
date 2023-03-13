@@ -3,11 +3,14 @@ import * as matter from "gray-matter";
 import { srcRoot } from "./paths";
 
 let SRC_ROOT_PATH = "";
-let sidebar = {};
-let subPath = "";
+let sidebar = generateSideBar();
 
-subPath = "01-basic";
-sidebar[`${subPath}/`] = getItems(subPath);
+function generateSideBar() {
+	let subs = ["01-basic", "02-frontend", "03-misc"];
+	for (let sub of subs) {
+		sidebar[`${sub}/`] = getItems(sub);
+	}
+}
 
 /**
  * 根据 某小课/序号-分组/序号-xxx.md 的目录格式, 获取侧边栏分组及分组下标题
