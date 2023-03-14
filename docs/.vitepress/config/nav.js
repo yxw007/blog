@@ -101,5 +101,15 @@ export default [
 			},
 		],
 	},
+	{
+		text: "标签",
+		link: "/tags",
+		activeMatch: "/tags",
+	},
+	{
+		text: "归档",
+		link: "/archives",
+		activeMatch: "/archives",
+	},
 	{ text: "关于", link: "/about" },
 ];

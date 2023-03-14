@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "vitepress dev docs",
-    "build": "vitepress docs build",
-    "preview": "vitepress docs preview"
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
   },
   "keywords": [
     "VitePress"
@@ -14,8 +14,10 @@
   "author": "Potter<aa4790139@gmail.com>",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
+    "unplugin-vue-components": "^0.24.1",
     "vitepress": "1.0.0-alpha.50"
   },
   "dependencies": {
