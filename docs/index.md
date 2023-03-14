@@ -16,19 +16,19 @@ hero:
 
 features:
   - icon:
-      src: assets/img/svg/focus.svg
+      src: img/svg/focus.svg
       width: 10
       height: 10
     title: 保持专注
     details: “简单比复杂更难，你必须努力让你的想法变得清晰明了，让它变得简单。一旦你做到了简单，你就能搬动大山。” -- 乔布斯
   - icon:
-      src: assets/img/svg/insight.svg
+      src: img/svg/insight.svg
       width: 10
       height: 10
     title: 善于洞察
     details: “我既没有突出的理解力，也没有过人的机智。只在觉察那些稍纵即逝的事物并对其进行精细观察的能力上，我可能在普通人之上。” -- 达尔文
   - icon:
-      src: assets/img/svg/knowledge.svg
+      src: img/svg/knowledge.svg
       width: 10
       height: 10
     title: 乐于分享

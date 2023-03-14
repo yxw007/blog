@@ -1,15 +1,16 @@
 import { sync } from "fast-glob";
 import * as matter from "gray-matter";
-import { srcRoot } from "./paths";
 
-let SRC_ROOT_PATH = "";
+let root = "docs";
+let articleName = "article";
+let articlePath = `${root}/${articleName}`;
 let sidebar = generateSideBar();
 
 function generateSideBar() {
 	let res = {};
-	sync("src/*", { onlyDirectories: true, objectMode: true }).forEach(
+	sync(`${articlePath}/*`, { onlyDirectories: true, objectMode: true }).forEach(
 		({ name }) => {
-			res[`${name}/`] = getItems(name);
+			res[`/article/${name}/`] = getItems(name);
 		}
 	);
 	return res;
@@ -30,14 +31,14 @@ function getItems(path) {
 	const titleCollapsedSize = 20;
 
 	// 1.获取所有分组目录
-	sync(`src/${path}/*`, {
+	sync(`${articlePath}/${path}/*`, {
 		onlyDirectories: true,
 		objectMode: true,
 	}).forEach(({ name }) => {
 		let items = [];
 		let groupName = name;
 		// 2.获取分组下的所有文章
-		sync(`src/${path}/${groupName}/*`, {
+		sync(`${articlePath}/${path}/${groupName}/*`, {
 			onlyFiles: true,
 			objectMode: true,
 		}).forEach((article) => {

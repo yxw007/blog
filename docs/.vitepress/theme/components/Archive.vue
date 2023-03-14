@@ -185,9 +185,9 @@
 	</div>
 </template>
 
-<script lang="ts" setup>
-import articleData from "../../../../article-data.json";
-import { getQueryParam, goToLink } from "../utils.ts";
+<script setup>
+import { getQueryParam, goToLink } from "../utils.js";
+import { data as articleData } from "../../article.data.js";
 
 // 文章原始数据和归档数据
 let $articleData;
@@ -239,7 +239,12 @@ function initTimeline() {
 
 	// 文章数据归档处理
 	// 1.对文章数据进行降序排序
+	let data = $articleData.find((item) => !!!item.date);
+	if (data) {
+		console.error("无日期博客：", data);
+	}
 	$articleData.sort((a, b) => b.date.localeCompare(a.date));
+
 	// 2.按年、月进行归档
 	for (let i = 0; i < $articleData.length; i++) {
 		const article = $articleData[i];

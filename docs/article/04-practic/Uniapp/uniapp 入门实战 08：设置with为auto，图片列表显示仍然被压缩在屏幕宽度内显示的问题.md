@@ -1,3 +1,15 @@
+---
+title: uniapp 入门实战 08：设置 with 为 auto，图片列表显示仍然被压缩在屏幕宽度内显示的问题
+author: Potter
+date: 2022/6/16 22:49
+tags: 
+- UniApp
+categories: 
+- UniApp
+
+---
+
+
 # uniapp 入门实战 08：设置 with 为 auto，图片列表显示仍然被压缩在屏幕宽度内显示的问题
 
 ---

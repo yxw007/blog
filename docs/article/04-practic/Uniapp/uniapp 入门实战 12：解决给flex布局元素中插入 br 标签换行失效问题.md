@@ -1,3 +1,14 @@
+---
+title: uniapp 入门实战 12：解决给 flex 布局元素中插入<br/>标签换行失效问题
+author: Potter
+date: 2022/11/13 16:33
+tags: 
+- UniApp
+categories: 
+- UniApp
+
+---
+
 # uniapp 入门实战 12：解决给 flex 布局元素中插入<br/>标签换行失效问题
 
 ---

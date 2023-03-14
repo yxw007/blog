@@ -1,3 +1,14 @@
+---
+title: uniapp 入门实战 11：解决给引入的组件添加 class，样式诡异问题
+author: Potter
+date: 2022/11/13 16:40
+tags: 
+- UniApp
+categories: 
+- UniApp
+
+---
+
 # uniapp 入门实战 11：解决给引入的组件添加 class，样式诡异问题
 
 ---

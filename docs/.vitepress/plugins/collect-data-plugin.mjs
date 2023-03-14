@@ -14,7 +14,7 @@ function collectDatePlugin() {
 		return new Promise(async (resolve) => {
 			const articleData = await Promise.all(
 				glob
-					.sync("src/**/*.md", {
+					.sync("docs/article/**/*.md", {
 						onlyFiles: true,
 						objectMode: true,
 						ignore: [

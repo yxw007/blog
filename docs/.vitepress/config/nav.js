@@ -2,12 +2,12 @@ export default [
 	{ text: "首页", link: "/" },
 	{
 		text: "计算机基础",
-		activeMatch: "/01-basic/",
+		activeMatch: "/article/01-basic/",
 		items: [
 			{
 				text: "计算机网络",
-				link: "/01-basic/01-network/01-各种概念",
-				activeMatch: "/01-basic/network/",
+				link: "/article/01-basic/01-network/01-各种概念",
+				activeMatch: "/article/01-basic/network/",
 			},
 		],
 	},
@@ -109,7 +109,6 @@ export default [
 	{
 		text: "归档",
 		link: "/archives",
-		activeMatch: "/archives",
 	},
 	{ text: "关于", link: "/about" },
 ];

@@ -6,7 +6,6 @@ import viteConfig from "../vite.config";
 export default defineConfig({
 	title: "Potter's Blog",
 	description: "个人技术知识库",
-	srcDir: "../src",
 	lastUpdated: true,
 	themeConfig,
 	ignoreDeadLinks: true,
