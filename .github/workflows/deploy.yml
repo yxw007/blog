@@ -20,12 +20,16 @@ jobs:
       - name: Run Lint
         run: pnpm run build
 
+      - name: Add Git Config
+        run: |
+          git config user.name "Potter"
+          git config user.email "aa4790139@gmail.com"
+          git remote add target_repo git@github.com:yxw007/yxw007.github.io.git
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.DEPLOY_KEY }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          external_repository: yxw007/yxw007.github.io
           publish_dir: docs/.vitepress/dist
           publish_branch: master
-          allow_empty_commit: true
-          commit_message: 'Deploy VitePress to deploy branch'
