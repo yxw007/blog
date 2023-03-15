@@ -77,7 +77,7 @@
 					class="chinese-zodiac"
 					@click="goToLink('/archives', 'year', year.replace('年', ''))"
 					:src="
-						'/img/svg/chinese-zodiac/' +
+						'img/svg/chinese-zodiac/' +
 						getChineseZodiac(year.replace('年', '')) +
 						'.svg'
 					"
