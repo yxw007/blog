@@ -33,3 +33,4 @@ jobs:
           external_repository: yxw007/yxw007.github.io
           publish_dir: docs/.vitepress/dist
           publish_branch: master
+          cname: yanxuewen.cn
