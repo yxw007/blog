@@ -1,11 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import parseFrontmatter from "gray-matter";
+import { articleRelatePath } from "./config/paths";
 
 const excludedFiles = ["index.md", "tags.md", "archives.md", "about.md"];
 
 export default {
-	watch: ["docs/article/**/*.md"],
+	watch: [`${articleRelatePath}/**/*.md`],
 	load(watchedFiles) {
 		// 排除不必要文件
 		const articleFiles = watchedFiles.filter((file) => {
@@ -19,7 +20,7 @@ export default {
 			return {
 				...data,
 				path: articleFile
-					.substring(articleFile.lastIndexOf("/docs/article/") + 13)
+					.substring(articleFile.lastIndexOf(`/${articleRelatePath}`) + 6)
 					.replace(/\.md$/, ""),
 			};
 		});

@@ -17,4 +17,9 @@ export default {
 		message: "Released under the MIT License.",
 		copyright: "Copyright © 2019-present Potter",
 	},
+	articleMetadataConfig: {
+		author: "Potter",
+		authorLink: "/about",
+		showViewCount: false,
+	},
 };

@@ -1,18 +1,17 @@
 import { sync } from "fast-glob";
 import * as matter from "gray-matter";
+import { articleName, articleRelatePath } from "./paths";
 
-let root = "docs";
-let articleName = "article";
-let articlePath = `${root}/${articleName}`;
 let sidebar = generateSideBar();
 
 function generateSideBar() {
 	let res = {};
-	sync(`${articlePath}/*`, { onlyDirectories: true, objectMode: true }).forEach(
-		({ name }) => {
-			res[`/article/${name}/`] = getItems(name);
-		}
-	);
+	sync(`${articleRelatePath}/*`, {
+		onlyDirectories: true,
+		objectMode: true,
+	}).forEach(({ name }) => {
+		res[`/${articleName}/${name}/`] = getItems(name);
+	});
 	return res;
 }
 
@@ -31,14 +30,14 @@ function getItems(path) {
 	const titleCollapsedSize = 20;
 
 	// 1.获取所有分组目录
-	sync(`${articlePath}/${path}/*`, {
+	sync(`${articleRelatePath}/${path}/*`, {
 		onlyDirectories: true,
 		objectMode: true,
 	}).forEach(({ name }) => {
 		let items = [];
 		let groupName = name;
 		// 2.获取分组下的所有文章
-		sync(`${articlePath}/${path}/${groupName}/*`, {
+		sync(`${articleRelatePath}/${path}/${groupName}/*`, {
 			onlyFiles: true,
 			objectMode: true,
 		}).forEach((article) => {
@@ -47,7 +46,10 @@ function getItems(path) {
 			// 向前追加标题
 			items.push({
 				text: data.title,
-				link: `/${path}/${groupName}/${article.name.replace(".md", "")}`,
+				link: `${articleName}/${path}/${groupName}/${article.name.replace(
+					".md",
+					""
+				)}`,
 			});
 			total += 1;
 		});

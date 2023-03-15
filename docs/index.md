@@ -9,7 +9,7 @@ hero:
   actions:
     - theme: brand
       text: 快速开始
-      link: /01-basic/01-network/01-各种概念
+      link: /article/01-basic/01-network/01-各种概念
     - theme: alt
       text: Github
       link: https://github.com/yxw007/blog

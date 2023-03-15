@@ -1,4 +1,3 @@
-import { resolve } from "path";
-
-export const projRoot = "../../..";
-export const srcRoot = `${projRoot}/src`;
+export const rootName = "docs";
+export const articleName = "article";
+export const articleRelatePath = `${rootName}/${articleName}`;
