@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "vitepress dev docs",
-    "build": "vitepress build docs --base /blog/",
+    "build-native": "vitepress build docs --base /blog/",
+    "build": "vitepress build docs",
     "preview": "vitepress preview docs"
   },
   "keywords": [
