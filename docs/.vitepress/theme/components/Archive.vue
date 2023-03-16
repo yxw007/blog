@@ -92,24 +92,7 @@
 					</span>
 					<div class="articles">
 						<span v-for="article in articles" class="article">
-							<svg
-								@click="
-									goToLink('/archives', 'category', article.categories[0])
-								"
-								role="img"
-								viewBox="0 0 48 48"
-								fill="none"
-								stroke="currentColor"
-								xmlns="http://www.w3.org/2000/svg"
-								class="arco-icon arco-icon-bookmark"
-								stroke-width="4"
-								stroke-linecap="butt"
-								stroke-linejoin="miter"
-								style="color: #00b42a">
-								<path d="M16 16h16M16 24h8"></path>
-								<path d="M24 41H8V6h32v17"></path>
-								<path d="M30 29h11v13l-5.5-3.5L30 42V29Z"></path>
-							</svg>
+							<img src="img/footprint.png" class="icon" />
 							<a :href="article.path" class="title" target="_blank">{{
 								article.title
 							}}</a>
@@ -315,6 +298,15 @@ initTimeline();
 
 .timeline-wrap .timeline-item .articles .article span {
 	color: var(--vp-c-text-2);
+}
+
+.article .icon {
+	position: absolute;
+	left: -51px;
+	top: 0;
+	display: inline-block;
+	width: 1.5em;
+	height: 1.5em;
 }
 
 .vp-doc a {

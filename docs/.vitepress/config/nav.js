@@ -1,5 +1,5 @@
 import { articleName } from "./paths";
-const ignores = ["about", "archives", "tags"];
+const ignores = ["about", "archives", "tags", "/"];
 const navs = [
 	{ text: "首页", link: "/" },
 	{

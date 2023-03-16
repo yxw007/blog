@@ -1,6 +1,7 @@
 ---
 # https://vitepress.vuejs.org/reference/default-theme-home-page
 layout: home
+title: CodeNote
 
 hero:
   name: "CodeNote"
@@ -16,19 +17,19 @@ hero:
 
 features:
   - icon:
-      src: img/svg/focus.svg
+      src: img/focus.png
       width: 10
       height: 10
     title: 保持专注
     details: “专注于当下，专注于眼前的工作，做好每一件事情。” -- 莱昂纳多·达芬奇
   - icon:
-      src: img/svg/insight.svg
+      src: img/insight.png
       width: 10
       height: 10
     title: 善于洞察
     details: “洞察力的本质在于能够看到问题的本质，而不是问题本身。” -- 亨利·戴维·梭罗
   - icon:
-      src: img/svg/knowledge.svg
+      src: img/knowledge.png
       width: 10
       height: 10
     title: 乐于分享
