@@ -22,4 +22,8 @@ export default {
 		authorLink: "/about",
 		showViewCount: false,
 	},
+	commentConfig: {
+		type: "gitalk",
+		showComment: true,
+	},
 };

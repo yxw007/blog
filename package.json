@@ -16,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "@arco-design/web-vue": "^2.44.1",
+    "@vue/devtools-api": "^6.5.0",
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
     "unplugin-vue-components": "^0.24.1",
@@ -23,6 +24,9 @@
   },
   "dependencies": {
     "dayjs": "^1.11.7",
+    "gitalk": "^1.8.0",
+    "jquery": "^3.6.4",
+    "md5": "^2.3.0",
     "vue": "^3.2.47"
   }
 }
