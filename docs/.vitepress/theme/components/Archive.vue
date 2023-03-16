@@ -92,7 +92,7 @@
 					</span>
 					<div class="articles">
 						<span v-for="article in articles" class="article">
-							<img src="img/footprint.png" class="icon" />
+							<img src="/img/footprint.png" class="icon" />
 							<a :href="article.path" class="title" target="_blank">{{
 								article.title
 							}}</a>
