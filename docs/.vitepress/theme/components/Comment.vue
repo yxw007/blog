@@ -22,9 +22,9 @@ if (type.value && type.value == "gitalk") {
 	gitalk = new Gitalk({
 		clientID: "ace695aecbf2be1dff06",
 		clientSecret: "c78b230a5ac0357a2dccb9407158b0b8a6c5800a",
-		repo: "BlogGitTalk",
-		owner: "aa4790139",
-		admin: ["aa4790139"],
+		repo: "yxw007.github.io",
+		owner: "yxw007",
+		admin: ["yxw007"],
 		id: md5(page.value.relativePath),
 		language: "zh-CN",
 		distractionFreeMode: false,
