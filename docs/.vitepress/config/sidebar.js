@@ -46,7 +46,7 @@ function getItems(path) {
 			// 向前追加标题
 			items.push({
 				text: data.title,
-				link: `${articleName}/${path}/${groupName}/${article.name.replace(
+				link: `/${articleName}/${path}/${groupName}/${article.name.replace(
 					".md",
 					""
 				)}`,
