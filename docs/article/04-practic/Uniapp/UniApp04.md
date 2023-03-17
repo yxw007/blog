@@ -12,6 +12,8 @@ categories:
 
 ---
 
+# uniapp 入门实战 04： canvasToTempFilePath 解决 fail canvas is empty 报错
+
 ## 概要内容
 
 - 问题描述

@@ -12,6 +12,8 @@ categories:
 
 ---
 
+# TypeScript 入门1：创建一个在Chrome上运行的TypeScript Demo
+
 ### 概述
 > 目前使用TypeScript编写前端项目已成为趋势，所以搞一个运行在Chrome的demo 来方便练习一下TypeScript 相关语法。由于技术更新太快，会导致你在网上参考的例子可能已经过时，或者运行不起来。我的建议还是直接先去看官方文档，尝试这编写demo，实在搞不出来再去Google 查找相关文章。
 

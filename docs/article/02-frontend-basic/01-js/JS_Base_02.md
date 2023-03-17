@@ -10,6 +10,8 @@ categories:
 
 ---
 
+# JS基础-02：继承
+
 ### 概要内容
 - 常用继承方式
     - 方式一：调整类型原型的 __proto__ 、 Object.setPrototypeOf 、Object.create

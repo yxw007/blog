@@ -1,15 +1,17 @@
 ---
 
-title:  WebPack 01：原理雏形思考
+title:  webpack 01：原理雏形思考
 author: Potter
 date: 2022-05-12 18:45
 tags: 
-- WebPack
+- webpack
 - 原理
 categories: 
-- WebPack
+- webpack
 
 ---
+
+# webpack 01：原理雏形思考
 
 ## 概要内容
 - 实现目标
