@@ -55,18 +55,18 @@ const navs = [
 			},
 			{
 				text: "Rollup",
-				link: "index",
-				activeMatch: "20-build-rollup",
+				link: "01-Rollup插件开发",
+				activeMatch: "31-build-rollup",
 			},
 			{
 				text: "Vite",
 				link: "index",
-				activeMatch: "20-build-vite",
+				activeMatch: "32-build-vite",
 			},
 			{
 				text: "Webpack",
 				link: "WebPack 01：原理雏形思考",
-				activeMatch: "20-build-webpack",
+				activeMatch: "32-build-webpack",
 			},
 		],
 	},
@@ -76,7 +76,7 @@ const navs = [
 		items: [
 			{
 				text: "Vue SSR",
-				link: "01-ssr-基本实现",
+				link: "01-vue-ssr-基本实现",
 				activeMatch: "01-vue-ssr",
 			},
 			{
