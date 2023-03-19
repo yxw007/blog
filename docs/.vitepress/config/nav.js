@@ -35,7 +35,7 @@ const navs = [
 		items: [
 			{
 				text: "Vue",
-				link: "index",
+				link: "vue3.x-响应式核心原理",
 				activeMatch: "01-vue",
 			},
 			{
