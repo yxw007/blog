@@ -5,7 +5,7 @@ export default {
 	siteTitle: "Potter's Blog",
 	nav,
 	sidebar,
-	socialLinks: [{ icon: "github", link: "https://github.com/yxw007/blog" }],
+	socialLinks: [{ icon: "github", link: "https://github.com/yxw007" }],
 	outline: {
 		level: "deep",
 	},
