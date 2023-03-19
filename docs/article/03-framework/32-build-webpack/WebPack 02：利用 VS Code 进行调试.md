@@ -1,16 +1,18 @@
 ---
 
-title:  WebPack 02：利用 VS Code 进行调试
+title:  webpack 02：利用 VS Code 进行调试
 author: Potter
 date: 2022-05-12 18:45
 tags: 
-- WebPack
+- webpack
 - vscode
 - debugger
 categories: 
-- WebPack
+- webpack
 
 ---
+
+# webpack 02：利用 VS Code 进行调试
 
 ## 概要内容
 

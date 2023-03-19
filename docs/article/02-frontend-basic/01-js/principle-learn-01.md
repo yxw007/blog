@@ -11,6 +11,8 @@ categories:
 
 ---
 
+# 响应式根基：Object.defineProperty 与 Proxy 拦截区别
+
 ## 概要内容
 
 - Object.defineProperty 拦截测试

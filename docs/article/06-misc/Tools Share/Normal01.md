@@ -9,6 +9,9 @@ categories:
   - tools
 ---
 
+# 知道这些软件，让你工作得更顺心 [Part 1]
+
+- [知道这些软件，让你工作得更顺心 \[Part 1\]](#知道这些软件让你工作得更顺心-part-1)
 - [Drawing](#drawing)
 	- [XMind](#xmind)
 	- [Diagrams.net](#diagramsnet)
