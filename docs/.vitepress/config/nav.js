@@ -24,7 +24,7 @@ const navs = [
 			},
 			{
 				text: "Typescript",
-				link: "TypeScript01",
+				link: "TypeScript 入门 - 01：创建一个在Chrome上运行的TypeScript Demo",
 				activeMatch: "02-ts",
 			},
 		],
