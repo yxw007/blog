@@ -1,5 +1,5 @@
 ---
-title: 2.集成vue-router
+title: vue-ssr 2.集成vue-router
 author: Potter
 date: 2022-11-03 11:00
 tags: 
@@ -10,7 +10,7 @@ categories:
 
 ---
 
-# SSR - 2.集成vue-router
+# vue-ssr 2.集成vue-router
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: 1.基本实现
+title: vue-ssr 1.基本实现
 author: Potter
 date: 2022-11-02 11:26
 tags: 
@@ -10,7 +10,7 @@ categories:
 
 ---
 
-# SSR - 1.基本实现
+# vue-ssr 1.基本实现
 
 ---
 

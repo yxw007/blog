@@ -1,5 +1,5 @@
 ---
-title: 4. 优化打包和支持preload
+title: vue-ssr 4.优化打包和支持preload
 author: Potter
 date: 2022-11-05 11:20
 tags: 
@@ -10,7 +10,7 @@ categories:
 
 ---
 
-# SSR - 4. 优化打包和支持preload
+# vue-ssr 4.优化打包和支持preload
 
 ---
 

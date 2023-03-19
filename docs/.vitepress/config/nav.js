@@ -39,6 +39,16 @@ const navs = [
 				activeMatch: "01-vue",
 			},
 			{
+				text: "VueRouter",
+				link: "VueRouter-核心原理",
+				activeMatch: "02-vueRouter",
+			},
+			{
+				text: "Pinia",
+				link: "Pinia-核心原理",
+				activeMatch: "03-pinia",
+			},
+			{
 				text: "React",
 				link: "index",
 				activeMatch: "02-react",
@@ -64,6 +74,11 @@ const navs = [
 		text: "实践经验",
 		activeMatch: "04-practic",
 		items: [
+			{
+				text: "Vue SSR",
+				link: "01-ssr-基本实现",
+				activeMatch: "01-vue-ssr",
+			},
 			{
 				text: "Library",
 				link: "Web04.md",

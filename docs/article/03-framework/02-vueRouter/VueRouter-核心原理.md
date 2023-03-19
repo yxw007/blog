@@ -1,7 +1,7 @@
 ---
-title: 
+title: VueRouter 核心原理
 author: Potter
-date: 
+date: 2022-11-02 11:23
 tags: 
 - 路由
 - VueRouter
@@ -10,7 +10,7 @@ categories:
 
 ---
 
-# VueRouter
+# VueRouter 核心原理
 
 ## 核心流程
 

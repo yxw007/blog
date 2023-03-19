@@ -1,5 +1,5 @@
 ---
-title: 3.集成vuex
+title: vue-ssr 3.集成vuex
 author: Potter
 date: 2022-11-04 11:00
 tags: 
@@ -10,7 +10,7 @@ categories:
 
 ---
 
-# SSR - 3.集成vuex
+# vue-ssr 3.集成vuex
 
 ---
 
