@@ -125,6 +125,14 @@ let category;
 let tag;
 let year;
 
+function convertToTimeStamp(timeStr) {
+	if (!!!timeStr) {
+		return Number.MAX_SAFE_INTEGER;
+	}
+	let date = new Date(timeStr);
+	return Math.floor(date.getTime());
+}
+
 /**
  * 初始化时间轴
  */
@@ -170,7 +178,10 @@ function initTimeline() {
 	if (data) {
 		console.error("无日期博客：", data);
 	}
-	articleData.sort((a, b) => b.date.localeCompare(a.date));
+
+	articleData.sort(
+		(a, b) => convertToTimeStamp(b.date) - convertToTimeStamp(a.date)
+	);
 
 	// 2.按年、月进行归档
 	for (let i = 0; i < articleData.length; i++) {
