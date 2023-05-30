@@ -119,7 +119,7 @@ const navs = [
 			{
 				text: "C#",
 				link: "如何获取类中字段、属性、函数等的相关注释",
-				activeMatch: "C#",
+				activeMatch: "csharp",
 			},
 		],
 	},
