@@ -80,6 +80,11 @@ const navs = [
 				activeMatch: "01-vue-ssr",
 			},
 			{
+				text: "Vite",
+				link: "Dev环境用vite替换webpack获得极致开发体验",
+				activeMatch: "02-vite",
+			},
+			{
 				text: "Library",
 				link: "Web04.md",
 				activeMatch: "Library",
