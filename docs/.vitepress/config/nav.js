@@ -94,6 +94,11 @@ const navs = [
 				link: "UniApp01",
 				activeMatch: "Uniapp",
 			},
+			{
+				text: "Electron",
+				link: "Electron 入门实战 01：主进程与渲染进程通信",
+				activeMatch: "Electron",
+			},
 		],
 	},
 	{

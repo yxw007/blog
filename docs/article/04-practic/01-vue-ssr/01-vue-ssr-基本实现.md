@@ -12,8 +12,6 @@ categories:
 
 # vue-ssr 1.基本实现
 
----
-
 ## 流程图
 
 ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/202303191811167.png)
