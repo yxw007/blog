@@ -99,6 +99,11 @@ const navs = [
 				link: "Electron 入门实战 01：主进程与渲染进程通信",
 				activeMatch: "Electron",
 			},
+			{
+				text: "Vue",
+				link: "解决vue项目打包后，开发环境页面正常显示，打包后页面却无法显示问题，排查全过程",
+				activeMatch: "Vue",
+			},
 		],
 	},
 	{
@@ -130,6 +135,11 @@ const navs = [
 				text: "C#",
 				link: "如何获取类中字段、属性、函数等的相关注释",
 				activeMatch: "csharp",
+			},
+			{
+				text: "web",
+				link: "CORS跨域实战",
+				activeMatch: "web",
 			},
 		],
 	},
