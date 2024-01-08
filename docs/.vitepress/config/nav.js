@@ -75,14 +75,19 @@ const navs = [
 		activeMatch: "04-practic",
 		items: [
 			{
+				text: "Vue",
+				link: "解决vue项目打包后，开发环境页面正常显示，打包后页面却无法显示问题，排查全过程",
+				activeMatch: "Vue",
+			},
+			{
 				text: "Vue SSR",
 				link: "01-vue-ssr-基本实现",
-				activeMatch: "01-vue-ssr",
+				activeMatch: "Vue-ssr",
 			},
 			{
 				text: "Vite",
 				link: "Dev环境用vite替换webpack获得极致开发体验",
-				activeMatch: "02-vite",
+				activeMatch: "Vite",
 			},
 			{
 				text: "Library",
@@ -98,11 +103,6 @@ const navs = [
 				text: "Electron",
 				link: "Electron 入门实战 01：主进程与渲染进程通信",
 				activeMatch: "Electron",
-			},
-			{
-				text: "Vue",
-				link: "解决vue项目打包后，开发环境页面正常显示，打包后页面却无法显示问题，排查全过程",
-				activeMatch: "Vue",
 			},
 		],
 	},
@@ -138,7 +138,7 @@ const navs = [
 			},
 			{
 				text: "web",
-				link: "CORS跨域实战",
+				link: "解决XMLHttpRequest 发送formData，后端java要么不到数据，要么拿到数据乱码",
 				activeMatch: "web",
 			},
 		],
