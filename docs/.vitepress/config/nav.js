@@ -50,7 +50,7 @@ const navs = [
 			},
 			{
 				text: "React",
-				link: "index",
+				link: "1.更新队列(构建+处理)",
 				activeMatch: "20-react",
 			},
 			{
