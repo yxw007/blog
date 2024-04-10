@@ -104,6 +104,11 @@ const navs = [
 				link: "Electron 入门实战 01：主进程与渲染进程通信",
 				activeMatch: "Electron",
 			},
+			{
+				text: "vscode",
+				link: "实现一个将JSON转markdown table的vscode插件",
+				activeMatch: "vscode",
+			},
 		],
 	},
 	{
