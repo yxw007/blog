@@ -1,3 +1,16 @@
+---
+title: Electron 入门实战 03：实现一个截图功能
+author: Potter
+date: 2024-04-15 10:23:32
+tags: 
+- Electron
+- 截图
+categories: 
+- Electron
+
+---
+
+
 # Electron 入门实战 03：实现一个截图功能
 
 ---
