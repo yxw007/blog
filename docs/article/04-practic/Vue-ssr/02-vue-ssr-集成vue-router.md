@@ -12,8 +12,6 @@ categories:
 
 # vue-ssr 2.集成vue-router
 
----
-
 # 安装依赖
 
 ```jsx

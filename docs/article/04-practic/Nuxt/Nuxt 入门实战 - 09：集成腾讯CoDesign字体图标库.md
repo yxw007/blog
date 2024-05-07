@@ -12,8 +12,6 @@ categories:
 
 # Nuxt 入门实战 - 09：集成腾讯CoDesign字体图标库
 
----
-
 ## CDN引入
 
 ```tsx

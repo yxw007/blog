@@ -12,8 +12,6 @@ categories:
 
 # Nuxt 入门实战 - 04：常用操作
 
----
-
 > 注意：Nuxt Kit 仅用于Module 模块开发，运行时别用
 > 
 

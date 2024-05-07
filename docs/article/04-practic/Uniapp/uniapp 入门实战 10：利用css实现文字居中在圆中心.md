@@ -11,8 +11,6 @@ categories:
 
 # uniapp 入门实战 10：利用 css 实现文字居中在圆中心
 
----
-
 # 实现
 
 ```scss

@@ -12,8 +12,6 @@ categories:
 
 # Nuxt 入门实战 - 01：目录结构
 
----
-
 ## 目录结构
 
 ![Nuxt项目-目录结构.png](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240507114809.png)

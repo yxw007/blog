@@ -13,8 +13,6 @@ categories:
 
 # Electron 入门实战 03：实现一个截图功能
 
----
-
 ## 实现效果
 
 ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240410180945.gif)

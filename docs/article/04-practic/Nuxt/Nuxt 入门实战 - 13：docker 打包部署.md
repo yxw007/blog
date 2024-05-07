@@ -12,8 +12,6 @@ categories:
 
 # Nuxt 入门实战 - 13：docker 打包部署
 
----
-
 ## 编写打包配置Dockerfile
 
 > 说明：Dockerfile 放置在项目根目录下

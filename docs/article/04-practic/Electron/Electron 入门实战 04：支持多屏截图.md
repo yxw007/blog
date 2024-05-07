@@ -13,8 +13,6 @@ categories:
 
 # Electron 入门实战 04：支持多屏截图
 
----
-
 ## 实现效果
 
 ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240410181045.gif)

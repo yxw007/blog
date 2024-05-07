@@ -11,8 +11,6 @@ categories:
 
 # uniapp 入门实战 13：解决 canvasToTempFilePath 生成图片模糊问题
 
----
-
 # 情境
 
 - 对比效果

@@ -11,8 +11,6 @@ categories:
 
 # Nuxt 入门实战 - 02：nuxt是如何运转的？
 
----
-
 ## 两个核心上下文
 
 - `nuxt`:  全局上下文，可获取nuxt.config配置
