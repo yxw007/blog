@@ -109,6 +109,11 @@ const navs = [
 				link: "实现一个将JSON转markdown table的vscode插件",
 				activeMatch: "vscode",
 			},
+			{
+				text: "Nuxt",
+				link: "Nuxt 入门实战 - 01：目录结构",
+				activeMatch: "Nuxt",
+			},
 		],
 	},
 	{
