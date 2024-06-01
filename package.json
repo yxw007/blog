@@ -7,7 +7,10 @@
     "dev": "vitepress dev docs",
     "build-native": "vitepress build docs --base /blog/",
     "build": "vitepress build docs",
-    "preview": "vitepress preview docs"
+    "preview": "vitepress preview docs",
+    "upload": "node --env-file=.env build/uploadNotion.js",
+    "uploadMd": "node --env-file=.env build/uploadMdToNotion.js",
+    "toArticle": "node --env-file=.env build/draftToArticle.js"
   },
   "keywords": [
     "VitePress"
@@ -15,18 +18,24 @@
   "author": "Potter<aa4790139@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@arco-design/web-vue": "^2.44.1",
-    "@vue/devtools-api": "^6.5.0",
-    "fast-glob": "^3.2.12",
+    "@arco-design/web-vue": "^2.55.2",
+    "@notionhq/client": "^2.2.15",
+    "@tryfabric/martian": "^1.2.4",
+    "@vue/devtools-api": "^6.6.2",
+    "chalk": "^4.1.2",
+    "fast-glob": "^3.3.2",
     "gray-matter": "^4.0.3",
+    "inquirer": "^8.2.4",
+    "markdown-it": "^12.3.2",
     "unplugin-vue-components": "^0.24.1",
     "vitepress": "1.0.0-alpha.50"
   },
   "dependencies": {
-    "dayjs": "^1.11.7",
+    "dayjs": "^1.11.11",
     "gitalk": "^1.8.0",
-    "jquery": "^3.6.4",
+    "jquery": "^3.7.1",
     "md5": "^2.3.0",
-    "vue": "^3.2.47"
-  }
+    "vue": "^3.4.27"
+  },
+  "packageManager": "yarn@1.22.21+sha512.ca75da26c00327d26267ce33536e5790f18ebd53266796fbb664d2a4a5116308042dd8ee7003b276a20eace7d3c5561c3577bdd71bcb67071187af124779620a"
 }
