@@ -1,7 +1,6 @@
 const { glob } = require("fast-glob");
 const path = require("path");
 const fs = require("fs");
-const MarkdownIt = require("markdown-it");
 const { log, isObject, isString } = require("./utils");
 const sharp = require("sharp");
 const axios = require("axios");
@@ -34,75 +33,49 @@ async function findDraft(dir) {
 	return mdPath;
 }
 
-function parseMd(mdPath) {
-	let mdIt = new MarkdownIt();
-	let content = fs.readFileSync(mdPath, { encoding: "utf8" });
-	return { mdIt, tokens: mdIt.parse(content) };
-}
-
-function pickImg(tokens) {
-	let relateImgTokens = {};
+function pickImg(mdPath) {
+	let relateImgs = {};
 	let regex = /(\.\/(.*\/)*.+\.(png|jpg|jpeg|svg|gif))/gim;
-	function dfs(parent, key) {
-		let item = parent[key];
-		if (Array.isArray(item)) {
-			for (let i = 0; i < item.length; i++) {
-				dfs(item, i);
-			}
-		} else if (isObject(item)) {
-			for (const key of Object.keys(item)) {
-				dfs(item, key);
-			}
-		} else if (isString(item)) {
-			regex.lastIndex = 0;
-			let match = regex.exec(item);
-			if (match != null) {
-				let resPath = match[0];
-				if (!relateImgTokens[resPath]) {
-					relateImgTokens[resPath] = [];
-				}
-				relateImgTokens[resPath].push({
-					obj: parent,
-					objKey: key,
-					rawVal: resPath,
-					newVal: "",
-				});
-			}
+	let content = fs.readFileSync(mdPath, { encoding: "utf8" });
+
+	let match = null;
+	while ((match = regex.exec(content)) != null) {
+		if (match.index === regex.lastIndex) {
+			regex.lastIndex++;
+		}
+		let resPath = match[0];
+		if (!relateImgs[resPath]) {
+			relateImgs[resPath] = "";
 		}
 	}
 
-	dfs({ data: tokens }, "data");
-
-	return { tokens, relateImgTokens };
+	return { content, relateImgs };
 }
 
-async function compressImg({ tokens, relateImgTokens }) {
+async function compressImg(relateImgs) {
 	let set = new Set();
-	for (const key of Object.keys(relateImgTokens)) {
-		let arr = relateImgTokens[key];
-		for (const item of arr) {
-			let rawVal = item.rawVal;
-			let extension = path.extname(rawVal).slice(1);
-			let filePath = path.resolve(path.join(draftDir, rawVal));
-			if (set.has(filePath)) {
-				continue;
-			}
+	for (const key of Object.keys(relateImgs)) {
+		let rawVal = key;
+		let extension = path.extname(rawVal).slice(1);
+		let filePath = path.resolve(path.join(draftDir, rawVal));
+		if (set.has(filePath)) {
+			continue;
+		}
 
-			set.add(filePath);
-			let buff = fs.readFileSync(filePath);
-			let sharpInstance = sharp(buff)[extension]({ quality: 80 });
-			try {
-				let res = await sharpInstance.toFile(filePath);
-				if (res != null) {
-					log.info("compress success ! res path:", filePath);
-				}
-			} catch (error) {
-				log.error("compress fail ! res path:", filePath);
+		set.add(filePath);
+		let buff = fs.readFileSync(filePath);
+		let sharpInstance = sharp(buff)[extension]({ quality: 80 });
+		try {
+			let res = await sharpInstance.toFile(filePath);
+			if (res != null) {
+				log.info("compress success ! res path:", filePath);
 			}
+		} catch (error) {
+			log.error("compress fail ! res path:", filePath);
 		}
 	}
 
-	return { tokens, relateImgTokens };
+	return { relateImgs };
 }
 
 /**
@@ -159,63 +132,51 @@ async function uploadAImg(relatePath) {
 	return null;
 }
 
-async function uploadImg({ tokens, relateImgTokens }) {
+async function uploadImg({ relateImgs }) {
 	let caches = new Map();
-	for (const key of Object.keys(relateImgTokens)) {
-		let arr = relateImgTokens[key];
-		for (const item of arr) {
-			let url = caches.get(item.rawVal);
-			if (!url) {
-				url = await uploadAImg(item.rawVal);
-				caches.set(item.rawVal, url);
-			}
-			item.newVal = url;
-			item.obj[item.objKey] = item.newVal;
+	for (const key of Object.keys(relateImgs)) {
+		let url = caches.get(key);
+		if (!url) {
+			url = await uploadAImg(key);
+			relateImgs[key] = url;
+			caches.set(key, url);
 		}
 	}
-	return tokens;
+	return relateImgs;
 }
 
 /**
  * @param {MarkdownIt} mdIt
  * @param {*} tokens
  */
-function generateArticle(mdIt, tokens, articlePath) {
-	// const content = mdIt.renderer.renderInlineAsText(tokens, mdIt.options);
-
-	const content = mdIt.toString();
-	let markdown = "";
-	for (const token of tokens) {
-		if (token.type === "heading_open") {
-			markdown += "#".repeat(parseInt(token.tag.substr(1))) + " ";
-		} else if (token.type === "inline") {
-			markdown += token.content;
-		} else if (token.type === "paragraph_open") {
-			markdown += "\n\n";
+function generateArticle(content, relateImgs, articlePath) {
+	let regex = /(\.\/(.*\/)*.+\.(png|jpg|jpeg|svg|gif))/gim;
+	content = content.replace(regex, (val) => {
+		if (relateImgs[val]) {
+			return relateImgs[val];
+		} else {
+			return val;
 		}
-		// 添加更多的条件来处理不同类型的 tokens
-	}
+	});
 
-	fs.writeFileSync(articlePath, markdown.trim(), { encoding: "utf8" });
+	fs.writeFileSync(articlePath, content, { encoding: "utf8" });
 }
 
 async function run() {
 	try {
 		const draftMdPath = await findDraft(draftDir);
 		const articlePath = path.join(articleDir, "/", path.basename(draftMdPath));
-		const { mdIt, tokens } = parseMd(draftMdPath);
+		const { content, relateImgs } = pickImg(draftMdPath);
 		const handles = [];
-		//1.提取图片资源
-		handles.push(pickImg);
-		//2.压缩图片
+		//1.压缩图片
 		handles.push(compressImg);
-		//3.上传图片
+		//2.上传图片
 		handles.push(uploadImg);
-		const resTokens = await handles.reduce(async (pre, cur) => {
+		await handles.reduce(async (pre, cur) => {
 			return Promise.resolve(pre).then(cur);
-		}, tokens);
-		//4.生产文章
-		generateArticle(mdIt, resTokens, articlePath);
+		}, relateImgs);
+		//3.生产文章
+		generateArticle(content, relateImgs, articlePath);
 		log.info("draft to article success !");
 	} catch (error) {
 		log.error("draft to article fail: ", error);
