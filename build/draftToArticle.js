@@ -4,6 +4,7 @@ const fs = require("fs");
 const MarkdownIt = require("markdown-it");
 const { log, isObject, isString } = require("./utils");
 const sharp = require("sharp");
+const axios = require("axios");
 
 const draftDir = path
 	.normalize(path.resolve(__dirname, "../studio/draft"))
@@ -99,16 +100,76 @@ async function compressImg({ tokens, relateImgTokens }) {
 	return { tokens, relateImgTokens };
 }
 
-function uploadImg({ tokens, relateImgTokens }) {
+/**
+ * @param {*} relatePath
+ */
+async function uploadAImg(relatePath) {
+	let filePath = path.resolve(draftDir, relatePath);
+	console.log("uploadAImg:", filePath);
+
+	let { GITHUB_OWNER, GITHUB_REPO, GITHUB_DIR, GITHUB_BRANCH, GITHUB_TOKEN } =
+		process.env;
+	let fileName = Date.now();
+	let extension = path.extname(filePath);
+	let githubPath = `${GITHUB_DIR}/${fileName}${extension}`;
+	let content = fs.readFileSync(filePath);
+	let contentBase64 = content.toString("base64");
+
+	let commitData = JSON.stringify({
+		message: "my commit message",
+		committer: {
+			name: "potter",
+			email: "",
+		},
+		content: contentBase64,
+	});
+
+	const contentType = {
+		jpg: "image/jpg",
+		jpeg: "image/jpeg",
+		png: "image/png",
+		svg: "image/svg+xml",
+		gif: "image/gif",
+	};
+
+	const config = {
+		method: "put",
+		url: `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${githubPath}`,
+		headers: {
+			Authorization: `Bearer ${GITHUB_TOKEN}`,
+			"Content-Type": contentType[extension.slice(1)],
+		},
+		data: commitData,
+	};
+
+	try {
+		axios(config)
+			.then((response) => {
+				console.log(JSON.stringify(response.data));
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	} catch (error) {
+		log.error("upload a image fail !", error);
+	}
+	return "";
+}
+
+async function uploadImg({ tokens, relateImgTokens }) {
+	let caches = new Map();
 	for (const key of Object.keys(relateImgTokens)) {
 		let arr = relateImgTokens[key];
 		for (const item of arr) {
-			item.newVal = `https://${item.rawVal}`;
+			let url = caches.get(item.rawVal);
+			if (!url) {
+				url = await uploadAImg(item.rawVal);
+				caches.set(item.rawVal, url);
+			}
+			item.newVal = url;
 			item.obj[item.objKey] = item.newVal;
 		}
 	}
-	//TODO:
-
 	return tokens;
 }
 
