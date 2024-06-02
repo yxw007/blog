@@ -11,6 +11,9 @@ const dayjs = require("dayjs");
 const draftDir = path
 	.normalize(path.resolve(__dirname, "../studio/draft"))
 	.replace(/\\/g, "/");
+const articleDir = path
+	.normalize(path.resolve(__dirname, "../studio/article"))
+	.replace(/\\/g, "/");
 
 /**
  * @param {string} dir
@@ -34,7 +37,7 @@ async function findDraft(dir) {
 function parseMd(mdPath) {
 	let mdIt = new MarkdownIt();
 	let content = fs.readFileSync(mdPath, { encoding: "utf8" });
-	return mdIt.parse(content);
+	return { mdIt, tokens: mdIt.parse(content) };
 }
 
 function pickImg(tokens) {
@@ -173,12 +176,34 @@ async function uploadImg({ tokens, relateImgTokens }) {
 	return tokens;
 }
 
-function generateArticle() {}
+/**
+ * @param {MarkdownIt} mdIt
+ * @param {*} tokens
+ */
+function generateArticle(mdIt, tokens, articlePath) {
+	// const content = mdIt.renderer.renderInlineAsText(tokens, mdIt.options);
+
+	const content = mdIt.toString();
+	let markdown = "";
+	for (const token of tokens) {
+		if (token.type === "heading_open") {
+			markdown += "#".repeat(parseInt(token.tag.substr(1))) + " ";
+		} else if (token.type === "inline") {
+			markdown += token.content;
+		} else if (token.type === "paragraph_open") {
+			markdown += "\n\n";
+		}
+		// 添加更多的条件来处理不同类型的 tokens
+	}
+
+	fs.writeFileSync(articlePath, markdown.trim(), { encoding: "utf8" });
+}
 
 async function run() {
 	try {
 		const draftMdPath = await findDraft(draftDir);
-		const mdTokens = parseMd(draftMdPath);
+		const articlePath = path.join(articleDir, "/", path.basename(draftMdPath));
+		const { mdIt, tokens } = parseMd(draftMdPath);
 		const handles = [];
 		//1.提取图片资源
 		handles.push(pickImg);
@@ -188,9 +213,9 @@ async function run() {
 		handles.push(uploadImg);
 		const resTokens = await handles.reduce(async (pre, cur) => {
 			return Promise.resolve(pre).then(cur);
-		}, mdTokens);
+		}, tokens);
 		//4.生产文章
-		generateArticle(resTokens);
+		generateArticle(mdIt, resTokens, articlePath);
 		log.info("draft to article success !");
 	} catch (error) {
 		log.error("draft to article fail: ", error);
