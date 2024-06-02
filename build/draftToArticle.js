@@ -2,7 +2,8 @@ const { glob } = require("fast-glob");
 const path = require("path");
 const fs = require("fs");
 const MarkdownIt = require("markdown-it");
-const { log, isObject } = require("./utils");
+const { log, isObject, isString } = require("./utils");
+const sharp = require("sharp");
 
 const draftDir = path
 	.normalize(path.resolve(__dirname, "../studio/draft"))
@@ -35,35 +36,79 @@ function parseMd(mdPath) {
 
 function pickImg(tokens) {
 	let relateImgTokens = {};
-	let regex = /\S.+?\.png/gi;
-	function dfs(item) {
+	let regex = /(\.\/(.*\/)*.+\.(png|jpg|jpeg|svg|gif))/gim;
+	function dfs(parent, key) {
+		let item = parent[key];
 		if (Array.isArray(item)) {
-			for (const it of item) {
-				dfs(it);
+			for (let i = 0; i < item.length; i++) {
+				dfs(item, i);
 			}
 		} else if (isObject(item)) {
 			for (const key of Object.keys(item)) {
-				dfs(item[key]);
+				dfs(item, key);
 			}
-		} else {
-			if (regex.test(item) && !/^https?/i.test(item)) {
-				relateImgTokens[item] = item;
+		} else if (isString(item)) {
+			regex.lastIndex = 0;
+			let match = regex.exec(item);
+			if (match != null) {
+				let resPath = match[0];
+				if (!relateImgTokens[resPath]) {
+					relateImgTokens[resPath] = [];
+				}
+				relateImgTokens[resPath].push({
+					obj: parent,
+					objKey: key,
+					rawVal: resPath,
+					newVal: "",
+				});
 			}
 		}
 	}
 
-	dfs(tokens);
+	dfs({ data: tokens }, "data");
 
 	return { tokens, relateImgTokens };
 }
 
-function compressImg({ tokens, relateImgTokens }) {
-	//TODO: 修改到此处?
-	console.log(relateImgTokens);
+async function compressImg({ tokens, relateImgTokens }) {
+	let set = new Set();
+	for (const key of Object.keys(relateImgTokens)) {
+		let arr = relateImgTokens[key];
+		for (const item of arr) {
+			let rawVal = item.rawVal;
+			let extension = path.extname(rawVal).slice(1);
+			let filePath = path.resolve(path.join(draftDir, rawVal));
+			if (set.has(filePath)) {
+				continue;
+			}
+
+			set.add(filePath);
+			let buff = fs.readFileSync(filePath);
+			let sharpInstance = sharp(buff)[extension]({ quality: 80 });
+			try {
+				let res = await sharpInstance.toFile(filePath);
+				if (res != null) {
+					log.info("compress success ! res path:", filePath);
+				}
+			} catch (error) {
+				log.error("compress fail ! res path:", filePath);
+			}
+		}
+	}
+
 	return { tokens, relateImgTokens };
 }
 
 function uploadImg({ tokens, relateImgTokens }) {
+	for (const key of Object.keys(relateImgTokens)) {
+		let arr = relateImgTokens[key];
+		for (const item of arr) {
+			item.newVal = `https://${item.rawVal}`;
+			item.obj[item.objKey] = item.newVal;
+		}
+	}
+	//TODO:
+
 	return tokens;
 }
 

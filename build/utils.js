@@ -19,7 +19,12 @@ function isObject(obj) {
 	return getType(obj) === "Object";
 }
 
+function isString(obj) {
+	return getType(obj) === "String";
+}
+
 module.exports = {
 	log,
 	isObject,
+	isString,
 };
