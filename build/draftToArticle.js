@@ -5,6 +5,8 @@ const MarkdownIt = require("markdown-it");
 const { log, isObject, isString } = require("./utils");
 const sharp = require("sharp");
 const axios = require("axios");
+const mime = require("mime");
+const dayjs = require("dayjs");
 
 const draftDir = path
 	.normalize(path.resolve(__dirname, "../studio/draft"))
@@ -105,10 +107,16 @@ async function compressImg({ tokens, relateImgTokens }) {
  */
 async function uploadAImg(relatePath) {
 	let filePath = path.resolve(draftDir, relatePath);
-	console.log("uploadAImg:", filePath);
-
-	let { GITHUB_OWNER, GITHUB_REPO, GITHUB_DIR, GITHUB_BRANCH, GITHUB_TOKEN } =
-		process.env;
+	let {
+		GITHUB_OWNER,
+		GITHUB_REPO,
+		GITHUB_DIR,
+		GITHUB_BRANCH,
+		GITHUB_TOKEN,
+		GITHUB_CDN_PREFIX,
+		GITHUB_COMMIT_AUTHOR,
+		GITHUB_COMMIT_EMAIL,
+	} = process.env;
 	let fileName = Date.now();
 	let extension = path.extname(filePath);
 	let githubPath = `${GITHUB_DIR}/${fileName}${extension}`;
@@ -116,44 +124,36 @@ async function uploadAImg(relatePath) {
 	let contentBase64 = content.toString("base64");
 
 	let commitData = JSON.stringify({
-		message: "my commit message",
+		message: "commit image",
 		committer: {
-			name: "potter",
-			email: "",
+			name: GITHUB_COMMIT_AUTHOR,
+			email: GITHUB_COMMIT_EMAIL,
 		},
 		content: contentBase64,
 	});
 
-	const contentType = {
-		jpg: "image/jpg",
-		jpeg: "image/jpeg",
-		png: "image/png",
-		svg: "image/svg+xml",
-		gif: "image/gif",
-	};
-
+	const contentType = mime.getType(filePath);
 	const config = {
 		method: "put",
 		url: `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${githubPath}`,
 		headers: {
 			Authorization: `Bearer ${GITHUB_TOKEN}`,
-			"Content-Type": contentType[extension.slice(1)],
+			"Content-Type": contentType,
+			"X-GitHub-Api-Version": "2022-11-28",
+			Accept: "application/vnd.github+json",
 		},
 		data: commitData,
 	};
 
 	try {
-		axios(config)
-			.then((response) => {
-				console.log(JSON.stringify(response.data));
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		const res = await axios(config);
+		if (res.status == 201) {
+			return `${GITHUB_CDN_PREFIX}/${GITHUB_OWNER}/${GITHUB_REPO}@${GITHUB_BRANCH}/${githubPath}`;
+		}
 	} catch (error) {
 		log.error("upload a image fail !", error);
 	}
-	return "";
+	return null;
 }
 
 async function uploadImg({ tokens, relateImgTokens }) {
