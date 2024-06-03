@@ -67,10 +67,7 @@ async function compressImg(relateImgs) {
 		let buff = fs.readFileSync(filePath);
 		let sharpInstance = sharp(buff)[extension]({ quality: 80 });
 		try {
-			let res = await sharpInstance.toFile(filePath);
-			if (res != null) {
-				log.info("compress success ! res path:", filePath);
-			}
+			await sharpInstance.toFile(filePath);
 		} catch (error) {
 			log.error("compress fail ! res path:", filePath);
 		}
