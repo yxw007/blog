@@ -1,11 +1,10 @@
 const { glob } = require("fast-glob");
 const path = require("path");
 const fs = require("fs");
-const { log, isObject, isString } = require("./utils");
+const { log } = require("./utils");
 const sharp = require("sharp");
 const axios = require("axios");
 const mime = require("mime");
-const dayjs = require("dayjs");
 
 const draftDir = path
 	.normalize(path.resolve(__dirname, "../studio/draft"))
@@ -45,7 +44,7 @@ function pickImg(mdPath) {
 		}
 		let resPath = match[0];
 		if (!relateImgs[resPath]) {
-			relateImgs[resPath] = "";
+			relateImgs[resPath] = {};
 		}
 	}
 
@@ -57,7 +56,9 @@ async function compressImg(relateImgs) {
 	for (const key of Object.keys(relateImgs)) {
 		let rawVal = key;
 		let extension = path.extname(rawVal).slice(1);
-		let filePath = path.resolve(path.join(draftDir, rawVal));
+		let filePath = path.resolve(
+			path.join(draftDir, decodeURIComponent(rawVal))
+		);
 		if (set.has(filePath)) {
 			continue;
 		}
@@ -121,25 +122,34 @@ async function uploadAImg(relatePath) {
 		data: commitData,
 	};
 
+	const res = {
+		success: false,
+		url: null,
+		cdn: null,
+	};
+
 	try {
-		const res = await axios(config);
-		if (res.status == 201) {
-			return `${GITHUB_CDN_PREFIX}/${GITHUB_OWNER}/${GITHUB_REPO}@${GITHUB_BRANCH}/${githubPath}`;
+		const response = await axios(config);
+		if (response.status == 201) {
+			res.success = true;
+			res.cdn = `${GITHUB_CDN_PREFIX}/${GITHUB_OWNER}/${GITHUB_REPO}@${GITHUB_BRANCH}/${githubPath}`;
+			res.url = response.data.content.download_url;
 		}
 	} catch (error) {
 		log.error("upload a image fail !", error);
 	}
-	return null;
+
+	return res;
 }
 
 async function uploadImg({ relateImgs }) {
 	let caches = new Map();
 	for (const key of Object.keys(relateImgs)) {
-		let url = caches.get(key);
-		if (!url) {
-			url = await uploadAImg(key);
-			relateImgs[key] = url;
-			caches.set(key, url);
+		let res = caches.get(key);
+		if (!res || !res.success) {
+			res = await uploadAImg(decodeURIComponent(key));
+			relateImgs[key] = res;
+			caches.set(key, res);
 		}
 	}
 	return relateImgs;
@@ -149,23 +159,38 @@ async function uploadImg({ relateImgs }) {
  * @param {MarkdownIt} mdIt
  * @param {*} tokens
  */
-function generateArticle(content, relateImgs, articlePath) {
+function generateArticle(content, relateImgs, articleDir, filename) {
 	let regex = /(\.\/(.*\/)*.+\.(png|jpg|jpeg|svg|gif))/gim;
-	content = content.replace(regex, (val) => {
+	let useCDNContent = content.replace(regex, (val) => {
 		if (relateImgs[val]) {
-			return relateImgs[val];
+			return relateImgs[val].cdn;
+		} else {
+			return val;
+		}
+	});
+	let sourceContent = content.replace(regex, (val) => {
+		if (relateImgs[val]) {
+			return relateImgs[val].url;
 		} else {
 			return val;
 		}
 	});
 
-	fs.writeFileSync(articlePath, content, { encoding: "utf8" });
+	const articleCDNPath = path.join(articleDir, "/", `${filename}_CDN.md`);
+	fs.writeFileSync(articleCDNPath, useCDNContent, { encoding: "utf8" });
+
+	const articlePath = path.join(articleDir, "/", `${filename}.md`);
+	fs.writeFileSync(articlePath, sourceContent, { encoding: "utf8" });
 }
 
 async function run() {
 	try {
 		const draftMdPath = await findDraft(draftDir);
-		const articlePath = path.join(articleDir, "/", path.basename(draftMdPath));
+		const filenameWithExtension = path.basename(draftMdPath);
+		const filename = filenameWithExtension.slice(
+			0,
+			filenameWithExtension.lastIndexOf(".")
+		);
 		const { content, relateImgs } = pickImg(draftMdPath);
 		const handles = [];
 		//1.压缩图片
@@ -176,7 +201,7 @@ async function run() {
 			return Promise.resolve(pre).then(cur);
 		}, relateImgs);
 		//3.生产文章
-		generateArticle(content, relateImgs, articlePath);
+		generateArticle(content, relateImgs, articleDir, filename);
 		log.info("draft to article success !");
 	} catch (error) {
 		log.error("draft to article fail: ", error);
