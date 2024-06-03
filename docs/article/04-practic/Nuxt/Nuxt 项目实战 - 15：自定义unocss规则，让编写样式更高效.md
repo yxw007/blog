@@ -10,7 +10,7 @@ categories:
 
 ## 与UI设计师约定颜色命名规则
 
-![Untitled](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411161450.png)
+![Untitled](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411456499.png)
 
 ## 配置color变量
 
@@ -191,7 +191,7 @@ categories:
 <div class="bg-c-01-02 border-c-03-01 text-c-01-02"></div>
 ```
 
-![Untitled](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411162463.gif)
+![Untitled](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411457432.gif)
 
 ## 存在的问题
 
@@ -200,7 +200,7 @@ categories:
 // 如果要给背景色添加一个透明度，这种情况是不支持的，那么如何变得支持呢?
 ```
 
-![3.gif](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411163393.gif)
+![3.gif](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411458141.gif)
 
 > 说明：你可能会想到改unocss的规则，那么我们来试下
 >
@@ -226,12 +226,12 @@ rules: [
  ],
 ```
 
-![Untitled](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411164194.png)
+![Untitled](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411458924.png)
 
 > 说明：好些还可以，我们看下真是效果
 >
 
-![Untitled](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411164988.png)
+![Untitled](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411459659.png)
 
 看到这个你发现问题了，由于我们颜色变量引用的是16进制颜色值，然后rgba的参数是4个，而且是用逗号隔开。可能你会想编译后改样式，类似webpack的css loader一样，但是我们会失去unocss的提示，在开发的时候还是很不方便。所以我想到一个办法，就是把颜色变量变成red,green,blue 最后在规则中拼一个,alpha 值。
 
@@ -286,8 +286,8 @@ rules: [
 
 ## 测试最终效果
 
-![Untitled](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411165883.png)
+![Untitled](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411460345.png)
 
-![Untitled](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411166628.png)
+![Untitled](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1717411461101.png)
 
 完美实现我们想要的效果，这样就可以更开心的写样式了。

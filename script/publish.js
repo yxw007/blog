@@ -22,7 +22,7 @@ function copyArticleToTargetDir(articlePath, articleTargetDir) {
 }
 
 function commitCode(message) {
-	const command = `git add . && git config --global core.autocrlf true && git commit -m "add ${message}" && git push`;
+	const command = `git add . && git config --global core.autocrlf true && git commit -m "add: ${message}"`;
 	exec(command, (error, stdout, stderr) => {
 		if (error) {
 			log.error("publish failed :", error.message);
@@ -32,7 +32,14 @@ function commitCode(message) {
 			log.error("publish failed :", stderr);
 			return;
 		}
-		log.info("publish success !");
+
+		exec("git pull && git push", (error) => {
+			if (error) {
+				log.error("publish git push failed :", error.message);
+				return;
+			}
+			log.info("publish success !");
+		});
 	});
 }
 
