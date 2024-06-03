@@ -49,7 +49,7 @@ function commitCode(message) {
 async function run(articleTargetDir) {
 	let { articleCDNPath, articlePath } = await toArticle();
 	let filename = fileNameWithOutExtension(articlePath);
-	await copyArticleToTargetDir(articlePath, articleTargetDir, filename);
+	await copyArticleToTargetDir(articleCDNPath, articleTargetDir, filename);
 	await uploadMdToNotion(articleCDNPath);
 	await commitCode(filename);
 }
