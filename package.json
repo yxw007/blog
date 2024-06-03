@@ -8,9 +8,9 @@
     "build-native": "vitepress build docs --base /blog/",
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
-    "upload": "node --env-file=.env build/uploadNotion.js",
-    "uploadMd": "node --env-file=.env build/uploadMdToNotion.js",
-    "toArticle": "node --env-file=.env build/draftToArticle.js"
+    "upload": "node --env-file=.env script/uploadNotion.js",
+    "uploadMd": "node --env-file=.env script/uploadMdToNotion.js",
+    "toArticle": "node --env-file=.env script/draftToArticle.js"
   },
   "keywords": [
     "VitePress"
@@ -38,6 +38,5 @@
     "jquery": "^3.7.1",
     "md5": "^2.3.0",
     "vue": "^3.4.27"
-  },
-  "packageManager": "yarn@1.22.21+sha512.ca75da26c00327d26267ce33536e5790f18ebd53266796fbb664d2a4a5116308042dd8ee7003b276a20eace7d3c5561c3577bdd71bcb67071187af124779620a"
+  }
 }
