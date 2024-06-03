@@ -5,10 +5,13 @@ const { fileNameWithOutExtension, log } = require("./utils");
 const { toArticle } = require("./draftToArticle");
 const fs = require("fs-extra");
 
-function copyArticleToTargetDir(articlePath, articleTargetDir) {
+function copyArticleToTargetDir(
+	articlePath,
+	articleTargetDir,
+	articleFileName
+) {
 	return new Promise((resolve) => {
-		let filename = path.basename(articlePath);
-		let articleTargetPath = path.join(articleTargetDir, filename);
+		let articleTargetPath = path.join(articleTargetDir, articleFileName);
 		fs.ensureDir(articleTargetDir);
 		let inStream = fs.createReadStream(articlePath, { encoding: "utf8" });
 		let outStream = fs.createWriteStream(articleTargetPath, {
