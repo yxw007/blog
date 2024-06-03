@@ -181,6 +181,8 @@ function generateArticle(content, relateImgs, articleDir, filename) {
 
 	const articlePath = path.join(articleDir, "/", `${filename}.md`);
 	fs.writeFileSync(articlePath, sourceContent, { encoding: "utf8" });
+
+	return { articleCDNPath, articlePath };
 }
 
 async function run() {
@@ -201,11 +203,12 @@ async function run() {
 			return Promise.resolve(pre).then(cur);
 		}, relateImgs);
 		//3.生产文章
-		generateArticle(content, relateImgs, articleDir, filename);
+		const res = generateArticle(content, relateImgs, articleDir, filename);
 		log.info("draft to article success !");
+		return res;
 	} catch (error) {
 		log.error("draft to article fail: ", error);
 	}
 }
 
-run();
+module.exports = { toArticle: run };

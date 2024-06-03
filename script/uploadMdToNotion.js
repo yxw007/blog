@@ -1,36 +1,12 @@
 const fs = require("fs");
 const path = require("path");
 const { markdownToBlocks } = require("@tryfabric/martian");
-const inquirer = require("inquirer");
+
 const { log } = require("./utils");
 const { NOTION_API_KEY, NOTION_PAGE_ID } = process.env;
 
 const { Client } = require("@notionhq/client");
 const notion = new Client({ auth: NOTION_API_KEY });
-
-inquirer
-	.prompt([
-		{
-			name: "articlePath",
-			type: "input",
-			message: "please input article path",
-			validate(val) {
-				if (!val) {
-					return "article path is invalid !";
-				}
-				let articlePath = path.normalize(val);
-				if (!fs.existsSync(articlePath)) {
-					return "article path not exist !";
-				}
-				return true;
-			},
-		},
-	])
-	.then(async (answer) => {
-		let { articlePath } = answer;
-		log.info(articlePath);
-		await run(articlePath);
-	});
 
 /**
  * parseArticle
@@ -92,3 +68,5 @@ async function run(articlePath) {
 		log.error("Upload fail," + error.message);
 	}
 }
+
+module.exports = { uploadMdToNotion: run };
