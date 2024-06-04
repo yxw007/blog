@@ -6,11 +6,11 @@
 
 1. 光标移入一个元素执行执行一段逻辑，比如：按钮颜色要变，其他弹框要显示，光标移出元素时又恢复。如果仅仅是样式不同可直接css，但是要执行js代码就有点麻烦了。可能你立马会想到mouseenter和mouseleave。但是如果有多层元素都需要这个就没有那么优雅了
     
-    ![1.gif](Nuxt%20%E5%85%A5%E9%97%A8%E5%AE%9E%E6%88%98%20-%2014%EF%BC%9A%E5%AE%9E%E7%8E%B0%E4%B8%A4%E4%B8%AA%E9%9D%9E%E5%B8%B8%E5%AE%9E%E7%94%A8%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%20976406fcf7a24778b31ce00c5d1cd6c8/1.gif)
+    ![1.gif](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1717483302365.gif)
     
 2. 点击一个按钮弹出modal对话框，背景是黑色透明，只有中间一部分是显示的内容，点击内容外面就关闭对话框。
     
-    ![2.gif](Nuxt%20%E5%85%A5%E9%97%A8%E5%AE%9E%E6%88%98%20-%2014%EF%BC%9A%E5%AE%9E%E7%8E%B0%E4%B8%A4%E4%B8%AA%E9%9D%9E%E5%B8%B8%E5%AE%9E%E7%94%A8%E7%9A%84%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%20976406fcf7a24778b31ce00c5d1cd6c8/2.gif)
+    ![2.gif](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1717483303339.gif)
     
 
 ## 实现自定义自定v-hover-el

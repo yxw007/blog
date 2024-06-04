@@ -34,7 +34,7 @@ async function findDraft(dir) {
 
 function pickImg(mdPath) {
 	let relateImgs = {};
-	let regex = /(\.\/(.*\/)*.+\.(png|jpg|jpeg|svg|gif))/gim;
+	let regex = /(?<=\()([^https?].{1,}\.(png|jpg|jpeg|svg|gif))(?=\))/gim;
 	let content = fs.readFileSync(mdPath, { encoding: "utf8" });
 
 	let match = null;
@@ -54,11 +54,9 @@ function pickImg(mdPath) {
 async function compressImg(relateImgs) {
 	let set = new Set();
 	for (const key of Object.keys(relateImgs)) {
-		let rawVal = key;
+		let rawVal = decodeURIComponent(key);
 		let extension = path.extname(rawVal).slice(1);
-		let filePath = path.resolve(
-			path.join(draftDir, decodeURIComponent(rawVal))
-		);
+		let filePath = path.resolve(path.join(draftDir, rawVal));
 		if (set.has(filePath)) {
 			continue;
 		}
@@ -157,7 +155,7 @@ async function uploadImg({ relateImgs }) {
  * @param {*} tokens
  */
 function generateArticle(content, relateImgs, articleDir, filename) {
-	let regex = /(\.\/(.*\/)*.+\.(png|jpg|jpeg|svg|gif))/gim;
+	let regex = /(?<=\()([^https?].{1,}\.(png|jpg|jpeg|svg|gif))(?=\))/gim;
 	let useCDNContent = content.replace(regex, (val) => {
 		if (relateImgs[val]) {
 			return relateImgs[val].cdn;

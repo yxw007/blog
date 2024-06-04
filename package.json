@@ -9,7 +9,7 @@
     "build": "vitepress build docs",
     "preview": "vitepress preview docs",
     "clearDraft": "node script/clearDraft.js",
-    "zipToArticle": "node script/mdZipToArticle.js",
+    "zipToArticle": "node --env-file=.env script/mdZipToArticle.js",
     "toArticle": "node --env-file=.env bin/toArticle.js",
     "toNotion": "node --env-file=.env bin/toNotion.js",
     "push": "node --env-file=.env bin/publish.js"
