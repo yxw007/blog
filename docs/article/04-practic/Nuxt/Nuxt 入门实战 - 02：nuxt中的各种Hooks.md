@@ -1,5 +1,5 @@
 ---
-title: Nuxt 入门实战 - 02：nuxt是如何运转的 ?
+title: Nuxt 入门实战 - 02：nuxt中的各种Hooks
 author: Potter
 date: 2023-06-20 11:40:40
 tags: 
@@ -9,7 +9,7 @@ categories:
 
 ---
 
-# Nuxt 入门实战 - 02：nuxt是如何运转的？
+# Nuxt 入门实战 - 02：nuxt中的各种Hooks
 
 ## 两个核心上下文
 
@@ -21,7 +21,7 @@ categories:
 ### Nuxt Hook(build Time)
 
 - nuxt.config使用钩子
-    
+
     ```jsx
     //nuxt.config
     export default defineNuxtConfig({
@@ -30,9 +30,9 @@ categories:
       }
     })
     ```
-    
+
 - defineNuxtModule 方式使用钩子
-    
+
     ```jsx
     import { defineNuxtModule } from '@nuxt/kit'
     
@@ -42,12 +42,11 @@ categories:
       }
     })
     ```
-    
 
 ### App Hooks（Runtime）
 
 - 插件使用钩子
-    
+
     ```jsx
     //plugins/test.ts
     export default defineNuxtPlugin((nuxtApp) => {
@@ -56,12 +55,11 @@ categories:
          })
     })
     ```
-    
 
 ### Nitro Plugin
 
 - 使用钩子
-    
+
     ```jsx
     //~/server/plugins/test.ts
     export default defineNitroPlugin((nitroApp) => {
@@ -75,7 +73,6 @@ categories:
       })
     })
     ```
-    
 
 ## 参考文献
 

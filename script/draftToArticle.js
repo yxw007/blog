@@ -1,6 +1,6 @@
 const { glob } = require("fast-glob");
 const path = require("path");
-const fs = require("fs");
+const fs = require("fs-extra");
 const { log } = require("./utils");
 const sharp = require("sharp");
 const axios = require("axios");
@@ -170,6 +170,8 @@ function generateArticle(content, relateImgs, articleDir, filename) {
 			return val;
 		}
 	});
+
+	fs.ensureDir(articleDir);
 
 	const articleCDNPath = path.join(articleDir, "/", `${filename}_CDN.md`);
 	fs.writeFileSync(articleCDNPath, useCDNContent, { encoding: "utf8" });
