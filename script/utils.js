@@ -30,9 +30,22 @@ function fileNameWithOutExtension(filePath) {
 	return filename.slice(0, filename.indexOf(extension));
 }
 
+function getDraftDir() {
+	return normalizePath(path.resolve(__dirname, "../studio/draft"));
+}
+
+/**
+ * @param {string} path
+ */
+function normalizePath(path) {
+	return path.replace(/\\/g, "/");
+}
+
 module.exports = {
 	log,
 	isObject,
 	isString,
 	fileNameWithOutExtension,
+	normalizePath,
+	getDraftDir,
 };
