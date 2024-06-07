@@ -26,4 +26,9 @@ export default {
 		type: "gitalk",
 		showComment: true,
 	},
+	algolia: {
+		appId: "ZNQHVASLM4",
+		apiKey: process.env.ALGOLIA_API_KEY,
+		indexName: "yanxuewen",
+	},
 };
