@@ -22,6 +22,7 @@
   "devDependencies": {
     "@arco-design/web-vue": "^2.55.2",
     "@notionhq/client": "^2.2.15",
+    "@pup007/artipub": "latest",
     "@tryfabric/martian": "^1.2.4",
     "@vue/devtools-api": "^6.6.2",
     "axios": "^1.7.2",

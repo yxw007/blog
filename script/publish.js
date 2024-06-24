@@ -1,9 +1,12 @@
 const { exec } = require("child_process");
 const path = require("path");
-const { uploadMdToNotion } = require("./uploadMdToNotion");
 const { fileNameWithOutExtension, log } = require("./utils");
-const { toArticle } = require("./draftToArticle");
 const fs = require("fs-extra");
+const {
+	ArticleProcessor,
+	PublisherManager,
+	NotionPublisherPlugin,
+} = require("@pup007/artipub");
 
 function copyArticleToTargetDir(
 	articlePath,
@@ -47,13 +50,35 @@ function commitCode(message) {
 }
 
 /**
+ * @param {string} dir
+ */
+async function findDraft(dir) {
+	let pattern = `${dir}/*.md`;
+	log.info(pattern);
+	let mdPaths = await glob(pattern, {
+		dot: true,
+		onlyFiles: true,
+		objectMode: true,
+	});
+	if (mdPaths.length == 0) {
+		throw new Error(`${dir} not found any md file !`);
+	}
+
+	let mdPath = mdPaths[0].path;
+	return mdPath;
+}
+
+/**
  * @param {string} articleTargetDir
  */
 async function run(articleTargetDir) {
-	let { articleCDNPath, articlePath } = await toArticle();
-	let filename = fileNameWithOutExtension(articlePath);
+	const draftMdPath = await findDraft(draftDir);
+
+	let processor = new ArticleProcessor();
+
+	let filename = fileNameWithOutExtension(draftMdPath);
 	await copyArticleToTargetDir(articleCDNPath, articleTargetDir, filename);
-	await uploadMdToNotion(articleCDNPath);
+
 	await commitCode(filename);
 }
 
