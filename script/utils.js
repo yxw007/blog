@@ -34,6 +34,10 @@ function getDraftDir() {
 	return normalizePath(path.resolve(__dirname, "../studio/draft"));
 }
 
+function getArticleDir() {
+	return normalizePath(path.resolve(__dirname, "../studio/article"));
+}
+
 /**
  * @param {string} path
  */
@@ -48,4 +52,5 @@ module.exports = {
 	fileNameWithOutExtension,
 	normalizePath,
 	getDraftDir,
+	getArticleDir,
 };

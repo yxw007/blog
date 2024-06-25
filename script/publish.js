@@ -8,6 +8,17 @@ const {
 	NotionPublisherPlugin,
 } = require("@pup007/artipub");
 
+const { NOTION_API_KEY, NOTION_PAGE_ID } = process.env;
+let {
+	GITHUB_OWNER,
+	GITHUB_REPO,
+	GITHUB_DIR,
+	GITHUB_BRANCH,
+	GITHUB_TOKEN,
+	GITHUB_COMMIT_AUTHOR,
+	GITHUB_COMMIT_EMAIL,
+} = process.env;
+
 function copyArticleToTargetDir(
 	articlePath,
 	articleTargetDir,
@@ -68,18 +79,56 @@ async function findDraft(dir) {
 	return mdPath;
 }
 
+async function writeContentToArticle(articleTargetDir, filename, content) {
+	let articleCDNPath = path.join(articleTargetDir, `${filename}_CDN.md`);
+	let articlePath = path.join(articleTargetDir, `${filename}.md`);
+	await fs.writeFile(articlePath, content, { encoding: "utf8" });
+
+	//TODO: 替换content中的图片链接为CDN链接
+
+	return { articleCDNPath, articlePath };
+}
+
 /**
  * @param {string} articleTargetDir
  */
 async function run(articleTargetDir) {
-	const draftMdPath = await findDraft(draftDir);
+	const draftMdPath = await findDraft(getDraftDir());
 
-	let processor = new ArticleProcessor();
+	let processor = new ArticleProcessor({
+		uploadImgOption: {
+			owner: GITHUB_OWNER,
+			repo: GITHUB_REPO,
+			dir: GITHUB_DIR,
+			branch: GITHUB_BRANCH,
+			token: GITHUB_TOKEN,
+			commit_author: GITHUB_COMMIT_AUTHOR,
+			commit_email: GITHUB_COMMIT_EMAIL,
+		},
+	});
 
-	let filename = fileNameWithOutExtension(draftMdPath);
-	await copyArticleToTargetDir(articleCDNPath, articleTargetDir, filename);
+	processor.processMarkdown(draftMdPath).then(async ({ filePath, content }) => {
+		let filename = fileNameWithOutExtension(draftMdPath);
+		let { articleCDNPath } = await writeContentToArticle(
+			getArticleDir(),
+			filename,
+			content
+		);
 
-	await commitCode(filename);
+		let publisher = new PublisherManager();
+		publisher.addPlugin(
+			NotionPublisherPlugin({
+				api_key: NOTION_API_KEY,
+				page_id: NOTION_PAGE_ID,
+			})
+		);
+		let res = await publisherManager.publish(filePath, content);
+		console.log("publish res:", res);
+
+		await copyArticleToTargetDir(articleCDNPath, articleTargetDir, filename);
+
+		await commitCode(filename);
+	});
 }
 
 module.exports = {
