@@ -1,7 +1,15 @@
 const { exec } = require("child_process");
 const path = require("path");
-const { fileNameWithOutExtension, log } = require("./utils");
+const {
+	fileNameWithOutExtension,
+	log,
+	getDraftDir,
+	getArticleDir,
+	renameFileName,
+} = require("./utils");
 const fs = require("fs-extra");
+const { glob } = require("fast-glob");
+
 const {
 	ArticleProcessor,
 	PublisherManager,
@@ -84,7 +92,16 @@ async function writeContentToArticle(articleTargetDir, filename, content) {
 	let articlePath = path.join(articleTargetDir, `${filename}.md`);
 	await fs.writeFile(articlePath, content, { encoding: "utf8" });
 
-	//TODO: 替换content中的图片链接为CDN链接
+	//说明：将文章中的图片链接替换为cdn链接
+	content = content.replace(
+		/https:\/\/(raw.githubusercontent.com)\/(.*?)\/(.*?)\/(.*?)(.png|.jpg|jpeg|svg|jif)/gim,
+		(match, ...groups) => {
+			console.log(groups);
+			const [, p2, p3, p4, p5] = groups;
+			return `https://cdn.jsdelivr.net/gh/${p2}/${p3}@${p4}${p5}`;
+		}
+	);
+	await fs.writeFile(articleCDNPath, content, { encoding: "utf8" });
 
 	return { articleCDNPath, articlePath };
 }
@@ -108,8 +125,8 @@ async function run(articleTargetDir) {
 	});
 
 	processor.processMarkdown(draftMdPath).then(async ({ filePath, content }) => {
-		let filename = fileNameWithOutExtension(draftMdPath);
-		let { articleCDNPath } = await writeContentToArticle(
+		let filename = fileNameWithOutExtension(renameFileName(draftMdPath));
+		let { articlePath, articleCDNPath } = await writeContentToArticle(
 			getArticleDir(),
 			filename,
 			content
@@ -122,7 +139,7 @@ async function run(articleTargetDir) {
 				page_id: NOTION_PAGE_ID,
 			})
 		);
-		let res = await publisherManager.publish(filePath, content);
+		let res = await publisher.publish(articlePath, content);
 		console.log("publish res:", res);
 
 		await copyArticleToTargetDir(articleCDNPath, articleTargetDir, filename);

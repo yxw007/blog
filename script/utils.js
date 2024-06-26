@@ -39,6 +39,25 @@ function getArticleDir() {
 }
 
 /**
+ * rename file name
+ *
+ * xxxxx 976406fcf7a24778b31ce00c5d1cd6c8.md => xxxxx.md
+ *
+ * xxxxx 976406fcf7a24778b31ce00c5d1cd6c8_CDN.md => xxxxx_CDN.md
+ *
+ * @param {string} filePath
+ */
+function renameFileName(filePath) {
+	let fileName = path.basename(filePath);
+	let newName = fileName;
+	let m = /(\s\w{32})(_CDN)?(.md)/g.exec(fileName);
+	if (m != null && m.length > 1) {
+		newName = newName.replace(m[1], "");
+	}
+	return filePath.replace(fileName, newName);
+}
+
+/**
  * @param {string} path
  */
 function normalizePath(path) {
@@ -53,4 +72,5 @@ module.exports = {
 	normalizePath,
 	getDraftDir,
 	getArticleDir,
+	renameFileName,
 };

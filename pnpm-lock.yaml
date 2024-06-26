@@ -32,8 +32,8 @@ devDependencies:
     specifier: ^2.2.15
     version: 2.2.15
   '@pup007/artipub':
-    specifier: 1.0.2-alpha.0
-    version: 1.0.2-alpha.0(@notionhq/client@2.2.15)(@tryfabric/martian@1.2.4)(axios@1.7.2)(chalk@4.1.2)(file-type@19.0.0)(remark-parse@11.0.0)(remark-stringify@11.0.0)(sharp@0.33.4)(tslib@2.6.3)(unified@11.0.0)(unist-util-visit@5.0.0)
+    specifier: 1.0.2-alpha.7
+    version: 1.0.2-alpha.7
   '@tryfabric/martian':
     specifier: ^1.2.4
     version: 1.2.4
@@ -774,25 +774,13 @@ packages:
       - encoding
     dev: true
 
-  /@pup007/artipub@1.0.2-alpha.0(@notionhq/client@2.2.15)(@tryfabric/martian@1.2.4)(axios@1.7.2)(chalk@4.1.2)(file-type@19.0.0)(remark-parse@11.0.0)(remark-stringify@11.0.0)(sharp@0.33.4)(tslib@2.6.3)(unified@11.0.0)(unist-util-visit@5.0.0):
-    resolution: {integrity: sha512-BWhb0HCTHYTpv8xBM5P8SvUHQx++6RwAJuQwDb3MDqz8CrdYW+nopl4fSY5vadTKPHAUUxx3OtxDEtYTHB3+wQ==}
-    peerDependencies:
-      '@notionhq/client': ^2.2.15
-      '@tryfabric/martian': ^1.2.4
-      axios: ^1.7.2
-      chalk: ^5.3.0
-      file-type: ^19.0.0
-      remark-parse: 11.0.0
-      remark-stringify: 11.0.0
-      sharp: ^0.33.4
-      tslib: ^2.6.3
-      unified: 11.0.0
-      unist-util-visit: ^5.0.0
+  /@pup007/artipub@1.0.2-alpha.7:
+    resolution: {integrity: sha512-LyoEKrpzaR/OpKxrXEv+uPS8RS75oMs6K+GjuXe2PxBCLK0f5+O9dHKQEbBjIlE9FlgELBmndWe8GobxcYctuw==}
     dependencies:
       '@notionhq/client': 2.2.15
       '@tryfabric/martian': 1.2.4
       axios: 1.7.2
-      chalk: 4.1.2
+      chalk: 5.3.0
       file-type: 19.0.0
       remark-parse: 11.0.0
       remark-stringify: 11.0.0
@@ -800,6 +788,10 @@ packages:
       tslib: 2.6.3
       unified: 11.0.0
       unist-util-visit: 5.0.0
+    transitivePeerDependencies:
+      - debug
+      - encoding
+      - supports-color
     dev: true
 
   /@rollup/pluginutils@5.1.0:
@@ -1223,6 +1215,11 @@ packages:
     dependencies:
       ansi-styles: 4.3.0
       supports-color: 7.2.0
+    dev: true
+
+  /chalk@5.3.0:
+    resolution: {integrity: sha512-dLitG79d+GV1Nb/VYcCDFivJeK1hiukt9QjRNVOsUtTy1rR1YJsmpGGTZ3qJos+uw7WmWF4wUwBd9jxjocFC2w==}
+    engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
     dev: true
 
   /character-entities-legacy@1.1.4:
@@ -3121,7 +3118,7 @@ packages:
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
-      tslib: 2.6.2
+      tslib: 2.6.3
     dev: true
 
   /safe-array-concat@1.1.2:
@@ -3416,10 +3413,6 @@ packages:
 
   /trough@2.2.0:
     resolution: {integrity: sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==}
-    dev: true
-
-  /tslib@2.6.2:
-    resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
     dev: true
 
   /tslib@2.6.3:
