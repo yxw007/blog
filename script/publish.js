@@ -33,7 +33,10 @@ function copyArticleToTargetDir(
 	articleFileName
 ) {
 	return new Promise((resolve) => {
-		let articleTargetPath = path.join(articleTargetDir, articleFileName);
+		let articleTargetPath = path.join(
+			articleTargetDir,
+			`${articleFileName}.md`
+		);
 		fs.ensureDir(articleTargetDir);
 		let inStream = fs.createReadStream(articlePath, { encoding: "utf8" });
 		let outStream = fs.createWriteStream(articleTargetPath, {
@@ -96,7 +99,6 @@ async function writeContentToArticle(articleTargetDir, filename, content) {
 	content = content.replace(
 		/https:\/\/(raw.githubusercontent.com)\/(.*?)\/(.*?)\/(.*?)(.png|.jpg|jpeg|svg|jif)/gim,
 		(match, ...groups) => {
-			console.log(groups);
 			const [, p2, p3, p4, p5] = groups;
 			return `https://cdn.jsdelivr.net/gh/${p2}/${p3}@${p4}${p5}`;
 		}
