@@ -114,9 +114,10 @@ function BlogPublisherPlugin({ targetDir }) {
 			/https:\/\/(raw.githubusercontent.com)\/(.*?)\/(.*?)\/(.*?)(.png|.jpg|jpeg|svg|jif)/gim;
 		visit("image", (node) => {
 			if (node.url && regex.test(node.url)) {
+				regex.lastIndex = 0;
 				let match = regex.exec(node.url);
-				let [, p2, p3, p4, p5, p6] = match;
-				let cdnUrl = `https://cdn.jsdelivr.net/gh/${p2}/${p3}@${p4}${p5}`;
+				let [, , p3, p4, p5, p6] = match;
+				let cdnUrl = `https://cdn.jsdelivr.net/gh/${p3}/${p4}@${p5}${p6}`;
 				node.url = cdnUrl;
 			}
 		});
@@ -132,7 +133,6 @@ function BlogPublisherPlugin({ targetDir }) {
 
 function NativePlatformPublisherPlugin({ targetDir }) {
 	return async function (articleTitle, visit, toMarkdown) {
-		visit();
 		let { content } = toMarkdown();
 		let targetPath = path.join(targetDir, `${articleTitle}.md`);
 		await fs.writeFile(targetPath, content, { encoding: "utf8" });
@@ -169,10 +169,14 @@ async function run(articleTargetDir) {
 			NotionPublisherPlugin({
 				api_key: NOTION_API_KEY,
 				page_id: NOTION_PAGE_ID,
-			}),
+			})
+		);
+		publisher.addPlugin(
 			BlogPublisherPlugin({
 				targetDir: articleTargetDir,
-			}),
+			})
+		);
+		publisher.addPlugin(
 			NativePlatformPublisherPlugin({
 				targetDir: getArticleDir(),
 			})
