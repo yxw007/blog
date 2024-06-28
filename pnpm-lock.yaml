@@ -32,8 +32,8 @@ devDependencies:
     specifier: ^2.2.15
     version: 2.2.15
   '@pup007/artipub':
-    specifier: 1.0.2-alpha.7
-    version: 1.0.2-alpha.7
+    specifier: 1.0.2-alpha.10
+    version: 1.0.2-alpha.10
   '@tryfabric/martian':
     specifier: ^1.2.4
     version: 1.2.4
@@ -774,14 +774,15 @@ packages:
       - encoding
     dev: true
 
-  /@pup007/artipub@1.0.2-alpha.7:
-    resolution: {integrity: sha512-LyoEKrpzaR/OpKxrXEv+uPS8RS75oMs6K+GjuXe2PxBCLK0f5+O9dHKQEbBjIlE9FlgELBmndWe8GobxcYctuw==}
+  /@pup007/artipub@1.0.2-alpha.10:
+    resolution: {integrity: sha512-3cnGD54gugysEkKoCWctYpV0PzxMWy2TxhI4zFv1UNJofv2fBqa0cbhZzVtq5bJRFpJ7Jug4aZRSE0fF4W894w==}
     dependencies:
       '@notionhq/client': 2.2.15
       '@tryfabric/martian': 1.2.4
       axios: 1.7.2
       chalk: 5.3.0
       file-type: 19.0.0
+      lodash-es: 4.17.21
       remark-parse: 11.0.0
       remark-stringify: 11.0.0
       sharp: 0.33.4
@@ -2242,6 +2243,10 @@ packages:
   /local-pkg@0.4.3:
     resolution: {integrity: sha512-SFppqq5p42fe2qcZQqqEOiVRXl+WCP1MdT6k7BDEW1j++sp5fIY+/fdRQitvKgB5BrBcmrs5m/L0v2FrU5MY1g==}
     engines: {node: '>=14'}
+    dev: true
+
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: true
 
   /lodash@4.17.21:

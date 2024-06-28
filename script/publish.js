@@ -108,6 +108,41 @@ async function writeContentToArticle(articleTargetDir, filename, content) {
 	return { articleCDNPath, articlePath };
 }
 
+function BlogPublisherPlugin({ targetDir }) {
+	return async function (articleTitle, visit, toMarkdown) {
+		let regex =
+			/https:\/\/(raw.githubusercontent.com)\/(.*?)\/(.*?)\/(.*?)(.png|.jpg|jpeg|svg|jif)/gim;
+		visit("image", (node) => {
+			if (node.url && regex.test(node.url)) {
+				let match = regex.exec(node.url);
+				let [, p2, p3, p4, p5, p6] = match;
+				let cdnUrl = `https://cdn.jsdelivr.net/gh/${p2}/${p3}@${p4}${p5}`;
+				node.url = cdnUrl;
+			}
+		});
+		let { content } = toMarkdown();
+		let targetPath = path.join(targetDir, `${articleTitle}.md`);
+		await fs.writeFile(targetPath, content, { encoding: "utf8" });
+		return {
+			success: true,
+			info: `Published [${articleTitle}] to Blog successfully!`,
+		};
+	};
+}
+
+function NativePlatformPublisherPlugin({ targetDir }) {
+	return async function (articleTitle, visit, toMarkdown) {
+		visit();
+		let { content } = toMarkdown();
+		let targetPath = path.join(targetDir, `${articleTitle}.md`);
+		await fs.writeFile(targetPath, content, { encoding: "utf8" });
+		return {
+			success: true,
+			info: `Published [${articleTitle}] to Blog successfully!`,
+		};
+	};
+}
+
 /**
  * @param {string} articleTargetDir
  */
@@ -126,26 +161,25 @@ async function run(articleTargetDir) {
 		},
 	});
 
-	processor.processMarkdown(draftMdPath).then(async ({ filePath, content }) => {
+	processor.processMarkdown(draftMdPath).then(async ({ content }) => {
 		let filename = fileNameWithOutExtension(renameFileName(draftMdPath));
-		let { articlePath, articleCDNPath } = await writeContentToArticle(
-			getArticleDir(),
-			filename,
-			content
-		);
 
-		let publisher = new PublisherManager();
+		let publisher = new PublisherManager(content);
 		publisher.addPlugin(
 			NotionPublisherPlugin({
 				api_key: NOTION_API_KEY,
 				page_id: NOTION_PAGE_ID,
+			}),
+			BlogPublisherPlugin({
+				targetDir: articleTargetDir,
+			}),
+			NativePlatformPublisherPlugin({
+				targetDir: getArticleDir(),
 			})
 		);
-		let res = await publisher.publish(articlePath, content);
+
+		let res = await publisher.publish();
 		console.log("publish res:", res);
-
-		await copyArticleToTargetDir(articleCDNPath, articleTargetDir, filename);
-
 		await commitCode(filename);
 	});
 }
