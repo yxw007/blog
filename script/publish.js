@@ -90,24 +90,6 @@ async function findDraft(dir) {
 	return mdPath;
 }
 
-async function writeContentToArticle(articleTargetDir, filename, content) {
-	let articleCDNPath = path.join(articleTargetDir, `${filename}_CDN.md`);
-	let articlePath = path.join(articleTargetDir, `${filename}.md`);
-	await fs.writeFile(articlePath, content, { encoding: "utf8" });
-
-	//说明：将文章中的图片链接替换为cdn链接
-	content = content.replace(
-		/https:\/\/(raw.githubusercontent.com)\/(.*?)\/(.*?)\/(.*?)(.png|.jpg|jpeg|svg|jif)/gim,
-		(match, ...groups) => {
-			const [, p2, p3, p4, p5] = groups;
-			return `https://cdn.jsdelivr.net/gh/${p2}/${p3}@${p4}${p5}`;
-		}
-	);
-	await fs.writeFile(articleCDNPath, content, { encoding: "utf8" });
-
-	return { articleCDNPath, articlePath };
-}
-
 function BlogPublisherPlugin({ targetDir }) {
 	return async function (articleTitle, visit, toMarkdown) {
 		let regex =
