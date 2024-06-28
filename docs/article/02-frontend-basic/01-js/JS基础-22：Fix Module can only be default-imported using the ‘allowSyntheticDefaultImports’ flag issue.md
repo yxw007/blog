@@ -9,6 +9,8 @@ tags:
 
 ***
 
+# JS基础-22：Fix Module can only be default-imported using the ‘allowSyntheticDefaultImports’ flag issue
+
 ***
 
 ## 问题现象
