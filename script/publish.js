@@ -27,28 +27,6 @@ let {
 	GITHUB_COMMIT_EMAIL,
 } = process.env;
 
-function copyArticleToTargetDir(
-	articlePath,
-	articleTargetDir,
-	articleFileName
-) {
-	return new Promise((resolve) => {
-		let articleTargetPath = path.join(
-			articleTargetDir,
-			`${articleFileName}.md`
-		);
-		fs.ensureDir(articleTargetDir);
-		let inStream = fs.createReadStream(articlePath, { encoding: "utf8" });
-		let outStream = fs.createWriteStream(articleTargetPath, {
-			encoding: "utf8",
-		});
-		inStream.pipe(outStream);
-		outStream.on("finish", () => {
-			resolve();
-		});
-	});
-}
-
 function commitCode(message) {
 	const command = `git add . && git config --global core.autocrlf true && git commit -m "add: ${message}"`;
 	exec(command, (error, stdout, stderr) => {

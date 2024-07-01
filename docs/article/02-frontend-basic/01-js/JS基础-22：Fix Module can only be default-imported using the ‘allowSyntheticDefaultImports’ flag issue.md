@@ -1,17 +1,17 @@
-***
+---
 
 title: JS基础-22：Fix Module can only be default-imported using the ‘allowSyntheticDefaultImports’ flag issue
 tags:
 
-* xx
+* js
   categories:
-* xx
+* js
 
-***
+---
 
 # JS基础-22：Fix Module can only be default-imported using the ‘allowSyntheticDefaultImports’ flag issue
 
-***
+---
 
 ## 问题现象
 
