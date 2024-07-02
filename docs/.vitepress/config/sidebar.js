@@ -1,6 +1,8 @@
-import { sync } from "fast-glob";
+import fg from "fast-glob";
 import * as matter from "gray-matter";
 import { articleName, articleRelatePath } from "./paths";
+
+const { sync } = fg;
 
 let sidebar = generateSideBar();
 
@@ -41,7 +43,7 @@ function getItems(path) {
 			onlyFiles: true,
 			objectMode: true,
 		}).forEach((article) => {
-			const articleFile = matter.read(`${article.path}`);
+			const articleFile = matter.default.read(`${article.path}`);
 			const { data } = articleFile;
 			// 向前追加标题
 			items.push({

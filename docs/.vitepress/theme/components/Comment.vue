@@ -8,9 +8,11 @@ import { useData } from "vitepress";
 import md5 from "md5";
 import { Message } from "@arco-design/web-vue";
 import "@arco-design/web-vue/es/message/style/css.js";
-import Gitalk from "gitalk";
+import GiTalk from "gitalk" ;
 import $ from "jquery";
 import "../styles/gitalk.css";
+
+const Gitalk = GiTalk.default;
 
 const props = defineProps({
 	commentConfig: Object,
@@ -70,5 +72,4 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

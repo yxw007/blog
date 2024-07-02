@@ -1,6 +1,9 @@
-const { sync } = require("fast-glob");
-const { resolve } = require("path");
-const fs = require("fs");
+import fg from "fast-glob";
+import path from "path";
+import fs from "fs";
+
+const { sync } = fg;
+const { resolve } = path;
 
 sync("docs/article/**/*.md", { onlyFiles: true, objectMode: true }).forEach(
 	({ path }) => {

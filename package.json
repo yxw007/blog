@@ -17,24 +17,27 @@
   "keywords": [
     "VitePress"
   ],
+  "type": "module",
   "author": "Potter<aa4790139@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "@arco-design/web-vue": "^2.55.2",
+    "@arco-design/web-vue": "^2.55.3",
     "@notionhq/client": "^2.2.15",
-    "@pup007/artipub": "^1.0.4-10",
+    "@pup007/artipub": "1.0.4-10",
     "@tryfabric/martian": "^1.2.4",
-    "@vue/devtools-api": "^6.6.2",
+    "@vue/devtools-api": "^6.6.3",
     "axios": "^1.7.2",
     "chalk": "^4.1.2",
     "compressing": "^1.10.1",
     "fast-glob": "^3.3.2",
     "gray-matter": "^4.0.3",
-    "inquirer": "^8.2.4",
+    "inquirer": "^8.2.6",
     "mime": "^3.0.0",
     "sharp": "^0.33.4",
     "unplugin-vue-components": "^0.24.1",
-    "vitepress": "1.0.0-alpha.50"
+    "vite": "^5.3.2",
+    "vite-plugin-commonjs": "^0.10.1",
+    "vitepress": "^1.2.3"
   },
   "dependencies": {
     "dayjs": "^1.11.11",
@@ -42,6 +45,10 @@
     "gitalk": "^1.8.0",
     "jquery": "^3.7.1",
     "md5": "^2.3.0",
-    "vue": "^3.4.27"
+    "vue": "^3.4.31"
+  },
+  "peerDependencies": {
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   }
 }

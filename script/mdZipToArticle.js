@@ -1,7 +1,7 @@
-const { glob } = require("fast-glob");
-const fs = require("fs-extra");
-const compressing = require("compressing");
-const { getDraftDir, log } = require("./utils");
+import { glob } from "fast-glob";
+import fs from "fs-extra";
+import compressing from "compressing";
+import { getDraftDir, log } from "./utils";
 
 const draftDir = getDraftDir();
 

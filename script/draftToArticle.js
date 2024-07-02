@@ -1,10 +1,12 @@
-const { glob } = require("fast-glob");
-const path = require("path");
-const fs = require("fs-extra");
-const { log } = require("./utils");
-const sharp = require("sharp");
-const axios = require("axios");
-const mime = require("mime");
+import fg from "fast-glob";
+import path from "path";
+import fs from "fs-extra";
+import { log } from "./utils";
+import sharp from "sharp";
+import axios from "axios";
+import mime from "mime";
+
+const { glob } = fg;
 
 const draftDir = path
 	.normalize(path.resolve(__dirname, "../studio/draft"))
