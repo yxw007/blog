@@ -98,7 +98,7 @@ function NativePlatformPublisherPlugin({ targetDir }) {
 		await fs.writeFile(targetPath, content, { encoding: "utf8" });
 		return {
 			success: true,
-			info: `Published [${articleTitle}] to Blog successfully!`,
+			info: `Published [${articleTitle}] to NativePlatform successfully!`,
 		};
 	};
 }
