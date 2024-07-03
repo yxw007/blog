@@ -1,6 +1,7 @@
-const fs = require("fs");
-const inquirer = require("inquirer");
-const { publish } = require("../script/publish");
+import fs from "fs";
+import inquirer from "inquirer";
+import { publish } from "../script/publish.js";
+
 inquirer
 	.prompt([
 		{

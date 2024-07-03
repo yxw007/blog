@@ -1,5 +1,9 @@
-const chalk = require("chalk");
-const path = require("path");
+import chalk from "chalk";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 const log = {
 	info(...args) {
 		console.error(chalk.green.bold("[INFO]:", ...args));
@@ -64,7 +68,7 @@ function normalizePath(path) {
 	return path.replace(/\\/g, "/");
 }
 
-module.exports = {
+export {
 	log,
 	isObject,
 	isString,

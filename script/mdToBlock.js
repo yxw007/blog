@@ -1,6 +1,6 @@
-const fs = require("fs");
-const path = require("path");
-const MarkdownIt = require("markdown-it");
+import fs from "fs";
+import path from "path";
+import MarkdownIt from "markdown-it";
 
 const sourcePath = path.resolve(
 	__dirname,

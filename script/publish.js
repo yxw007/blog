@@ -1,31 +1,14 @@
-const { exec } = require("child_process");
-const path = require("path");
-const {
-	fileNameWithOutExtension,
-	log,
-	getDraftDir,
-	getArticleDir,
-	renameFileName,
-} = require("./utils");
-const fs = require("fs-extra");
-const { glob } = require("fast-glob");
+import { exec } from "child_process";
+import path from "path";
+import { fileNameWithOutExtension, log, getDraftDir, getArticleDir, renameFileName } from "./utils.js";
+import fs from "fs-extra";
+import fg from "fast-glob";
+import { ArticleProcessor, PublisherManager, NotionPublisherPlugin } from "@pup007/artipub";
 
-const {
-	ArticleProcessor,
-	PublisherManager,
-	NotionPublisherPlugin,
-} = require("@pup007/artipub");
+const { glob } = fg;
 
 const { NOTION_API_KEY, NOTION_PAGE_ID } = process.env;
-let {
-	GITHUB_OWNER,
-	GITHUB_REPO,
-	GITHUB_DIR,
-	GITHUB_BRANCH,
-	GITHUB_TOKEN,
-	GITHUB_COMMIT_AUTHOR,
-	GITHUB_COMMIT_EMAIL,
-} = process.env;
+let { GITHUB_OWNER, GITHUB_REPO, GITHUB_DIR, GITHUB_BRANCH, GITHUB_TOKEN, GITHUB_COMMIT_AUTHOR, GITHUB_COMMIT_EMAIL } = process.env;
 
 function commitCode(message) {
 	const command = `git add . && git config --global core.autocrlf true && git commit -m "add: ${message}"`;
@@ -70,8 +53,7 @@ async function findDraft(dir) {
 
 function BlogPublisherPlugin({ targetDir }) {
 	return async function (articleTitle, visit, toMarkdown) {
-		let regex =
-			/https:\/\/(raw.githubusercontent.com)\/(.*?)\/(.*?)\/(.*?)(.png|.jpg|jpeg|svg|jif)/gim;
+		let regex = /https:\/\/(raw.githubusercontent.com)\/(.*?)\/(.*?)\/(.*?)(.png|.jpg|jpeg|svg|jif)/gim;
 		visit("image", (node) => {
 			if (node.url && regex.test(node.url)) {
 				regex.lastIndex = 0;
@@ -148,6 +130,4 @@ async function run(articleTargetDir) {
 	});
 }
 
-module.exports = {
-	publish: run,
-};
+export { run as publish };

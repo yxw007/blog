@@ -1,8 +1,9 @@
-import { glob } from "fast-glob";
+import fg from "fast-glob";
 import fs from "fs-extra";
 import compressing from "compressing";
-import { getDraftDir, log } from "./utils";
+import { getDraftDir, log } from "./utils.js";
 
+const { glob } = fg;
 const draftDir = getDraftDir();
 
 async function run() {

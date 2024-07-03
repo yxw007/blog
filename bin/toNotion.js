@@ -1,8 +1,8 @@
-const path = require("path");
-const fs = require("fs");
-const inquirer = require("inquirer");
-const { uploadMdToNotion } = require("../script/uploadMdToNotion");
-const { log } = require("../script/utils");
+import path from "path";
+import fs from "fs";
+import inquirer from "inquirer";
+import { uploadMdToNotion } from "../script/uploadMdToNotion.js";
+import { log } from "../script/utils.js";
 
 inquirer
 	.prompt([

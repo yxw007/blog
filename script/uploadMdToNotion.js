@@ -1,11 +1,11 @@
-const fs = require("fs");
-const path = require("path");
-const { markdownToBlocks } = require("@tryfabric/martian");
+import fs from "fs";
+import path from "path";
+import { markdownToBlocks } from "@tryfabric/martian";
 
-const { log } = require("./utils");
+import { log } from "./utils.js";
 const { NOTION_API_KEY, NOTION_PAGE_ID } = process.env;
 
-const { Client } = require("@notionhq/client");
+import { Client } from "@notionhq/client";
 const notion = new Client({ auth: NOTION_API_KEY });
 
 /**

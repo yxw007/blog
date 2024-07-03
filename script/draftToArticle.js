@@ -1,7 +1,7 @@
 import fg from "fast-glob";
 import path from "path";
 import fs from "fs-extra";
-import { log } from "./utils";
+import { log } from "./utils.js";
 import sharp from "sharp";
 import axios from "axios";
 import mime from "mime";

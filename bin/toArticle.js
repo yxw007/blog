@@ -1,3 +1,3 @@
-const { toArticle } = require("../script/draftToArticle");
+import { toArticle } from "../script/draftToArticle.js";
 
 toArticle();
