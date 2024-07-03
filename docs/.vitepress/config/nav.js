@@ -19,7 +19,7 @@ const navs = [
 		items: [
 			{
 				text: "Javascript",
-				link: "JS_Base_01",
+				link: "JS基础-01：原型了解",
 				activeMatch: "01-js",
 			},
 			{
