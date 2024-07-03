@@ -40,9 +40,9 @@
     "vitepress": "^1.2.3"
   },
   "dependencies": {
+    "@giscus/vue": "^3.0.0",
     "dayjs": "^1.11.11",
     "fs-extra": "^11.2.0",
-    "gitalk": "^1.8.0",
     "jquery": "^3.7.1",
     "md5": "^2.3.0",
     "vue": "^3.4.31"
