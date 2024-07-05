@@ -9,7 +9,9 @@ tags:
 - CDN
 - OSS
 - 性能优化
-  categories:
+
+categories:
+
 - Nuxt 项目实战
 
 ---
