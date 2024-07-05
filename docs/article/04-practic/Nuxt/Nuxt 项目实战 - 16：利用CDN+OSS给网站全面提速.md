@@ -85,7 +85,7 @@ nuxt.config.ts配置cdn域名，如下图所示：
 ## 将打包产物上传OSSt，验证效果
 
 优化前
-![alt text](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720150028337.jpg)
+![alt text](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720165435113.jpg)
 
 优化后
 
