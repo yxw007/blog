@@ -38,8 +38,8 @@ devDependencies:
     specifier: ^2.2.15
     version: 2.2.15
   '@pup007/artipub':
-    specifier: 1.0.4-13
-    version: 1.0.4-13
+    specifier: 1.0.4-16
+    version: 1.0.4-16
   '@tryfabric/martian':
     specifier: ^1.2.4
     version: 1.2.4
@@ -805,8 +805,8 @@ packages:
       - encoding
     dev: true
 
-  /@pup007/artipub@1.0.4-13:
-    resolution: {integrity: sha512-cUTCakqg8ieGSU303XTkKTGawYhmxtl6OrxKLd40BM8sY2u2MhjEOwaLV+8msrwQCrmMhdZqy7XO44+N2O96bA==}
+  /@pup007/artipub@1.0.4-16:
+    resolution: {integrity: sha512-fCVnCBeDFFFddn4EINvad/GgtxZFoX5rySZ2vxegH0JvJjFzAcWXEOjnFUJBwtxxGzjx37gle0zWmDcNQv5QLw==}
     dependencies:
       '@notionhq/client': 2.2.15
       '@tryfabric/martian': 1.2.4
