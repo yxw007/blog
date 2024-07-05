@@ -38,8 +38,8 @@ devDependencies:
     specifier: ^2.2.15
     version: 2.2.15
   '@pup007/artipub':
-    specifier: 1.0.4-12
-    version: 1.0.4-12
+    specifier: 1.0.4-13
+    version: 1.0.4-13
   '@tryfabric/martian':
     specifier: ^1.2.4
     version: 1.2.4
@@ -805,8 +805,8 @@ packages:
       - encoding
     dev: true
 
-  /@pup007/artipub@1.0.4-12:
-    resolution: {integrity: sha512-9RM65lATAt44SSry+H0kQZ19tQe4uDnecAXZf3asb4bfKutCBTg0sS10DpEArEDISxdhcYaVFPRe1it2l2M6GA==}
+  /@pup007/artipub@1.0.4-13:
+    resolution: {integrity: sha512-cUTCakqg8ieGSU303XTkKTGawYhmxtl6OrxKLd40BM8sY2u2MhjEOwaLV+8msrwQCrmMhdZqy7XO44+N2O96bA==}
     dependencies:
       '@notionhq/client': 2.2.15
       '@tryfabric/martian': 1.2.4
@@ -2644,8 +2644,8 @@ packages:
     resolution: {integrity: sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==}
     dev: true
 
-  /peek-readable@5.1.0:
-    resolution: {integrity: sha512-Tq2I+yoz6Xq3S09E2PyjzOy/oYuNg5v7wyjmrw7OQYSKc7QnDs63q4RXFXraMoI6LZyiEOJ/wDEYzGDPhWwNPA==}
+  /peek-readable@5.1.1:
+    resolution: {integrity: sha512-4hEOSH7KeEaZpMDF/xfm1W9fS5rT7Ett3BkXWHqAEzRLLwLaHkwOL+GvvpIEh9UrvX9BDhzfkvteslgraoH69w==}
     engines: {node: '>=14.16'}
     dev: true
 
@@ -3040,7 +3040,7 @@ packages:
     engines: {node: '>=14.16'}
     dependencies:
       '@tokenizer/token': 0.3.0
-      peek-readable: 5.1.0
+      peek-readable: 5.1.1
     dev: true
 
   /superjson@2.2.1:
