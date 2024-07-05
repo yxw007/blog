@@ -53,7 +53,7 @@ async function findDraft(dir) {
 
 function BlogPublisherPlugin({ targetDir }) {
 	return async function (articleTitle, visit, toMarkdown) {
-		let regex = /https:\/\/(raw.githubusercontent.com)\/(.*?)\/(.*?)\/(.*?)(.png|.jpg|jpeg|svg|jif)/gim;
+		let regex = /https:\/\/(raw.githubusercontent.com)\/(.*?)\/(.*?)\/(.*?)(.png|.jpg|jpeg|svg|jif)/im;
 		visit("image", (node) => {
 			if (node.url && regex.test(node.url)) {
 				regex.lastIndex = 0;

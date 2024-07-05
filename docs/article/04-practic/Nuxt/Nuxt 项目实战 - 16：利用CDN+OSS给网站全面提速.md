@@ -26,7 +26,7 @@ categories:
 
 ![xx](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720150025426.jpg)
 
-![](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1720163991545.jpg)
+![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163991545.jpg)
 
 > 注意：读写权限写成私有，避免被别人盗用，其他就按提示填就可以了
 
@@ -36,7 +36,7 @@ categories:
 
 ## 创建CDN加速域名
 
-![](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1720163994875.jpg)
+![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163994875.jpg)
 
 > 提示：建议创建一个二级域名，类型设置成CNAME，记录值就填成上一步OSS对外公开的域名
 
@@ -50,13 +50,13 @@ categories:
 
 点击绑定域名配置，即可以看到域名转发调用过程，如下图所示：
 
-![](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1720163995930.png)
+![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163995930.png)
 
 点击Bucket授权策略，点击授权，否则会导致无权访问Bucket上的资源
 ![alt text](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163996665.png)
 
 开启TSL并配置TSL启用的版本，如下图所示：
-![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1720163997625.png)
+![alt text](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163997625.png)
 
 开启防盗链，避免其他人引用咋们网站的静态资源（），如下图所示：
 ![alt text](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720150027733.png)
@@ -68,7 +68,7 @@ categories:
 > 提示：刚开始进入会有提示，可以先使用推荐配置，然后再调整
 
 缓存配置->配置节点响应头，避免网站访问cdn资源时报跨域错误，如下图所示：
-![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1720163998402.png)
+![alt text](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163998402.png)
 
 > 说明：Access-Control-Allow-Origin 先配置成\*，等流程跑通后再调整成你运行访问的域名。其他配置就根据自己的需求来配置。
 
@@ -78,7 +78,7 @@ categories:
 ## Nuxt项目配置CDN
 
 nuxt.config.ts配置cdn域名，如下图所示：
-![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1720164000433.png)
+![alt text](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720164000433.png)
 
 > 说明：如果你是将nuxt打包后前端静态资源public（提示：nuxt build后，会生成.output目录，至需要把.output/public里面的资源上传就可以了，不要一股脑的把所有资源都上传至OSS）直接上传至你创建OSS Bucket的根目录下的话，此处就直接填CDN加速域名即可。我这么配置的原因是可以动态控制是否使用CDN加速，比如：我测试环境不需要CDN加速，生成环境才需要CDN加速，而且我不想仅将打包后的前端静态资源放置在Bucket根目录下，所以我就动态根据环境加了一个前端，这样后面Bucket可以用于存其他东西，不至于仅存前端网站静态资源，添加前缀就相对比较灵活。
 
@@ -89,7 +89,7 @@ nuxt.config.ts配置cdn域名，如下图所示：
 
 优化后
 
-![](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1720164001163.jpg)
+![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720164001163.jpg)
 
 ## 总结
 
