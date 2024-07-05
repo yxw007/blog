@@ -75,6 +75,13 @@ function BlogPublisherPlugin({ targetDir }) {
 
 function NativePlatformPublisherPlugin({ targetDir }) {
 	return async function (articleTitle, visit, toMarkdown) {
+		visit("heading", (_node, _index, parent) => {
+			let node = _node;
+			if (parent && node.depth === 1) {
+				parent.children.splice(0, (_index ?? 0) + 1);
+				return true;
+			}
+		});
 		let { content } = toMarkdown();
 		let targetPath = path.join(targetDir, `${articleTitle}.md`);
 		await fs.writeFile(targetPath, content, { encoding: "utf8" });
