@@ -1,7 +1,4 @@
-# TypeStript 入门 - 04：各种类型
-
 ---
-
 title:  TypeStript 入门 - 04：各种类型
 author: Potter
 date: 2022-11-25 21:00
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - TypeScript 入门
+---
 
-...
+# TypeStript 入门 - 04：各种类型
+
 
 ## ****交叉类型****
 

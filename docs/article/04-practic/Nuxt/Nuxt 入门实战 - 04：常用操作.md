@@ -1,7 +1,4 @@
-# Nuxt 入门实战 - 04：常用操作
-
 ---
-
 title: Nuxt 入门实战 - 04：常用操作
 author: Potter
 date: 2023-06-21 11:42:00
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - Nuxt 入门实战
+---
 
-...
+# Nuxt 入门实战 - 04：常用操作
+
 
 > 注意：Nuxt Kit 仅用于Module 模块开发，运行时别用
 >

@@ -1,7 +1,4 @@
-# TypeStript 入门 - 12：扩展变量类型
-
 ---
-
 title: TypeStript 入门 - 12：扩展变量类型
 author: Potter
 date: 2022-11-28 23:00
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - TypeScript 入门
+---
 
-...
+# TypeStript 入门 - 12：扩展变量类型
+
 
 ## 拓展全局类型String
 

@@ -1,7 +1,4 @@
-# Dev环境用vite替换webpack获得极致开发体验🥰
-
 ---
-
 title: Dev环境用vite替换webpack获得极致开发体验
 author: Potter
 date: 2023-8-14 11:57
@@ -15,8 +12,10 @@ tags:
 categories:
 
 - vite
+---
 
-...
+# Dev环境用vite替换webpack获得极致开发体验🥰
+
 
 ## 背景
 

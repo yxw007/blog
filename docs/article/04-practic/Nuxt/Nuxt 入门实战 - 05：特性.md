@@ -1,7 +1,4 @@
-# Nuxt 入门实战 - 05：特性
-
 ---
-
 title: Nuxt 入门实战 - 05：特性
 author: Potter
 date: 2023-06-21 11:42:18
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - Nuxt 入门实战
+---
 
-...
+# Nuxt 入门实战 - 05：特性
+
 
 ## 自动导入
 

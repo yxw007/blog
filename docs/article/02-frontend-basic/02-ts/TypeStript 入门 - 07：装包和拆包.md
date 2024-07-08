@@ -1,7 +1,4 @@
-# TypeStript 入门 - 07：装包和拆包
-
 ---
-
 title: TypeStript 入门 - 07：装包和拆包
 author: Potter
 date: 2022-11-27 21:00
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - TypeScript 入门
+---
 
-...
+# TypeStript 入门 - 07：装包和拆包
+
 
 ## 装包
 

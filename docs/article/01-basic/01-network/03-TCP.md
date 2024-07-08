@@ -1,7 +1,4 @@
-# TCP
-
 ---
-
 title: TCP
 author: Potter
 date: 2022/08/08 19:40
@@ -13,9 +10,10 @@ tags:
 categories:
 
 - 计算机网络
+---
 
+# TCP
 
-...
 
 
 ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312222944.png)

@@ -1,7 +1,4 @@
-# vue-ssr 3.集成vuex
-
 ---
-
 title: vue-ssr 3.集成vuex
 author: Potter
 date: 2022-11-04 11:00
@@ -14,8 +11,10 @@ tags:
 categories:
 
 - vue-ssr
+---
 
-...
+# vue-ssr 3.集成vuex
+
 
 ## 安装依赖
 

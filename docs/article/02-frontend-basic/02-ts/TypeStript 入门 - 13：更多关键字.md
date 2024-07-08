@@ -1,7 +1,4 @@
-# TypeStript 入门 - 13：更多关键字
-
 ---
-
 title: TypeStript 入门 - 13：更多关键字
 author: Potter
 date: 2022-11-29 21:20
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - TypeScript 入门
+---
 
-...
+# TypeStript 入门 - 13：更多关键字
+
 
 ## 类型保护
 

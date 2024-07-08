@@ -1,7 +1,4 @@
-# 解决XMLHttpRequest发送formData，java后端无法正确拿到数据问题
-
 ---
-
 title: 解决XMLHttpRequest发送formData，java后端无法正确拿到数据问题
 author: Potter
 date: 2022-04-23 16:21:03
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - web
+---
 
-...
+# 解决XMLHttpRequest发送formData，java后端无法正确拿到数据问题
+
 
 ## 故事背景
 

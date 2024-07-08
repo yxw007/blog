@@ -1,7 +1,4 @@
-# Electron 入门实战 01：主进程与渲染进程通信
-
 ---
-
 title: Electron 入门实战 01：主进程与渲染进程通信
 author: Potter
 date: 2024-01-08 15:36:42
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - Electron
+---
 
-...
+# Electron 入门实战 01：主进程与渲染进程通信
+
 
 ## 项目搭建
 

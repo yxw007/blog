@@ -1,7 +1,4 @@
-# TypeStript 入门 - 08：自定义类型
-
 ---
-
 title: TypeStript 入门 - 08：自定义类型
 author: Potter
 date: 2022-11-27 22:03
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - TypeScript 入门
+---
 
-...
+# TypeStript 入门 - 08：自定义类型
+
 
 ## Diff：实现
 

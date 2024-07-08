@@ -1,7 +1,4 @@
-# Web构建优化
-
 ---
-
 title:  Web构建优化
 author: Potter
 date: 2022-05-12 18:48
@@ -15,21 +12,12 @@ tags:
 categories:
 
 - webpack
-
-...
-
-### 概要内容
-
-- DllPlugin 和 DllReferencePlugin 简介
-- 如何使用DllPlugin打包，及DllReferencePlugin如何引用dll
-- 构建优化效果
-- SplitChunks
-- Demo源码工程
-
-<!--more-->
-
 ---
 
+# Web构建优化
+
+
+---
 ### DllPlugin 和 DllReferencePlugin 简介
 
 - DllPlugin:
@@ -47,101 +35,29 @@ categories:
 - 优点：
   - 提升打包构建速度
   - 公共js文件配置CDN，避免掉重复下载公共库js文件
-
 ---
 
-### 如何使用DllPlugin打包，及DllReferencePlugin如何引用dll
+### 概要内容
 
-- DllPlugin 配置需要打包第三方库至dll中
-
-```
-//webpack.dll.config.js
-
-const DllPlugin = require('webpack/lib/DllPlugin');
-const path = require('path')
-const fs = require('fs');
-
-var packageJsonContent = fs.readFileSync(path.resolve(__dirname, '../package.json'));
-var packageJson = JSON.parse(packageJsonContent);
-
-var dependencies = Object.keys(packageJson.dependencies);
-
-module.exports = {
-    entry: {
-        vendor: dependencies
-    },
-    output: {
-        path: path.resolve(__dirname, '../dist'),
-        filename: 'vendor.bundle.js',
-        library: 'vendor_lib'
-    },
-    plugins: [
-        new DllPlugin({
-            context: __dirname,
-            name: 'vendor_lib',
-            /* 生成manifest文件输出的位置和文件名称 */
-            path: path.resolve(__dirname, '../dist/vendor-manifest.json')
-        })
-    ],
-}
-
-```
-
-- DllReferencePlugin如何引用dll
-
-```
-//webpack.config.js 中 plugins添加以下代码
-
-new DllReferencePlugin({
-            manifest: require(path.resolve(__dirname, '../dist/vendor-manifest.json'))
-}),
-```
 
 ---
-
 ### 构建优化效果
 >
 > 简单demo，未抽离公共库打包时间7572ms，抽离公共库打包时间2315ms，打包速度快2倍多
 ![](https://cdn.jsdelivr.net/gh/aa4790139/BlogPicBed@master//img/20201230131323.png)
+---
 
+### 如何使用DllPlugin打包，及DllReferencePlugin如何引用dll
+
+
+---
+### Demo源码工程
+
+- 访问地址：[https://github.com/aa4790139/webpack4_confuse_demo](https://github.com/aa4790139/webpack4_confuse_demo)
 ---
 
 ### SplitChunks
 
-- 简介：Webpack中一个提取或分离代码的插件，主要作用是提取公共代码，防止代码被重复打包，拆分过大的js文件，合并零散的js文件，可配置
-- 配置：
-
-```
-//webpack.dll.config.js中optimization 中新增如下配置
-splitChunks: {
-            chunks: "async",
-            minSize: 30000,
-            minChunks: 1,
-            maxAsyncRequests: 5,
-            maxInitialRequests: 3,
-            automaticNameDelimiter: '~',
-            name: true,
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    priority: -10
-                },
-                default: {
-                    minChunks: 2,
-                    priority: -20,
-                    reuseExistingChunk: true
-                }
-            }
-        }
-```
-
----
-
-### Demo源码工程
-
-- 访问地址：[https://github.com/aa4790139/webpack4_confuse_demo](https://github.com/aa4790139/webpack4_confuse_demo)
-
----
 
 ### 最后
 >

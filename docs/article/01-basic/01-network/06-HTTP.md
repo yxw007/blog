@@ -1,7 +1,4 @@
-# HTTP
-
 ---
-
 title: HTTP
 author: Potter
 date: 2023/02/28 21:23
@@ -13,9 +10,10 @@ tags:
 categories:
 
 - 计算机网络
+---
 
+# HTTP
 
-...
 
 
 ## 特点

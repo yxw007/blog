@@ -1,7 +1,4 @@
-# uniapp 入门实战 07：解决引入阿里巴巴字体图标，修改字体颜色无效问题
-
 ---
-
 title:  uniapp 入门实战 07：解决引入阿里巴巴字体图标，修改字体颜色无效问题
 author: Potter
 date: 2022-05-12 18:42
@@ -15,16 +12,12 @@ tags:
 categories:
 
 - uniapp 入门实战
-
 ---
 
-## 概要内容
+# uniapp 入门实战 07：解决引入阿里巴巴字体图标，修改字体颜色无效问题
 
-- 排查问题
-- 解决办法
 
 ---
-
 > 由于最近新开了一个项目，在引入阿里巴巴字体图标库后，字体图标显示正常，但是怎么修改字体颜色都无效。
 >
 
@@ -42,8 +35,10 @@ categories:
 ## 解决办法
 
 > 对比新旧项目设置，发现问题。
-
 ---
+
+## 概要内容
+
 
 ![https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220103151509.jpg](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220103151509.jpg)
 

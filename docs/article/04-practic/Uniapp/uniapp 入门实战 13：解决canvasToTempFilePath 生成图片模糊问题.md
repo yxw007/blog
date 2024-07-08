@@ -1,7 +1,4 @@
-# uniapp 入门实战 13：解决 canvasToTempFilePath 生成图片模糊问题
-
 ---
-
 title: uniapp 入门实战 13：解决 canvasToTempFilePath 生成图片模糊问题
 author: Potter
 date: 2022/06/16 22:51
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - UniApp
+---
 
-...
+# uniapp 入门实战 13：解决 canvasToTempFilePath 生成图片模糊问题
+
 
 ## 情境
 

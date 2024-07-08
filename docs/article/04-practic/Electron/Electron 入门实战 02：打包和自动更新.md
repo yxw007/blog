@@ -1,7 +1,4 @@
-# Electron 入门实战 02：打包和自动更新
-
 ---
-
 title: Electron 入门实战 02：打包和自动更新
 author: Potter
 date: 2024-01-08 15:41:52
@@ -13,9 +10,10 @@ tags:
 categories:
 
 - Electron
+---
 
+# Electron 入门实战 02：打包和自动更新
 
-...
 
 
 ## 技术选型

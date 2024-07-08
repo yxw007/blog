@@ -1,7 +1,4 @@
-# TypeStript 入门 - 11：类型声明
-
 ---
-
 title: TypeStript 入门 - 11：类型声明
 author: Potter
 date: 2022-11-28 22:00
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - TypeScript 入门
+---
 
-...
+# TypeStript 入门 - 11：类型声明
+
 
 ## 声明全局类型
 

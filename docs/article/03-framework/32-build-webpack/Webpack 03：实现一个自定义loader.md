@@ -1,7 +1,4 @@
-# webpack 03：实现一个自定义loader
-
 ---
-
 title:  webpack 03：实现一个自定义loader
 author: Potter
 date: 2022-05-12 18:45
@@ -14,20 +11,18 @@ tags:
 categories:
 
 - webpack
+---
 
-...
+# webpack 03：实现一个自定义loader
+
+
+---
+> 相信利用webpack打包项目，都会碰到各种内置的loader，比如：vue-loader、babel-loader、svg-sprite-loader、url-loader等等，其实他们的作用就是进行资源转换，最近碰到一个需求就刚好需要这样一个东西，比如：ios平台打出来的包需要某个功能，pc平台却不需要某个功能，所以就可以利用loader的机制来实现。下面给出一个简单的示例
+>
+---
 
 ## 概要内容
 
-- 自定义loader
-- 总结
-
----
-
-> 相信利用webpack打包项目，都会碰到各种内置的loader，比如：vue-loader、babel-loader、svg-sprite-loader、url-loader等等，其实他们的作用就是进行资源转换，最近碰到一个需求就刚好需要这样一个东西，比如：ios平台打出来的包需要某个功能，pc平台却不需要某个功能，所以就可以利用loader的机制来实现。下面给出一个简单的示例
->
-
----
 
 <!--more-->
 

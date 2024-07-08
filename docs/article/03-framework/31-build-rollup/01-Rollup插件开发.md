@@ -1,7 +1,4 @@
-# Rollup插件开发
-
 ---
-
 title: Rollup插件开发
 author: Potter
 date: 2022-01-15 14:15
@@ -14,13 +11,12 @@ tags:
 categories:
 
 - rollup
-
 ---
 
-## Build 阶段hook
+# Rollup插件开发
+
 
 ---
-
 ![https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20220115211118.png](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20220115211118.png)
 
 ### options
@@ -265,8 +261,10 @@ categories:
 - 作用：构建结束调用此钩子(包括成功和失败)
 
 ## Generate阶段hook
-
 ---
+
+## Build 阶段hook
+
 
 ![https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20220115210942.png](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20220115210942.png)
 

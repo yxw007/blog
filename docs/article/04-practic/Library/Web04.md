@@ -1,7 +1,4 @@
-# 创建通用JS公共模块并发布至npm
-
 ---
-
 title:  创建通用JS公共模块并发布至npm
 author: Potter
 date: 2022-05-12 18:52
@@ -16,79 +13,21 @@ tags:
 categories:
 
 - 模块化
-
-...
-
-### 概要内容
-
-- 创建：JS公共模块
-- 打包：使用rollup 打包公共模块
-- 发布：js公共模块至verdaccio平台
-- 发布：js公共模块至npm平台
-
-<!--more-->
-
 ---
 
+# 创建通用JS公共模块并发布至npm
+
+
+---
 ### 如何创建JS公共模块
 >
 > 由于代码有点多就不贴代码了，直接去代码仓库看吧  [传输门](https://github.com/aa4790139/JSCommonUtils)
-
 ---
 
-### rollup
+### 概要内容
 
-- 简介：
-    > Rollup 是一个 JavaScript 模块打包器，可以将小块代码编译成大块复杂的代码，例如 library 或应用程序。
-- 使用起因：
-    > 公共相关的js文件想弄成单独的一个模块，方便后续开发使用，而不是不停的copy 和paste，所以就去了解怎么样把js公共相关js 打包成一个模块。
-- 安装
-
-    ```
-    pnpm install -g rollup
-    ```
-
-- 创建配置文件
-
-    ```
-    // rollup.config.js
-    import json from 'rollup-plugin-json';
-    import babel from 'rollup-plugin-babel';
-    import {uglify} from 'rollup-plugin-uglify';
-    import {version} from '../package.json';
-    import multiEntry from "rollup-plugin-multi-entry";
-    import {terser} from "rollup-plugin-terser";
-
-    export default {
-        input: 'src/*.js',
-        output: {
-            /*输出公共库路径*/
-            file: 'lib/index.js',
-            /*配置：UMD 通用定义模块，支持前端端跨平台模块化*/
-            format: 'umd',
-            name: 'JSCommonUtils',
-            /*压缩和混淆js*/
-            plugins: [terser(), uglify()],
-            /*JS前缀: 添加库相关信息*/
-            banner: '/* JSCommonUtils version ' + version + ' */',
-            /*JS尾部: 添加个人相关信息*/
-            footer: '/* follow me on github aa4790139 */'
-        },
-        plugins: [
-            json(),
-            babel({
-                /*过滤node_modules编译*/
-                exclude: 'node_modules/**'
-            }),
-            /*允许多输入源*/
-            multiEntry()
-        ],
-    };
-
-    ```
 
 ---
-
 ### verdaccio
 
 - 简介： 开源轻量的npm私服包管理平台
@@ -153,7 +92,9 @@ pnpm-lock.yaml
 - [rollup 官网打包实践](https://github.com/Godiswill/blog/issues/6)
 - [Rollup.js 实战学习笔记](https://chenshenhai.github.io/rollupjs-note/)
 - [.npmignore: ignore whole folder except given file types](https://stackoverflow.com/questions/48092647/npmignore-ignore-whole-folder-except-given-file-types)
-
 ---
+
+### rollup
+
 
 > 以上: 如发现有问题，欢迎留言指出，我及时更正

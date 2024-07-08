@@ -1,7 +1,4 @@
-# http状态码
-
 ---
-
 title: http状态码
 author: Potter
 date: 2023/02/27
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - 计算机网络
+---
 
-...
+# http状态码
+
 
 - **1xx：指示信息类，表示请求已接受，继续处理（临时响应）**
   - 100 - 继续

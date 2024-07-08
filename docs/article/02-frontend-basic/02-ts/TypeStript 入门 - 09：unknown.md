@@ -1,7 +1,4 @@
-# TypeStript 入门 - 09：unknown
-
 ---
-
 title: TypeStript 入门 - 09：unknown
 author: Potter
 date: 2022-11-27 23:13
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - TypeScript 入门
+---
 
-...
+# TypeStript 入门 - 09：unknown
+
 
 ## 基本操作
 

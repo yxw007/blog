@@ -1,7 +1,4 @@
-# DNS
-
 ---
-
 title: DNS
 author: Potter
 date: 2022/08/05 21:25
@@ -14,9 +11,10 @@ tags:
 categories:
 
 - 计算机网络
+---
 
+# DNS
 
-...
 
 
 ## dig 指定DNS 查询特定域名IP

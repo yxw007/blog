@@ -1,7 +1,4 @@
-# TypeStript 入门 - 06：类型推断
-
 ---
-
 title: TypeStript 入门 - 06：类型推断
 author: Potter
 date: 2022-11-26 22:00
@@ -13,9 +10,10 @@ tags:
 categories:
 
 - TypeScript 入门
+---
 
+# TypeStript 入门 - 06：类型推断
 
-...
 
 
 ## ****赋值推断****

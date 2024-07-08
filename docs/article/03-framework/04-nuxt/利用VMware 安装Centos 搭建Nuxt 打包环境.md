@@ -1,7 +1,4 @@
-# 利用VMware 安装Centos 搭建Nuxt 打包环境
-
 ---
-
 title: 利用VMware 安装Centos 搭建Nuxt 打包环境
 author: Potter
 date: 2023-7-13 11:56
@@ -15,8 +12,10 @@ tags:
 categories:
 
 - Nuxt
+---
 
-...
+# 利用VMware 安装Centos 搭建Nuxt 打包环境
+
 
 VMware 安装Centos 网上教程一大把，我就不在这里赘述了。
 

@@ -1,7 +1,4 @@
-# webpack 02：利用 VS Code 进行调试
-
 ---
-
 title:  webpack 02：利用 VS Code 进行调试
 author: Potter
 date: 2022-05-12 18:45
@@ -15,28 +12,22 @@ tags:
 categories:
 
 - webpack
-
-...
-
-## 概要内容
-
-1. npm init -y
-2. 安装依赖
-3. 创建webpack.config.js
-4. 创建index.js
-5. 创建调试launch.json
-6. 启动调试
-
 ---
 
+# webpack 02：利用 VS Code 进行调试
+
+
+---
 > 由于工作中遇到一个问题，需要根据环境编译代码，比如：ios平台需要某项功能，pc平台不需要这个功能，所以就可以用过编写一个自定义的loader解决此问题。虽然可以通过打例子的方式来调试代码，但是这种方式太低效了，如果日后还想知道webpack的工作原理，打日志的方式就太可行了，不能单不跟踪、实时看到各变量的当前情况，调用堆栈等等，所以来了解一下vscode里面如何调试webpack代码。
 >
 
 <!--more-->
 
 ## 步骤如下
-
 ---
+
+## 概要内容
+
 
 1. npm init -y
 2. package.json (说明：为了保证示例能运行，方便npm install)

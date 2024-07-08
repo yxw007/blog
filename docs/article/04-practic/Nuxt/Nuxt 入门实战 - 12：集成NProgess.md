@@ -1,7 +1,4 @@
-# Nuxt 入门实战 - 12：集成NProgess
-
 ---
-
 title: Nuxt 入门实战 - 12：集成NProgess
 author: Potter
 date: 2023-07-01 11:45:04
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - Nuxt 入门实战
+---
 
-...
+# Nuxt 入门实战 - 12：集成NProgess
+
 
 ## 背景
 

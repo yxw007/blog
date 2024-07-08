@@ -1,7 +1,4 @@
-# 响应式根基：Object.defineProperty 与 Proxy 拦截区别
-
 ---
-
 title:  响应式根基：Object.defineProperty 与 Proxy 拦截区别
 author: Potter
 date: 2022-05-12 18:42
@@ -14,54 +11,22 @@ tags:
 categories:
 
 - 响应式原理
-
-...
-
-## 概要内容
-
-- Object.defineProperty 拦截测试
-- Proxy 拦截测试
-- 总结
-
 ---
 
+# 响应式根基：Object.defineProperty 与 Proxy 拦截区别
+
+
+---
 > 假如你熟悉Vue，同时好奇心比较强，你肯定会想知道Vue是如何实现响应式的，要了解响应式原理就需要我们了解Object.defineProperty 和 Proxy 这两个API。针对这两个API编写对应的测试例子看看情况如何。
 
 ## Object.defineProperty 拦截测试
-
 ---
 
-### 公共代码
+## 概要内容
 
-```jsx
-let hero = {
-        name: '赵云',
-        hp: 100,
-        sp: 100,
-        equipment: ['马', '长枪']
-}
 
-Object.keys(hero).forEach(key => {
-        let internalValue = hero[key]
-        Object.defineProperty(hero, key, {
-            get() {
-                console.log(`getting key "${key}": ${internalValue}`)
-                return internalValue
-            },
-            set(newValue) {
-                console.log(`setting key "${key}": ${internalValue} -> ${newValue}`)
-                internalValue = newValue
-            }
-        })
-})
-```
-
-### 测试1：修改对象-string类型字段，拦截测试
-
-- code：
-
-    ```jsx
-    console.log("------修改：对象-string类型字段，拦截测试------");
+---
+---修改：对象-string类型字段，拦截测试------");
     hero.name = "吕布"
     console.log(`更改后结果：${hero.name}`);
     ```
@@ -146,42 +111,13 @@ Object.keys(hero).forEach(key => {
 - 结论：**可以利用value 拦截到对象-数组字段元素删减**
 
 ## Proxy拦截测试
-
 ---
 
 ### 公共代码
 
-```jsx
-let hero = {
-        name: '赵云',
-        hp: 100,
-        sp: 100,
-        equipment: ['马', '长枪']
-    }
 
-let handler = {
-    get: function (target, key, receiver) {
-        let value = Reflect.get(target, key, receiver)
-        console.log(`getting key "${key}": ${value}`)
-        return value;
-    },
-    set: function (target, key, value, receiver) {
-        let oldValue = Reflect.get(target, key, receiver);
-        const result = Reflect.set(target, key, value, receiver);
-        console.log(`setting key "${key}": ${oldValue} -> ${value}  result:${result}`)
-        return result
-    }
-}
-
-let heroProxy = new Proxy(hero, handler);
-```
-
-### 测试1：修改对象string类型字段，拦截测试
-
-- code
-
-    ```jsx
-    console.log("------修改：对象string类型字段，拦截测试------");
+---
+---修改：对象string类型字段，拦截测试------");
     heroProxy.name = "吕布"
     console.log(`更改后结果：${heroProxy.name}`);
     ```
@@ -261,8 +197,10 @@ let heroProxy = new Proxy(hero, handler);
     ![https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20210717185209.png](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20210717185209.png)
 
 - 结论：**利用proxy 即可轻松拦截数组变化**
-
 ---
+
+### 公共代码
+
 
 > demo 源码：[vue-principle-learn](https://github.com/yxw007/vue-principle-learn/tree/master/Proxy%26Reflect)
 后续我会把vue原理相关的学习资料和demo都会更新到此仓库，欢迎star收藏~

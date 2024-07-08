@@ -1,7 +1,4 @@
-# Nuxt 项目实战 - 16：利用CDN+OSS给网站全面提速
-
 ---
-
 title: Nuxt 项目实战 - 16：利用CDN+OSS给网站全面提速
 author: Potter
 date: 2024-07-04 09:47
@@ -16,8 +13,10 @@ tags:
 categories:
 
 - Nuxt 项目实战
+---
 
-...
+# Nuxt 项目实战 - 16：利用CDN+OSS给网站全面提速
+
 
 ## 背景
 

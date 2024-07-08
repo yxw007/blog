@@ -1,7 +1,4 @@
-# uniapp 入门实战 09：解决>>> 与 /deep/ 深度选择无法使用的问题
-
 ---
-
 title: uniapp 入门实战 09：解决>>> 与 /deep/ 深度选择无法使用的问题
 author: Potter
 date: 2022/6/16 22:50
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - UniApp
+---
 
-...
+# uniapp 入门实战 09：解决>>> 与 /deep/ 深度选择无法使用的问题
+
 
 ## >>> 与 /deep/ 深度选择无法使用的问题
 

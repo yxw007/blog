@@ -1,7 +1,4 @@
-# uniapp 入门实战 10：利用 css 实现文字居中在圆中心
-
 ---
-
 title: uniapp 入门实战 10：利用 css 实现文字居中在圆中心
 author: Potter
 date: 2022/6/16 22:50
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - UniApp
+---
 
-...
+# uniapp 入门实战 10：利用 css 实现文字居中在圆中心
+
 
 ## 实现
 

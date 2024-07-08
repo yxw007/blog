@@ -1,7 +1,4 @@
-# Nuxt 入门实战 - 09：集成腾讯CoDesign字体图标库
-
 ---
-
 title: Nuxt 入门实战 - 09：集成腾讯CoDesign字体图标库
 author: Potter
 date: 2023-06-24 11:44:05
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - Nuxt 入门实战
+---
 
-...
+# Nuxt 入门实战 - 09：集成腾讯CoDesign字体图标库
+
 
 ## CDN引入
 

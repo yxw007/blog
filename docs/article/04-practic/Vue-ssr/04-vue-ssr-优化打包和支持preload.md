@@ -1,7 +1,4 @@
-# vue-ssr 4.优化打包和支持preload
-
 ---
-
 title: vue-ssr 4.优化打包和支持preload
 author: Potter
 date: 2022-11-05 11:20
@@ -14,8 +11,10 @@ tags:
 categories:
 
 - vue-ssr
+---
 
-...
+# vue-ssr 4.优化打包和支持preload
+
 
 > 由于服务端渲染，写死了加载文件，所以改成动态形式
 

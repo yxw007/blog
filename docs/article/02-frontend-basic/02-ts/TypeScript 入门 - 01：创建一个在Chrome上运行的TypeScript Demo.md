@@ -1,7 +1,4 @@
-# TypeScript 入门 - 01：创建一个在Chrome上运行的TypeScript Demo
-
 ---
-
 title:  TypeScript 入门 - 01：创建一个在Chrome上运行的TypeScript Demo
 author: Potter
 date: 2022-05-12 18:49
@@ -15,8 +12,10 @@ tags:
 categories:
 
 - TypeScript 入门
+---
 
-...
+# TypeScript 入门 - 01：创建一个在Chrome上运行的TypeScript Demo
+
 
 ## 概述
 >

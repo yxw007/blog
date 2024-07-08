@@ -1,7 +1,4 @@
-# Nuxt 入门实战 - 13：docker 打包部署
-
 ---
-
 title: Nuxt 入门实战 - 13：docker 打包部署
 author: Potter
 date: 2023-07-02 11:45:23
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - Nuxt 入门实战
+---
 
-...
+# Nuxt 入门实战 - 13：docker 打包部署
+
 
 ## 编写打包配置Dockerfile
 

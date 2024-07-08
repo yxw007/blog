@@ -1,7 +1,4 @@
-# TypeStript 入门 - 05：类型保护
-
 ---
-
 title: TypeStript 入门 - 05：类型保护
 author: Potter
 date: 2022-11-25 22:49
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - TypeScript 入门
+---
 
-...
+# TypeStript 入门 - 05：类型保护
+
 
 ## typeof 类型保护
 

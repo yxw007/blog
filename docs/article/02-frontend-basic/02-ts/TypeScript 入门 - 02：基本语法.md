@@ -1,7 +1,4 @@
-# TypeScript 入门 - 02：基本语法
-
 ---
-
 title:  TypeScript 入门 - 02：基本语法
 author: Potter
 date: 2022-05-12 18:49
@@ -13,33 +10,12 @@ tags:
 categories:
 
 - TypeScript 入门
-
-...
-
-## 基础类型
-
-### 类型断言
-
-- 类型断言：好比其它语言里的类型转换，但是不进行特殊的数据检查和解构
-- 类型断言形式：
-  - "尖括号”语法
-
-        ```tsx
-        let someValue: any = "this is a string";
-        
-        let strLength: number = (<string>someValue).length;
-        ```
-
-  - as语法
-
-        ```tsx
-        let someValue: any = "this is a string";
-        
-        let strLength: number = (someValue as string).length;
-        ```
-
 ---
 
+# TypeScript 入门 - 02：基本语法
+
+
+---
 ## 接口
 
 ### 接口继承接口
@@ -67,164 +43,12 @@ categories:
     ```tsx
     {"color":"blue","sideLength":10}
     ```
-
 ---
 
-### 接口继承类
+## 基础类型
 
-- 理解1：接口继承类，会继承类中的成员，但不会继承行为实现
-
-    ```tsx
-    class Control {
-      private state: any = "state";
-    }
-    
-    interface SelectableControl extends Control {
-      select(): void ;
-    }
-    
-    class Button extends Control implements SelectableControl {
-      select() { }
-    }
-    
-    //错误：“Image”类型缺少“state”属性。
-    class Image implements SelectableControl {
-      select() { }
-    }
-    ```
-
-- 理解2：类继承类，子类也能访问到 private 成员
-
-    ```tsx
-    let button = new Button();
-    console.log(button.state); //输出：state
-    ```
-
-## 类
-
-### readonly修饰符
-
-- 理解：readonly 就是标识为只读
-- 示例：
-
-    ```tsx
-    class Octopus {
-     readonly name：string;
-      readonly numberOfLegs: number = 8;
-      constructor(theName: string) {
-      this.name = theName;
-      }
-    }
-    
-    let dad = new Octopus("Man with the 8 strong legs");
-    // dad.name = "Man with the 3-piece suit"; // 错误! name 是只读的.
-    console.log(dad.name);
-    ```
-
-  - 简化：将私有成员name挪至构造函数中，可修改至如下样子。
-
-    ```tsx
-    class Octopus {
-      readonly numberOfLegs: number = 8;
-      constructor(readonly name: string) {
-      }
-    }
-    ```
-
-### 存储器
-
-- 理解：类似C# 的属性，比如：get set
-
-    ```tsx
-    let passcode = "secret passcode";
-    class Employee {
-        private _fullName: string;
-        
-        get fullName(): string {
-            return this._fullName;
-        }
-    
-        set fullName(newName: string) {
-            if (passcode && passcode == "secret passcode") {
-                this._fullName = newName;
-            }
-            else {
-                console.log("Error: Unauthorized update of employee!");
-            }
-        }
-    }
-    let employee = new Employee();
-    employee.fullName = "Bob Smith";
-    ```
-
-### 静态属性
-
-- 理解：
-  - 类成员不适用访问修饰符，默认为public
-  - TypeScript 类中调用类静态属性，必须带上类名。而C#不需要
-  - 类静态成员变量，不属于类示例成员（调试即可看到），而C#实例也可直接调用
-- 示例：
-
-    ```tsx
-    class ClassA {
-      static origin: number = 100;
-      name: string;
-      constructor(name: string) {
-        this.name = name;
-      }
-      add(num: number): void {
-        ClassA.origin += num; //说明：此处必须带上类名ClassA, 否则报: Uncaught ReferenceError: origin is not defined
-      }
-    }
-    
-    let classA = new ClassA("classA");
-    classA.add(1);
-    console.log(classA.name);
-    console.log(ClassA.origin);
-    ```
-
-### 类可以当做接口使用
-
-- 理解：
-  - 类可以当做接口使用，C# 不可以
-  - 类如果有函数，赋值是也是需要满足接口约束，否则会报错
-- 示例：
-
-    ```tsx
-    class Point {
-        x: number;
-        y: number;
-      value(): string {
-         return `x=${this.x},y=${this.y}`;
-       }
-    }
-    
-    interface Point3d extends Point {
-        z: number;
-    }
-    
-    let point3d: Point3d = { x: 1, y: 2, z: 3, value: function () { return "123"; } };
-    ```
-
-### 类保持接口中的契约即可使用
-
-- 理解：类Person缺少Named interface中任何一项锲约都会报错，C#和Java 是不允许的
-
-```tsx
-interface Named {
-    name: string;
-}
-
-class Person {
-    name: string;
-}
-
-let p: Named;
-p = new Person();
-```
 
 ---
-
 ### 判断东西是原型上的还是实例上的
 
 ```markdown
@@ -309,30 +133,12 @@ alert("card: " + pickedCard1.card + " of " + pickedCard1.suit);
 let pickedCard2 = pickCard(15);
 alert("card: " + pickedCard2.card + " of " + pickedCard2.suit);
 ```
-
 ---
 
-## 泛型
+### 接口继承类
 
-### 泛型约束
-
-- 理解：使用 extends  约束参数类型，类似C#中的where
-- 示例
-
-    ```tsx
-    interface Lengthwise {
-      length: number;
-    }
-    
-    function loggingIdentity<T extends Lengthwise>(arg: T): T {
-      console.log(arg.length);  // Now we know it has a .length property, so no more error
-      return arg;
-    }
-    console.log(loggingIdentity("22"));
-    ```
 
 ---
-
 ## 枚举
 
 ### 数字枚举
@@ -413,104 +219,17 @@ alert("card: " + pickedCard2.card + " of " + pickedCard2.suit);
         C = 2
     }
     ```
+---
 
+## 泛型
+
+
+---
+-------------------------------------------------------------------
 ---
 
 ## 类型兼容性
 
-### 比较两个函数
-
-- 理解：
-  - 被赋值函数y参数个数并对应类型+返回指类型，必须全部包含x赋值函数的参数个数并对应类型，才可进行赋值。否则就会函数签名不一致，导致报错
-- 示例：
-
-```tsx
-let x = (a: number): string => {
-  return "";
-};
-let y = (b: number, s: string): number => {
-  return 0;
-};
-
-y = x; // Erro
-x = y; // Error
-```
-
-### 枚举
-
-- 枚举类型与数字类型兼容，并且数字类型与枚举类型兼容。不同枚举类型之间是不兼容的
-- 示例：
-
-    ```tsx
-    enum Status { Ready, Waiting };
-    enum Color { Red, Blue, Green };
-    
-    let status = Status.Ready;
-    status = Color.Green;  // Error
-    ```
-
-### 类
-
-- 理解：两个实例对象比较，静态成员与构造函数不在比较范围。
-- 示例：
-
-    ```tsx
-    class Animal {
-        feet: number;
-        constructor(name: string, numFeet: number) { }
-    }
-    
-    class Size {
-        feet: number;
-        constructor(numFeet2: number) { }
-    }
-    
-    let a: Animal;
-    let s: Size;
-    
-    a = s;  // OK
-    s = a;  // OK
-    ```
-
-### 泛型
-
-```tsx
-//泛型接口契约T未使用，所以x、y可以互相赋值
-interface Empty<T> {
-}
-let x: Empty<number>;
-let y: Empty<string>;
-
-x = y;  // OK, because y matches structure of x
-```
-
-```tsx
-//泛型接口契约T设计具体成员类型, 所以x=y报错
-interface NotEmpty<T> {
-    data: T;
-}
-let x: NotEmpty<number>;
-let y: NotEmpty<string>;
-
-x = y;  // Error, because x and y are not compatible
-```
-
-## 模块
-
-- 内部模块
-  - 理解1：内部模块，1.5术语更改为命名空间
-  - 理解2：尽可能地在顶层导出，避免上层使用多一层命令空间名称带来的繁琐
-  - 示例：
-
-        ```tsx
-        // src/NumberValidator.ts
-        const numberRegexp = /^[0-9]+$/;
-        export default class NumberValidator {
-            isAcceptable(s: string) {
-                return s.length > 0 && numberRegexp.test(s);
-            }
-        }
-        //-------------------------------------------------------------------------
         // src/test.ts
         import NumberValidator from './NumberValidator';
         let numberValidator = new NumberValidator();

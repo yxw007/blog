@@ -1,7 +1,4 @@
-# uniapp 入门实战 04： canvasToTempFilePath 解决 fail canvas is empty 报错
-
 ---
-
 title:  uniapp 入门实战 04： canvasToTempFilePath 解决 fail canvas is empty 报错
 author: Potter
 date: 2022-05-12 18:42
@@ -15,19 +12,17 @@ tags:
 categories:
 
 - uniapp 入门实战
+---
 
-...
+# uniapp 入门实战 04： canvasToTempFilePath 解决 fail canvas is empty 报错
+
+
+---
+## 问题描述
+---
 
 ## 概要内容
 
-- 问题描述
-- 解决方法
-
----
-
-## 问题描述
-
----
 
 > 起因：一个vue页面组件都2645行，而且功能有多，实在太难维护，所以决定进行功能拆分重构。
 >

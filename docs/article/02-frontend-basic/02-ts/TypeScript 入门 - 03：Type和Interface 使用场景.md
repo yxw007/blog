@@ -1,7 +1,4 @@
-# TypeScript 入门 - 03：Type和Interface 使用场景
-
 ---
-
 title:  TypeScript 入门 - 03：Type和Interface 使用场景
 author: Potter
 date: 2022-05-14 21:40
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - TypeScript 入门
+---
 
-...
+# TypeScript 入门 - 03：Type和Interface 使用场景
+
 
 ## 使用类型别名的场景
 

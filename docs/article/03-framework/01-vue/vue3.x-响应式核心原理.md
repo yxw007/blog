@@ -1,7 +1,4 @@
-# vue3.x-响应式核心原理
-
 ---
-
 title: vue3.x-响应式核心原理
 author: Potter
 date: 2021-07-26 17:11
@@ -14,16 +11,15 @@ tags:
 categories:
 
 - vue3.x
+---
 
-...
+# vue3.x-响应式核心原理
+
 
 > 由于Vue3 Reactive源码涉及的代码较多，给初学者学习带来一定的门槛，所以尤大讲解的最核心的响应式demo来讲解响应式核心原理实现
 >
 
-## 核心原理-流转图
-
 ---
-
 ![https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20210726223603.jpg](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20210726223603.jpg)
 
 ### 流转步骤讲解
@@ -33,8 +29,10 @@ categories:
 - 第3步：执行匿名函数，让匿名函数访问到的对象属性，触发对象的get 拦截
 - 第4、5、6步：get拦截到的属性访问，创建依赖跟踪对象dep，然后利用dep搜集依赖匿名函数
 - 第7、8步：set拦截到属性设置，获取属性对应的依赖对象dep，然后调用之前搜集的依赖匿名函数
-
 ---
+
+## 核心原理-流转图
+
 
 ### 疑问解答
 

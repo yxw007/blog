@@ -1,7 +1,4 @@
-# TypeStript 入门 - 10：模块与命名空间
-
 ---
-
 title: TypeStript 入门 - 10：模块与命名空间
 author: Potter
 date: 2022-11-28 21:00
@@ -13,8 +10,10 @@ tags:
 categories:
 
 - TypeScript 入门
+---
 
-...
+# TypeStript 入门 - 10：模块与命名空间
+
 
 ## 模块
 
