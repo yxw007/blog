@@ -7,5 +7,5 @@ showComment: false
 ---
 
 <ClientOnly>
-	<Tag />
+ <Tag />
 </ClientOnly>
