@@ -18,7 +18,7 @@ categories:
 
 ## 实现效果
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240410180945.gif)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240410180945.gif)
 
 ## 实现思路
 
@@ -30,7 +30,7 @@ categories:
 
 ## 截图过程-时序图
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240410181003.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240410181003.png)
 
 ## 创建项目
 
@@ -55,7 +55,7 @@ yarn add konva vue-router
 
 ### 目录结构
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240410181015.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240410181015.png)
 
 ### 主进程
 

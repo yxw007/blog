@@ -61,7 +61,7 @@ npm unpublish package_name  --force --registry http://localhost:4873
 ```
 
 - 效果图
-![](https://cdn.jsdelivr.net/gh/aa4790139/BlogPicBed@master//img/20210303144737.png)
+!["img"](https://cdn.jsdelivr.net/gh/aa4790139/BlogPicBed@master//img/20210303144737.png)
 
 ### 发布至npm平台
 
@@ -82,7 +82,7 @@ pnpm-lock.yaml
 > 提示: .npmignore文件内容，需要忽略的文件和目录写前面，需要排除忽略的文件或目录前加!写后面
 
 - 效果图
-![](https://cdn.jsdelivr.net/gh/aa4790139/BlogPicBed@master//img/20210303144716.png)
+!["img"](https://cdn.jsdelivr.net/gh/aa4790139/BlogPicBed@master//img/20210303144716.png)
 
 #### 参考文献
 

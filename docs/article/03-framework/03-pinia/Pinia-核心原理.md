@@ -187,7 +187,7 @@ $dispose: () => {
     
 - 触发效果
     
-	![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/202303191753123.png)
+	!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/202303191753123.png)
     
 - 实现原理
     

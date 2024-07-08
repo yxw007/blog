@@ -29,7 +29,7 @@ categories:
 
 - nginx 配置
     
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108161452.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108161452.png)
     
     访问路径：https://xx.xx.com/pay/index
     

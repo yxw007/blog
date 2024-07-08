@@ -61,7 +61,7 @@ categories:
 
 1. components 创建两个组件，目录结果如下
 
-   ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240507114845.png)
+   !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240507114845.png)
 
 2. 利用component is 动态使用这2个组件
 

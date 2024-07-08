@@ -19,7 +19,7 @@ categories:
 
 ## 流程图
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/202303191811167.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/202303191811167.png)
 
 ## 安装环境
 
@@ -199,7 +199,7 @@ yarn add vue vue-server-renderer -D
     
 - 运行测试：yarn client:dev
     
-	![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/202303191812395.png)
+	!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/202303191812395.png)
     
 
 > 至此client 环境已搭好

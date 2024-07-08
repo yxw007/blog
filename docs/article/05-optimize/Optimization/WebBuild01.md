@@ -44,7 +44,7 @@ categories:
 ### 构建优化效果
 >
 > 简单demo，未抽离公共库打包时间7572ms，抽离公共库打包时间2315ms，打包速度快2倍多
-![](https://cdn.jsdelivr.net/gh/aa4790139/BlogPicBed@master//img/20201230131323.png)
+!["img"](https://cdn.jsdelivr.net/gh/aa4790139/BlogPicBed@master//img/20201230131323.png)
 ---
 
 ### 如何使用DllPlugin打包，及DllReferencePlugin如何引用dll

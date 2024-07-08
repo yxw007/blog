@@ -52,7 +52,7 @@ AutomaticLogin=root
 
 由于需要外部可以访问虚拟机服务，所以我们选择桥接模式。[相关资料](https://blog.csdn.net/zhangxm_qz/article/details/122612605)
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175240.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175240.png)
 
 > 注意：确保主机和虚拟机的ip地址在同一个网段，然后网关和子网掩码跟主机的是一样的。打开虚拟机Centos 配置文件
 >
@@ -62,7 +62,7 @@ vim /etc/sysconfig/network-scripts/ifcfg-ens160
 添加以下图示内容
 ```
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175431.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175431.png)
 
 ### 开放22和3000端口
 
@@ -80,7 +80,7 @@ sudo firewall-cmd --reload
 sudo firewall-cmd --list-all
 ```
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175459.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175459.png)
 
 ### Centos 磁盘空间不足，拓展磁盘
 
@@ -90,7 +90,7 @@ sudo firewall-cmd --list-all
 
 1. 关闭虚拟机，调整磁盘空间大小
 
-   ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175536.png)
+   !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175536.png)
 
 2. 创建挂载点：选择一个目录作为您的挂载点。例如，您可以在 **`/mnt`** 目录下创建一个新的目录，例如 **`/mnt/mydisk`**：
 
@@ -112,7 +112,7 @@ sudo firewall-cmd --list-all
 
 4. 检查挂载：运行 **`df -h`** 命令，您应该能够看到新挂载的分区，并在挂载点处显示其容量信息。
 
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175804.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175804.png)
 
     > 说明：看到**/dev/nvme0n1p4，**说明成功了
 
@@ -260,7 +260,7 @@ docker build -t aa4790139/nuxt-started-demo:1.0.1 .
 
 1. docker image ls ，get image id
 
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175919.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175919.png)
 
 2. docker run -itd -p dockerPort:localPort imageID
 
@@ -275,7 +275,7 @@ docker build -t aa4790139/nuxt-started-demo:1.0.1 .
 
     访问你虚拟机ip和3000端口，效果如下：
 
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175950.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175950.png)
 
     如果你看到这个界面，那么恭喜你docker 运行 nuxt app 成功了
 
@@ -285,15 +285,15 @@ docker build -t aa4790139/nuxt-started-demo:1.0.1 .
 
 1. 首先：我们需要登录docker hub 创建对应的仓库
 
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180002.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180002.png)
 
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180010.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180010.png)
 
 2. 其次：设置access token，设置好access token 后才能使我们打出来的image 推送至对应参考
 
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180024.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180024.png)
 
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180031.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180031.png)
 
 3. 然后将image 推送至刚创建的仓库中
 
@@ -301,11 +301,11 @@ docker build -t aa4790139/nuxt-started-demo:1.0.1 .
     docker push aa4790139/nuxt-started-demo:1.0.1
     ```
 
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180040.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180040.png)
 
 4. 最后：利用docker play 验证，[平台地址](https://labs.play-with-docker.com/)
 
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180048.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180048.png)
 
     - 拉取镜像文件
 
@@ -316,11 +316,11 @@ docker build -t aa4790139/nuxt-started-demo:1.0.1 .
 
     - 运行镜像
 
-        ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180100.png)
+        !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180100.png)
 
     - 效果如下：
 
-        ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180106.png)
+        !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180106.png)
 
         > 提示：**如果看到这个界面，恭喜你成功了**。 🎉🎉🎉🎉
         >

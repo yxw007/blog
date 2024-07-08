@@ -32,14 +32,14 @@ categories:
     
 - 示例
     
-	![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313111513.png)
+	!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313111513.png)
     
 
 ## 域名树状结构
 
 - 图示
     
-  ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313111529.png)
+  !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313111529.png)
     
 - 根域名：所有域名的起点
 - 顶级域名：根域名的下一级域名，分成两种：通用顶级域名（.com、.net）和国别顶级域名（.cn、.us）
@@ -69,7 +69,7 @@ categories:
 
 - 示例
     
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313111547.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313111547.png)
     
 
 ### 权威DNS服务器
@@ -81,7 +81,7 @@ categories:
 ## 四种服务器的关系
 
 - 图示
-	![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313111606.png)
+	!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313111606.png)
     
 
 ## 参考文献

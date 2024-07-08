@@ -23,7 +23,7 @@ categories:
 
 ## 正常请求WebForm内容
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108161310.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108161310.png)
 
 看到如上抓包信息，立马想到其实就是一个http请求，只是数据通过formData传过去的
 

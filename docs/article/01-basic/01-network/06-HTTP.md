@@ -92,11 +92,11 @@ categories:
     
     - [http://localhost:3000/write](http://localhost:3000/write)
         
-      ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112530.png)
+      !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112530.png)
         
     - [http://localhost:3000/read](http://localhost:3000/read)
         
-      ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112559.png)
+      !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112559.png)
         
     
     #### path
@@ -149,9 +149,9 @@ categories:
         });
         ```
         
-        ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112632.png)
+        !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112632.png)
         
-        ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112647.png)
+        !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112647.png)
         
 
 #### domain
@@ -204,9 +204,9 @@ categories:
     });
     ```
     
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112719.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112719.png)
     
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112738.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112738.png)
     
     > 提示：a.com、b.a.com 可直接通过本地host文件配置即可，host位置：C:\Windows\System32\drivers\etc
     > 
@@ -307,7 +307,7 @@ categories:
     });
     ```
     
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112752.jpg)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112752.jpg)
     
 
 #### signed
@@ -394,13 +394,13 @@ categories:
 
 - 请求数据结构
     
-		![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112830.png)
+		!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112830.png)
     
 - 响应数据结构
     
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112841.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112841.png)
     
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112849.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313112849.png)
     
 
 ## 参考文献

@@ -83,11 +83,11 @@ docker build -t nuxt_demo:0.0.1 .
 
 - 创建仓库
 
-  ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240507114910.png)
+  !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240507114910.png)
 
-   ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240507114926.png)
+   !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240507114926.png)
 
-   ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240507114940.png)
+   !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240507114940.png)
 
 ## 推送镜像至仓库
 

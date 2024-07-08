@@ -35,7 +35,7 @@ categories:
 
 效果
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616210157.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616210157.png)
 
 ## 总结
 

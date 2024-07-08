@@ -16,7 +16,7 @@ categories:
 
 
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312222944.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312222944.png)
 
 ## 名词解释：
 
@@ -27,7 +27,7 @@ categories:
 - FIN：完成断开(挥手)
 
 > TCP数据包结构
-> 	![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312224531.png)
+> 	!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312224531.png)
     
 
 ## 建立连接：3次握手
@@ -40,7 +40,7 @@ categories:
     
 - 图解过程
     
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312224647.jpg)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312224647.jpg)
     
     解释
     
@@ -57,11 +57,11 @@ categories:
 
 - 抓包
     
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312224745.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312224745.png)
     
 - 图解过程
     
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312224835.jpeg)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312224835.jpeg)
     
     解释
     
@@ -74,11 +74,11 @@ categories:
 
 - 抓包
     
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312225139.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312225139.png)
     
 - 图解
     
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312225208.jpg)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20230312225208.jpg)
     
     解释
     

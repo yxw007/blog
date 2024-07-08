@@ -110,7 +110,7 @@ categories:
 
 - yarn dev  看下效果
 
-   ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108153845.png)
+   !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108153845.png)
 
 说明最简单的项目已搭建好，我们来看下Render process 与 Main process 是如何通讯的
 
@@ -224,15 +224,15 @@ yarn dev 看下效果
 
 - 主进程收到渲染进程消息（注意：主进程接收到的消息打印在终端控制台）
 
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108153904.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108153904.png)
 
 - 渲染进程收到主进程消息
 
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108153923.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108153923.png)
 
     说明：可能你不知道打开Electron App的日志控制台，看下图：
 
-    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108153934.png)
+    !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108153934.png)
 
 ## 总结
 

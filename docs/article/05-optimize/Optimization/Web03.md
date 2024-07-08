@@ -27,7 +27,7 @@ categories:
 
 <!--more-->
 
-![](https://cdn.jsdelivr.net/gh/aa4790139/BlogPicBed@master/img/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.jpg)
+!["img"](https://cdn.jsdelivr.net/gh/aa4790139/BlogPicBed@master/img/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.jpg)
 
 ## 最后
 >

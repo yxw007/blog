@@ -26,23 +26,23 @@ categories:
 
 ![xx](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720150025426.jpg)
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163991545.jpg)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163991545.jpg)
 
 > 注意：读写权限写成私有，避免被别人盗用，其他就按提示填就可以了
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163993380.jpg)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163993380.jpg)
 
 > 提示：记住这个OSS域名，方便后续配置CDN加速域名，需要让加速域名通过CNAME解析到这个OSS域名
 
 ## 创建CDN加速域名
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163994875.jpg)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163994875.jpg)
 
 > 提示：建议创建一个二级域名，类型设置成CNAME，记录值就填成上一步OSS对外公开的域名
 
 ## 上传CDN加速域名证书
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720150026781.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720150026781.png)
 
 > 说明：点击证书管理，上传你的CDN域名证书。
 
@@ -50,7 +50,7 @@ categories:
 
 点击绑定域名配置，即可以看到域名转发调用过程，如下图所示：
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163995930.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163995930.png)
 
 点击Bucket授权策略，点击授权，否则会导致无权访问Bucket上的资源
 ![alt text](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720163996665.png)
@@ -89,7 +89,7 @@ nuxt.config.ts配置cdn域名，如下图所示：
 
 优化后
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720164001163.jpg)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720164001163.jpg)
 
 ## 总结
 

@@ -19,7 +19,7 @@ categories:
 
 ## 实现效果
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240410181045.gif)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240410181045.gif)
 
 ## 实现思路
 

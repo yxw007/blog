@@ -19,15 +19,15 @@ categories:
 
 - 效果
 
-  ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616210533.png)
+  !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616210533.png)
 
 - xml 文档结构(说明：把父节点 list 的 width 设置成 auto 和 100%都没有效果)
 
-  ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616210431.png)
+  !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616210431.png)
 
 - 设置成大的具体值起效了
 
-  ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616210448.png)
+  !["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616210448.png)
 
 > 说明：单纯的 image 未能正确把父节点撑开
 
@@ -37,10 +37,10 @@ categories:
 
 ## 解决方法
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616210507.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616210507.png)
 
 最后效果
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616210523.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616210523.png)
 
 ## 总结
 

@@ -81,11 +81,11 @@ yarn add electron-builder -D
 npm run publish
 ```
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108154254.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108154254.png)
 
 打包后会自动发布至github对应仓库，Release页会自动生成一个Draft，需要手动发布才能成为正式版本
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108154336.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108154336.png)
 
 ## 集成自动更新
 
@@ -232,9 +232,9 @@ npm run publish
 
 为了让你看到这个过程，你可以先下载我演示的[my-electron-app-Setup-0.1.4.exe](https://github.com/yxw007/electron_app/releases/download/v0.1.4/my-electron-app-Setup-0.1.4.exe)，安装完后打开会检测自动更新，安装完后再打开就会看到更新至v0.1.5
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108154354.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108154354.png)
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108154404.png)
+!["img"](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240108154404.png)
 
 ## 总结
 
