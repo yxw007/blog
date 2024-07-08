@@ -1,16 +1,21 @@
+# VueRouter 核心原理
+
 ---
+
 title: VueRouter 核心原理
 author: Potter
 date: 2022-11-02 11:23
-tags: 
+
+tags:
+
 - 路由
 - VueRouter
-categories: 
+
+categories:
+
 - VueRouter
 
----
-
-# VueRouter 核心原理
+...
 
 ## 核心流程
 
@@ -28,7 +33,7 @@ categories:
     1. 利用router.match 匹配path 对应的记录
     2. 安装history监听函数
     3. 将响应式的app._route 重新赋值为新newRoute（此时触发set→render函数，从而导致页面刷新）
-        
+
         ```jsx
         //install.js
         Vue.util.defineReactive(this, '_route', this._router.history.current)

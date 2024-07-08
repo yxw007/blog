@@ -1,16 +1,21 @@
+# vue-ssr 2.集成vue-router
+
 ---
+
 title: vue-ssr 2.集成vue-router
 author: Potter
 date: 2022-11-03 11:00
-tags: 
+
+tags:
+
 - vue-ssr
 - ssr
-categories: 
+
+categories:
+
 - vue-ssr
 
----
-
-# vue-ssr 2.集成vue-router
+...
 
 # 安装依赖
 
@@ -23,78 +28,78 @@ yarn add vue-router
 创建两个路由对应的页面，方便测试
 
 - src/views/Foo.vue
-    
+
     ```jsx
     <template>
-    	<div>Foo page</div>
+     <div>Foo page</div>
     </template>
     
     <script>
     export default {
-    	name: "Foo",
+     name: "Foo",
     };
     </script>
     
     <style scoped>
     div {
-    	background: red;
+     background: red;
     }
     </style>
     ```
-    
+
 - src/views/Bar.vue
-    
+
     ```jsx
     <template>
-    	<div>Bar page</div>
+     <div>Bar page</div>
     </template>
     
     <script>
     export default {
-    	name: "Bar",
+     name: "Bar",
     };
     </script>
     
     <style scoped>
     div {
-    	background-color: blue;
+     background-color: blue;
     }
     </style>
     ```
-    
+
 - App.vue 添加路由组件进行切换
-    
+
     ```jsx
     <template>
-    	<!-- app节点必须在此处定义，否则客户端交互失效，所以防止这里统一管理 -->
-    	<div id="app">
-    		<button @click="add">click me</button>
-    		<div>counter: {{ counter }}</div>
-    		<router-link to="/">foo</router-link>
-    		<router-link to="/bar">bar</router-link>
-    		<router-view></router-view>
-    	</div>
+     <!-- app节点必须在此处定义，否则客户端交互失效，所以防止这里统一管理 -->
+     <div id="app">
+      <button @click="add">click me</button>
+      <div>counter: {{ counter }}</div>
+      <router-link to="/">foo</router-link>
+      <router-link to="/bar">bar</router-link>
+      <router-view></router-view>
+     </div>
     </template>
     
     <script>
     export default {
-    	name: "App",
-    	data() {
-    		return { counter: 1 };
-    	},
-    	methods: {
-    		add() {
-    			this.counter++;
-    		},
-    	},
+     name: "App",
+     data() {
+      return { counter: 1 };
+     },
+     methods: {
+      add() {
+       this.counter++;
+      },
+     },
     };
     </script>
     
     <style lang="scss" scoped></style>
     ```
-    
+
 - src/router/index.js：配置路由文件
-    
+
     ```jsx
     import Vue from "vue";
     import Router from "vue-router";
@@ -105,46 +110,45 @@ yarn add vue-router
     Vue.use(Router);
     
     export default function () {
-    	const router = new Router({
-    		mode: 'history',
-    		routes: [
-    			{
-    				path: '/', component: Foo
-    			},
-    			{
-    				path: '/bar', component: Bar
-    			},
-    			{
-    				path: '*', component: {
-    					render(h) {
-    						return h("div", {}, "not found 404");
-    					}
-    				}
-    			},
-    		]
-    	});
+     const router = new Router({
+      mode: 'history',
+      routes: [
+       {
+        path: '/', component: Foo
+       },
+       {
+        path: '/bar', component: Bar
+       },
+       {
+        path: '*', component: {
+         render(h) {
+          return h("div", {}, "not found 404");
+         }
+        }
+       },
+      ]
+     });
     
-    	return router;
+     return router;
     }
     ```
-    
+
 - src/app.js ： 引入router 创建路由
-    
+
     ```jsx
     import Vue from "vue";
     import App from "./App.vue"
     import createRouter from "./router";
     
     export default () => {
-    	const router = createRouter();
-    	const app = new Vue({
-    		router,
-    		render: h => h(App)
-    	});
-    	return { app, router }
+     const router = createRouter();
+     const app = new Vue({
+      router,
+      render: h => h(App)
+     });
+     return { app, router }
     }
     ```
-    
 
 至此vue-router 集成完成，但是会有个问题，从首页切至bar页面按回车会导致404
 
@@ -156,29 +160,29 @@ yarn add vue-router
 import createApp from "./app.js";
 
 export default function (context) {
-	const { url } = context;
-	return new Promise((resolve, reject) => {
-		const { app, router } = createApp();
-		//! 说明：如果当前使用的是前端路由，比如：/bar 回车就会导致404,
-		//! 解决办法：利用vue-router的push和onReady接口解决
-		//! 1. 让其跳入前端路由
-		router.push(url);
-		//! 2. 路由渲染完毕，准备进入匹配的路由
-		router.onReady(() => {
-			const matchComponents = router.getMatchedComponents();
-			if (matchComponents.length === 0) {
-				return reject({ code: 404 });
-			} else {
-				Promise.all(matchComponents.map(component => {
-					if (component.asyncData) {
-						return component.asyncData();
-					}
-				})).then(() => {
-					resolve(app);
-				});
-			}
-		});
-	});
+ const { url } = context;
+ return new Promise((resolve, reject) => {
+  const { app, router } = createApp();
+  //! 说明：如果当前使用的是前端路由，比如：/bar 回车就会导致404,
+  //! 解决办法：利用vue-router的push和onReady接口解决
+  //! 1. 让其跳入前端路由
+  router.push(url);
+  //! 2. 路由渲染完毕，准备进入匹配的路由
+  router.onReady(() => {
+   const matchComponents = router.getMatchedComponents();
+   if (matchComponents.length === 0) {
+    return reject({ code: 404 });
+   } else {
+    Promise.all(matchComponents.map(component => {
+     if (component.asyncData) {
+      return component.asyncData();
+     }
+    })).then(() => {
+     resolve(app);
+    });
+   }
+  });
+ });
 }
 ```
 

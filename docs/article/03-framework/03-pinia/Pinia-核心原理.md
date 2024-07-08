@@ -1,16 +1,23 @@
+# Pinia
+
 ---
+
 title: Pinia-核心原理
 author: Potter
 date: 2022-04-05 14:24
-tags: 
+
+tags:
+
 - pinia
 - 状态管理
-categories: 
+
+categories:
+
 - pinia
 
----
 
-# Pinia
+...
+
 
 ## 流程图
 

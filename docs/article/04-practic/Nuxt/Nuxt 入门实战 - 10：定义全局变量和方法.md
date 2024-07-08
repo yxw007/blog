@@ -1,39 +1,43 @@
+# Nuxt 入门实战 - 10：定义全局变量和方法
+
 ---
+
 title: Nuxt 入门实战 - 10：定义全局变量和方法
 author: Potter
 date: 2023-06-25 11:44:26
-tags: 
+
+tags:
+
 - Nuxt
-categories: 
+
+categories:
+
 - Nuxt 入门实战
 
----
-
-
-# Nuxt 入门实战 - 10：定义全局变量和方法
+...
 
 ## 定义
 
 > 通过插件来实现全局函数和变量定义
-> 
+>
 
 ```tsx
 //plugins/global.ts
 export default defineNuxtPlugin(nuxtApp => {
-	function getIconClassName(name: string) {
-		return `iconfont icon-${name}`;
-	}
+ function getIconClassName(name: string) {
+  return `iconfont icon-${name}`;
+ }
 
-	function getIconSymbolName(name: string) {
-		return `#${name}`;
-	}
+ function getIconSymbolName(name: string) {
+  return `#${name}`;
+ }
 
-	return {
-		provide: {
-			getIconClassName,
-			getIconSymbolName
-		}
-	}
+ return {
+  provide: {
+   getIconClassName,
+   getIconSymbolName
+  }
+ }
 });
 ```
 
@@ -41,9 +45,9 @@ export default defineNuxtPlugin(nuxtApp => {
 
 ```tsx
 export default defineNuxtConfig({
-	...
-	plugins:["~/plugins/global.ts"]
-	...
+ ...
+ plugins:["~/plugins/global.ts"]
+ ...
 })
 ```
 

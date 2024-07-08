@@ -1,16 +1,20 @@
+# TypeStript 入门 - 09：unknown
+
 ---
+
 title: TypeStript 入门 - 09：unknown
 author: Potter
 date: 2022-11-27 23:13
-tags: 
+
+tags:
+
 - TypeScript
-categories: 
+
+categories:
+
 - TypeScript 入门
 
----
-
-# TypeStript 入门 - 09：unknown
-
+...
 
 ## 基本操作
 
@@ -92,7 +96,7 @@ type key = keyof unknown;
 ```tsx
 //! unknown类型遍历无用
 type IMap<T> = {
-	[P in keyof T]: number
+ [P in keyof T]: number
 }
 type T = IMap<unknown>;
 //type t = {}
@@ -110,4 +114,3 @@ let n: Number = 1;
 console.log(k === n);//true
 console.log(k !== n);//false
 ```
-

@@ -1,16 +1,20 @@
+# TypeStript 入门 - 05：类型保护
+
 ---
+
 title: TypeStript 入门 - 05：类型保护
 author: Potter
 date: 2022-11-25 22:49
-tags: 
+
+tags:
+
 - TypeScript
-categories: 
+
+categories:
+
 - TypeScript 入门
 
----
-
-# TypeStript 入门 - 05：类型保护
-
+...
 
 ## typeof 类型保护
 
@@ -47,24 +51,24 @@ if(r instanceof Cat){
 
 ```tsx
 interface Fish {
-	swiming: string,
+ swiming: string,
 }
 
 interface Bird {
-	fly: string,
-	leg: number
+ fly: string,
+ leg: number
 }
 
 function isBird(animal: Fish | Bird): animal is Bird {
-	return 'fly' in animal && 'leg' in animal
+ return 'fly' in animal && 'leg' in animal
 }
 
 function getAniaml(animal: Fish | Bird) {
-	if (isBird(animal)) {
-		console.log("isBird");
-	} else {
-		console.log("Fish");
-	}
+ if (isBird(animal)) {
+  console.log("isBird");
+ } else {
+  console.log("Fish");
+ }
 }
 
 getAniaml({ "swiming": "x" });
@@ -73,19 +77,19 @@ getAniaml({ "swiming": "x" });
 
 ## ****可辨识联合类型****
 
-```tsx
+```ts
 interface WarningButton {
-	class: 'warning'
+ class: 'warning'
 }
 interface DangerButton {
-	class: 'danger'
+ class: 'danger'
 }
 function createButton(button: WarningButton | DangerButton) {
-	if (button.class == 'warning') {
-		console.log("Warning Button");
-	} else {
-		console.log("Warning Button");
-	}
+ if (button.class == 'warning') {
+  console.log("Warning Button");
+ } else {
+  console.log("Warning Button");
+ }
 }
 createButton({ class: 'warning' });
 //output: Warning Button
@@ -93,14 +97,14 @@ createButton({ class: 'warning' });
 
 ## ****null保护****
 
-```tsx
+```ts
 const addPrefix = (num?: number) => {
-	num = num || 1.1;
-	function prefix(fix: string) {
-		//利用?.进行保护
-		return fix + num?.toFixed()
-	}
-	return prefix('xx');
+ num = num || 1.1;
+ function prefix(fix: string) {
+  //利用?.进行保护
+  return fix + num?.toFixed()
+ }
+ return prefix('xx');
 }
 console.log(addPrefix());
 //output: xx.1
@@ -108,29 +112,29 @@ console.log(addPrefix());
 
 ## ****完整性保护****
 
-```tsx
+```ts
 interface ICircle {
-	kind: 'circle',
-	r: number
+ kind: 'circle',
+ r: number
 }
 interface IRant {
-	kind: 'rant',
-	width: number,
-	height: number
+ kind: 'rant',
+ width: number,
+ height: number
 }
 interface ISquare {
-	kind: 'square',
-	width: number
+ kind: 'square',
+ width: number
 }
 type Area = ICircle | IRant | ISquare
 const isAssertion = (obj: never) => { }
 const getArea = (obj: Area) => {
-	switch (obj.kind) {
-		case 'circle':
-			return 3.14 * obj.r ** 2
-		default:
-			// 不可抵达的断言保护, 此分支逻辑必须实现, 否则报错
-			return isAssertion(obj);
-	}
+ switch (obj.kind) {
+  case 'circle':
+   return 3.14 * obj.r ** 2
+  default:
+   // 不可抵达的断言保护, 此分支逻辑必须实现, 否则报错
+   return isAssertion(obj);
+ }
 }
 ```

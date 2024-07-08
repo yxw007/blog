@@ -1,23 +1,29 @@
+# uni-app 如何引入Iconfont阿里巴巴矢量图标库
+
 ---
 
 title:  uni-app 如何引入Iconfont阿里巴巴矢量图标库
 author: Potter
 date: 2022-05-12 18:42
-tags: 
+
+tags:
+
 - UniApp
-categories: 
+
+categories:
+
 - 前端
 
----
+...
 
-# uni-app 如何引入Iconfont阿里巴巴矢量图标库
+## 步骤如下
 
-### 步骤如下:
 1. 下载图标项目, 解压后效果如下
 ![](https://cdn.jsdelivr.net/gh/aa4790139/BlogPicBed@master/img/20201113164039.png)
 2. 修改iconfont.css文件
 
     修改前格式：
+
     ```
     @font-face {font-family: "iconfont";
     src: url('iconfont.eot?t=1605254910083'); /* IE9 */
@@ -29,15 +35,16 @@ categories:
     }
     ```
 
-    修改后格式: 
+    修改后格式:
+
     ```
     @font-face {
         font-family: "iconfont";
         src: url('data:application/x-font-woff2;charset=utf-8;base64,转换的base64内容') format('woff2');
     }
     ```
-3. Copy字体文件iconfont.ttf和样式文件iconfont.css 至UniApp项目static/font目录中
 
+3. Copy字体文件iconfont.ttf和样式文件iconfont.css 至UniApp项目static/font目录中
 
 ---
 

@@ -1,14 +1,19 @@
+## 与UI设计师约定颜色命名规则
+
 ---
+
 title: Nuxt 项目实战 - 15：自定义unocss规则，让编写样式更高效
-tags: 
+
+tags:
+
 - Nuxt
 - unocss
-categories: 
+
+categories:
+
 - Nuxt 项目实战
 
----
-
-## 与UI设计师约定颜色命名规则
+...
 
 ![Untitled](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1717412867065.png)
 

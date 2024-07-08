@@ -1,17 +1,20 @@
----
-title: JS基础-22：Fix Module can only be default-imported using the ‘allowSyntheticDefaultImports’ flag issue
-author: Potter
-date: 2024-07-03 11:24
-tags: 
-- js
-categories: 
-- js
-
----
-
 # JS基础-22：Fix Module can only be default-imported using the ‘allowSyntheticDefaultImports’ flag issue
 
 ---
+
+title: JS基础-22：Fix Module can only be default-imported using the ‘allowSyntheticDefaultImports’ flag issue
+author: Potter
+date: 2024-07-03 11:24
+
+tags:
+
+- js
+
+categories:
+
+- js
+
+...
 
 ## 问题现象
 
@@ -35,5 +38,5 @@ const mimeInstance = (mime as any).default;
 
 ## 参考文献
 
-* [**Fix Module can only be default-imported using the ‘allowSyntheticDefaultImports’ flag issue**](https://medium.com/@liwp.stephen/fix-module-can-only-be-default-imported-using-the-allowsyntheticdefaultimports-flag-issue-a033a361c6bf)
-* <https://itecnote.com/tecnote/r-this-module-is-declared-with-using-export-and-can-only-be-used-with-a-default-import-when-using-the-esmoduleinterop-flag/>
+- [**Fix Module can only be default-imported using the ‘allowSyntheticDefaultImports’ flag issue**](https://medium.com/@liwp.stephen/fix-module-can-only-be-default-imported-using-the-allowsyntheticdefaultimports-flag-issue-a033a361c6bf)
+- <https://itecnote.com/tecnote/r-this-module-is-declared-with-using-export-and-can-only-be-used-with-a-default-import-when-using-the-esmoduleinterop-flag/>

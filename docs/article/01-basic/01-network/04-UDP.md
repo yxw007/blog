@@ -1,17 +1,23 @@
+# UDP
+
 ---
+
 title: UDP
 author: Potter
 date: 2022/08/08 10:26
-tags: 
+
+tags:
+
 - UDP
 - 计算机网络
-categories: 
+
+categories:
+
 - 计算机网络
 
----
 
+...
 
-# UDP
 
 ## UDP 结构图
   ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230313111842.jpeg)

@@ -1,16 +1,20 @@
+# Nuxt 入门实战 - 07：服务端自定义路由
+
 ---
+
 title: Nuxt 入门实战 - 07：服务端自定义路由
 author: Potter
 date: 2023-06-22 11:43:29
-tags: 
+
+tags:
+
 - Nuxt
-categories: 
+
+categories:
+
 - Nuxt 入门实战
 
----
-
-
-# Nuxt 入门实战 - 07：服务端自定义路由
+...
 
 ## 方式一：通过中间件实现
 
@@ -57,4 +61,4 @@ http://localhost:port/api/hello/world
 
 ## 参考文献
 
-- https://github.com/nuxt/nuxt/issues/13696
+- <https://github.com/nuxt/nuxt/issues/13696>

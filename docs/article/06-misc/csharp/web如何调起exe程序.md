@@ -1,15 +1,20 @@
+# web：如何调起exe程序
+
 ---
+
 title: web如何调起exe程序
 author: Potter
 date: 2023-08-02 16:28:32
-tags: 
+
+tags:
+
 - C#
-categories: 
+
+categories:
+
 - Web
 
----
-
-# web：如何调起exe程序
+...
 
 ## H5 配置
 

@@ -1,18 +1,22 @@
+# webpack 02：利用 VS Code 进行调试
+
 ---
 
 title:  webpack 02：利用 VS Code 进行调试
 author: Potter
 date: 2022-05-12 18:45
-tags: 
+
+tags:
+
 - webpack
 - vscode
 - debugger
-categories: 
+
+categories:
+
 - webpack
 
----
-
-# webpack 02：利用 VS Code 进行调试
+...
 
 ## 概要内容
 
@@ -26,17 +30,17 @@ categories:
 ---
 
 > 由于工作中遇到一个问题，需要根据环境编译代码，比如：ios平台需要某项功能，pc平台不需要这个功能，所以就可以用过编写一个自定义的loader解决此问题。虽然可以通过打例子的方式来调试代码，但是这种方式太低效了，如果日后还想知道webpack的工作原理，打日志的方式就太可行了，不能单不跟踪、实时看到各变量的当前情况，调用堆栈等等，所以来了解一下vscode里面如何调试webpack代码。
-> 
+>
 
 <!--more-->
 
-## 步骤如下：
+## 步骤如下
 
 ---
 
 1. npm init -y
 2. package.json (说明：为了保证示例能运行，方便npm install)
-    
+
     ```json
     {
       "name": "02-debugger",
@@ -57,9 +61,9 @@ categories:
       }
     }
     ```
-    
+
 3. webpack.config.js
-    
+
     ```json
     const path = require("path")
     module.exports = {
@@ -74,16 +78,16 @@ categories:
         }
     }
     ```
-    
+
 4. 创建index.js
-    
+
     ```json
     //src/index.js
     console.log("hello")
     ```
-    
+
 5. 创建调试launch.json
-    
+
     ```json
     {
         "version": "0.2.0",
@@ -106,23 +110,19 @@ categories:
         ]
     }
     ```
-    
+
 6. 最后目录结构
-    
+
     ![https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20211114234644.png](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20211114234644.png)
-    
+
 7. 启动调试
-    
+
     ![https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20211114215606.png](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20211114215606.png)
-    
 
 > 完整示例：[https://github.com/yxw007/H5-Learn/tree/master/webpack/02-debugger](https://github.com/yxw007/H5-Learn/tree/master/webpack/02-debugger)
-> 
-
----
+>
 
 ## 参考文献
 
 - **[Debugging Webpack with VS Code](https://medium.com/@jsilvax/debugging-webpack-with-vs-code-b14694db4f8e)**
 - **[VSCode 调试 Webpack 指南](https://zhuanlan.zhihu.com/p/108939782)**
-

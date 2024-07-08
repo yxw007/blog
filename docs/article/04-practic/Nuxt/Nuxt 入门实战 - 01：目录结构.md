@@ -1,16 +1,22 @@
+# Nuxt 入门实战 - 01：目录结构
+
 ---
+
 title: Nuxt 入门实战 - 01：理解目录结构
 author: Potter
 date: 2023-06-20 11:39:08
-tags: 
+
+tags:
+
 - Nuxt
-categories: 
+
+categories:
+
 - Nuxt 入门实战
 
----
 
+...
 
-# Nuxt 入门实战 - 01：目录结构
 
 ## 目录结构
 

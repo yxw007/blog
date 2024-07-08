@@ -1,21 +1,25 @@
+# Nuxt 入门实战 - 13：docker 打包部署
+
 ---
+
 title: Nuxt 入门实战 - 13：docker 打包部署
 author: Potter
 date: 2023-07-02 11:45:23
-tags: 
+
+tags:
+
 - Nuxt
-categories: 
+
+categories:
+
 - Nuxt 入门实战
 
----
-
-
-# Nuxt 入门实战 - 13：docker 打包部署
+...
 
 ## 编写打包配置Dockerfile
 
 > 说明：Dockerfile 放置在项目根目录下
-> 
+>
 
 ```tsx
 # use node 16 alpine image
@@ -79,13 +83,12 @@ docker build -t nuxt_demo:0.0.1 .
 ## 阿里云创建镜像仓库
 
 - 创建仓库
-    
+
   ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240507114910.png)
-    
+
    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240507114926.png)
-    
+
    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240507114940.png)
-    
 
 ## 推送镜像至仓库
 
@@ -113,7 +116,7 @@ docker run -itd -p 9001:3000 imageid
 ## 自动化脚本
 
 - build.sh
-    
+
     ```bash
     #!/bin/bash
     
@@ -136,10 +139,10 @@ docker run -itd -p 9001:3000 imageid
     # 步骤 1: 打包镜像
     docker build -t nuxt-demo .
     if [ $? -eq 0 ]; then
-    	  echo "打包成功！"
+       echo "打包成功！"
       else
-    	    echo "打包失败，请检查输入的信息。"
-    	      exit 1
+         echo "打包失败，请检查输入的信息。"
+           exit 1
     fi
     
     # 提供Docker镜像仓库地址、用户名和密码
@@ -159,10 +162,10 @@ docker run -itd -p 9001:3000 imageid
     
     # 检查登录是否成功
     if [ $? -eq 0 ]; then
-    	  echo "登录成功！"
+       echo "登录成功！"
       else
-    	    echo "登录失败，请检查输入的信息。"
-    	      exit 1
+         echo "登录失败，请检查输入的信息。"
+           exit 1
     fi
     
     # 给镜像打标签
@@ -171,10 +174,10 @@ docker run -itd -p 9001:3000 imageid
     
     # 检查标签是否成功
     if [ $? -eq 0 ]; then
-    	  echo "Docker镜像标签成功！"
+       echo "Docker镜像标签成功！"
       else
-    	    echo "Docker镜像标签失败。"
-    	      exit 1
+         echo "Docker镜像标签失败。"
+           exit 1
     fi
     
     # 推送镜像到远程仓库
@@ -182,17 +185,17 @@ docker run -itd -p 9001:3000 imageid
     
     # 检查推送是否成功
     if [ $? -eq 0 ]; then
-    	  echo "Docker镜像推送成功！"
+       echo "Docker镜像推送成功！"
       else
-    	    echo "Docker镜像推送失败。"
-    	      exit 1
+         echo "Docker镜像推送失败。"
+           exit 1
     fi
     
     echo "全部操作完成。"
     ```
-    
+
 - restart.sh
-    
+
     ```bash
     echo "welcome 243"
     
@@ -218,9 +221,9 @@ docker run -itd -p 9001:3000 imageid
         echo "No image found. Build the image first."
     fi
     ```
-    
+
 - clean.sh
-    
+
     ```bash
     #!/bin/bash
     
@@ -239,10 +242,10 @@ docker run -itd -p 9001:3000 imageid
     # 开始清理镜像
     if [ $image_count -gt $keep_count ]; then
       images_to_remove=$(echo "$image_ids" | tail -n +$((keep_count + 1)))
-      echo "delete count: $images_to_remove"	
+      echo "delete count: $images_to_remove" 
     
       echo "Cleaning up old $image_name images..."
-    	      
+           
       for image_id in $images_to_remove; do
         #docker rmi -f $image_id
         echo "remove $image_id success"
@@ -254,7 +257,6 @@ docker run -itd -p 9001:3000 imageid
           echo "No old $image_name images to clean up."
     fi
     ```
-    
 
 ## 参考文献
 

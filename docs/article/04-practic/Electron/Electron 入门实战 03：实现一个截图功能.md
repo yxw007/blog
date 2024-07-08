@@ -1,17 +1,21 @@
+# Electron 入门实战 03：实现一个截图功能
+
 ---
+
 title: Electron 入门实战 03：实现一个截图功能
 author: Potter
 date: 2024-04-15 10:23:32
-tags: 
+
+tags:
+
 - Electron
 - 截图
-categories: 
+
+categories:
+
 - Electron
 
----
-
-
-# Electron 入门实战 03：实现一个截图功能
+...
 
 ## 实现效果
 
@@ -57,7 +61,7 @@ yarn add konva vue-router
 ### 主进程
 
 - src/main/index.js
-    
+
     ```jsx
     import {
       app,
@@ -231,12 +235,11 @@ yarn add konva vue-router
       })
     }
     ```
-    
 
 ### 渲染器
 
 - scr/main.js
-    
+
     ```jsx
     import { createApp } from 'vue'
     import App from './App.vue'
@@ -246,9 +249,9 @@ yarn add konva vue-router
     app.use(router)
     app.mount('#app')
     ```
-    
+
 - src/router/index.js
-    
+
     ```jsx
     import { createRouter, createWebHashHistory } from 'vue-router'
     
@@ -273,9 +276,9 @@ yarn add konva vue-router
     
     export default router
     ```
-    
+
 - src/App.vue
-    
+
     ```jsx
     <template>
       <router-view>
@@ -289,18 +292,18 @@ yarn add konva vue-router
     @import './assets/css/styles.less';
     </style>
     ```
-    
+
 - src/pages/index.vue：首页
-    
+
     ```jsx
     <template>
-    	<div class="container">
-    		<button @click="handleCutScreen">截屏</button>
-    		<div>
-    			<img :src="previewImage"
-    					 style="max-width: 100%" />
-    		</div>
-    	</div>
+     <div class="container">
+      <button @click="handleCutScreen">截屏</button>
+      <div>
+       <img :src="previewImage"
+          style="max-width: 100%" />
+      </div>
+     </div>
     </template>
     
     <script setup>
@@ -309,28 +312,28 @@ yarn add konva vue-router
     const previewImage = ref("");
     
     async function handleCutScreen() {
-    	await ipcRenderer.send("OPEN_CUT_SCREEN");
-    	ipcRenderer.removeListener("GET_CUT_INFO", getCutInfo);
-    	ipcRenderer.on("GET_CUT_INFO", getCutInfo);
+     await ipcRenderer.send("OPEN_CUT_SCREEN");
+     ipcRenderer.removeListener("GET_CUT_INFO", getCutInfo);
+     ipcRenderer.on("GET_CUT_INFO", getCutInfo);
     }
     
     function getCutInfo(event, pic) {
-    	previewImage.value = pic;
+     previewImage.value = pic;
     }
     </script>
     ```
-    
+
 - src/pages/cut.vue：截图界面
-    
+
     ```jsx
     <template>
-    	<div class="container"
-    			 :style="'background-image:url(' + bg + ')'"
-    			 ref="container"
-    			 @mousedown="onMouseDown"
-    			 @mousemove="onMouseMove"
-    			 @mouseup="onMouseUp">
-    	</div>
+     <div class="container"
+        :style="'background-image:url(' + bg + ')'"
+        ref="container"
+        @mousedown="onMouseDown"
+        @mousemove="onMouseMove"
+        @mouseup="onMouseUp">
+     </div>
     </template>
     <script setup>
     import Konva from "konva";
@@ -342,98 +345,98 @@ yarn add konva vue-router
     let stage, layer, rect, transformer;
     
     onMounted(() => {
-    	ipcRenderer.send("SHOW_CUT_SCREEN");
-    	ipcRenderer.removeListener("GET_SCREEN_IMAGE", getSource);
-    	ipcRenderer.on("GET_SCREEN_IMAGE", getSource);
-    	ipcRenderer.on("FINISH_CUT", confirmCut);
+     ipcRenderer.send("SHOW_CUT_SCREEN");
+     ipcRenderer.removeListener("GET_SCREEN_IMAGE", getSource);
+     ipcRenderer.on("GET_SCREEN_IMAGE", getSource);
+     ipcRenderer.on("FINISH_CUT", confirmCut);
     });
     
     async function getSource(event, source) {
-    	const { thumbnail } = source;
-    	const pngData = await thumbnail.toDataURL("image/png");
-    	bg.value = pngData;
-    	render();
+     const { thumbnail } = source;
+     const pngData = await thumbnail.toDataURL("image/png");
+     bg.value = pngData;
+     render();
     }
     
     function render() {
-    	stage = createStage();
-    	layer = createLayer(stage);
+     stage = createStage();
+     layer = createLayer(stage);
     }
     
     function createStage() {
-    	return new Konva.Stage({
-    		container: container.value,
-    		width: window.innerWidth,
-    		height: window.innerHeight,
-    	});
+     return new Konva.Stage({
+      container: container.value,
+      width: window.innerWidth,
+      height: window.innerHeight,
+     });
     }
     
     function createLayer(stage) {
-    	let layer = new Konva.Layer();
-    	stage.add(layer);
-    	layer.draw();
-    	return layer;
+     let layer = new Konva.Layer();
+     stage.add(layer);
+     layer.draw();
+     return layer;
     }
     
     function createRect(layer, x, y, width, height, alpha, draggable) {
-    	let rect = new Konva.Rect({
-    		x,
-    		y,
-    		width,
-    		height,
-    		fill: `rgba(0,0,255,${alpha})`,
-    		draggable
-    	});
-    	layer.add(rect);
-    	return rect;
+     let rect = new Konva.Rect({
+      x,
+      y,
+      width,
+      height,
+      fill: `rgba(0,0,255,${alpha})`,
+      draggable
+     });
+     layer.add(rect);
+     return rect;
     }
     
     let isDown = false;
     let rectOption = {};
     function onMouseDown(e) {
-    	if (rect || isDown) {
-    		return;
-    	}
-    	isDown = true;
-    	const { pageX, pageY } = e;
-    	rectOption.x = pageX || 0;
-    	rectOption.y = pageY || 0;
-    	rect = createRect(layer, pageX, pageY, 0, 0, 0.25, false);
-    	rect.draw();
+     if (rect || isDown) {
+      return;
+     }
+     isDown = true;
+     const { pageX, pageY } = e;
+     rectOption.x = pageX || 0;
+     rectOption.y = pageY || 0;
+     rect = createRect(layer, pageX, pageY, 0, 0, 0.25, false);
+     rect.draw();
     }
     
     function onMouseMove(e) {
-    	if (!isDown) return;
-    	const { pageX, pageY } = e;
-    	let w = pageX - rectOption.x;
-    	let h = pageY - rectOption.y;
-    	rect.remove();
-    	rect = createRect(layer, rectOption.x, rectOption.y, w, h, 0.25, false);
-    	rect.draw();
+     if (!isDown) return;
+     const { pageX, pageY } = e;
+     let w = pageX - rectOption.x;
+     let h = pageY - rectOption.y;
+     rect.remove();
+     rect = createRect(layer, rectOption.x, rectOption.y, w, h, 0.25, false);
+     rect.draw();
     }
     
     function onMouseUp(e) {
-    	if (!isDown) {
-    		return;
-    	}
-    	isDown = false;
-    	const { pageX, pageY } = e;
-    	let w = pageX - rectOption.x;
-    	let h = pageY - rectOption.y;
-    	rect.remove();
-    	rect = createRect(layer, rectOption.x, rectOption.y, w, h, 0, true);
-    	rect.draw();
-    	transformer = createTransformer(rect);
-    	layer.add(transformer);
+     if (!isDown) {
+      return;
+     }
+     isDown = false;
+     const { pageX, pageY } = e;
+     let w = pageX - rectOption.x;
+     let h = pageY - rectOption.y;
+     rect.remove();
+     rect = createRect(layer, rectOption.x, rectOption.y, w, h, 0, true);
+     rect.draw();
+     transformer = createTransformer(rect);
+     layer.add(transformer);
     }
     
     function createTransformer(rect) {
-    	let transformer = new Konva.Transformer({
-    		nodes: [rect],
-    		rotateAnchorOffset: 60,
-    		enabledAnchors: ['top-left', 'top-right', 'bottom-left', 'bottom-right']
-    	});
-    	return transformer
+     let transformer = new Konva.Transformer({
+      nodes: [rect],
+      rotateAnchorOffset: 60,
+      enabledAnchors: ['top-left', 'top-right', 'bottom-left', 'bottom-right']
+     });
+     return transformer
     }
     
     /**
@@ -441,60 +444,59 @@ yarn add konva vue-router
      * @param {*} info 
      */
     async function getCutImage(info) {
-    	const { x, y, width, height } = info;
-    	let img = new Image();
-    	img.src = bg.value;
-    	let canvas = document.createElement("canvas");
-    	let ctx = canvas.getContext("2d");
-    	canvas.width = ctx.width = width;
-    	canvas.height = ctx.height = height;
-    	ctx.drawImage(img, -x, -y, window.innerWidth, window.innerHeight);
-    	return canvas.toDataURL("image/png");
+     const { x, y, width, height } = info;
+     let img = new Image();
+     img.src = bg.value;
+     let canvas = document.createElement("canvas");
+     let ctx = canvas.getContext("2d");
+     canvas.width = ctx.width = width;
+     canvas.height = ctx.height = height;
+     ctx.drawImage(img, -x, -y, window.innerWidth, window.innerHeight);
+     return canvas.toDataURL("image/png");
     }
     
     /**
      * 确认截图
      */
     async function confirmCut() {
-    	const { width, height, x, y, scaleX = 1, scaleY = 1 } = rect.attrs;
-    	let _x = width > 0 ? x : x + width * scaleX;
-    	let _y = height > 0 ? y : y + height * scaleY;
-    	let pic = await getCutImage({
-    		x: _x,
-    		y: _y,
-    		width: Math.abs(width) * scaleX,
-    		height: Math.abs(height) * scaleY,
-    	});
-    	ipcRenderer.send("FINISH_CUT_SCREEN", pic);
+     const { width, height, x, y, scaleX = 1, scaleY = 1 } = rect.attrs;
+     let _x = width > 0 ? x : x + width * scaleX;
+     let _y = height > 0 ? y : y + height * scaleY;
+     let pic = await getCutImage({
+      x: _x,
+      y: _y,
+      width: Math.abs(width) * scaleX,
+      height: Math.abs(height) * scaleY,
+     });
+     ipcRenderer.send("FINISH_CUT_SCREEN", pic);
     }
     
     /**
      * 关闭截图
      */
     function closeCut() {
-    	ipcRenderer.send("CLOSE_CUT_SCREEN");
+     ipcRenderer.send("CLOSE_CUT_SCREEN");
     }
     </script>
     
     <style lang="scss" scoped>
     .container {
-    	position: fixed;
-    	top: 0;
-    	bottom: 0;
-    	left: 0;
-    	right: 0;
-    	width: 100%;
-    	height: 100%;
-    	overflow: hidden;
-    	background-color: transparent;
-    	background-size: 100% 100%;
-    	background-repeat: no-repeat;
-    	border: 2px solid blue;
-    	box-sizing: border-box;
+     position: fixed;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     width: 100%;
+     height: 100%;
+     overflow: hidden;
+     background-color: transparent;
+     background-size: 100% 100%;
+     background-repeat: no-repeat;
+     border: 2px solid blue;
+     box-sizing: border-box;
     }
     </style>
     ```
-    
 
 ## 总结
 

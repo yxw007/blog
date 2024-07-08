@@ -1,16 +1,21 @@
+# Rollup插件开发
+
 ---
+
 title: Rollup插件开发
 author: Potter
 date: 2022-01-15 14:15
-tags: 
+
+tags:
+
 - 插件
 - rollup
-categories: 
+
+categories:
+
 - rollup
 
 ---
-
-# Rollup插件开发
 
 ## Build 阶段hook
 
@@ -30,8 +35,8 @@ categories:
 
 - 作用：此钩子可以用于路径替换操作，也可以用于终止解析操作
 - 应用场景：
-    - 定义alias，最后替换代码中的别名路径
-        
+  - 定义alias，最后替换代码中的别名路径
+
         ```jsx
         //1. 配置别名
         alias: {
@@ -42,20 +47,20 @@ categories:
         import sum from '@/sum.js';
         
         function aliasPlugin(){
-        		return {
-        			name:'aliasPlugin',
-        				//3. 打包时：自动根据别名替换路径
-        			resolveId(importee, importer) {
-        			    if (importee.startsWith('@')) {
-        			        return importee.replace('@', path.resolve(__dirname, 'src'))
-        			    } // 如果这里返回false，则不再继续向下执行
-        			}
-        		}
+          return {
+           name:'aliasPlugin',
+            //3. 打包时：自动根据别名替换路径
+           resolveId(importee, importer) {
+               if (importee.startsWith('@')) {
+                   return importee.replace('@', path.resolve(__dirname, 'src'))
+               } // 如果这里返回false，则不再继续向下执行
+           }
+          }
         }
         ```
-        
-    - 自动安装第三方插件
-        
+
+  - 自动安装第三方插件
+
         ```jsx
         import { exec } from 'child_process';
         import { promisify } from 'util'
@@ -94,30 +99,29 @@ categories:
             }
         }
         ```
-        
 
 ### load
 
 - 作用：根据文件路径返回文件内容
 - 应用场景：
-    - 代码引用资源(png\svg\jpg等)：改成引用相对路径地址，而无需打包资源（需要看webpack 里面的打包插件）
-        
+  - 代码引用资源(png\svg\jpg等)：改成引用相对路径地址，而无需打包资源（需要看webpack 里面的打包插件）
+
         ```jsx
         //1. 打包时转换icon.png
         function changeResPlugin(){
-        	return {
-        		name:'changeResPlugin',
-        		resolveFileUrl({fileName}){
-        				//说明：将import.meta.ROLLUP_FILE_URL 替换成此返回结果
-        		    return JSON.stringify(new URL(`test/${fileName}`, 'http://www.baidu.com').href);
-        		},
-        		load(filepath){
-        				let fileName = path.basename(filepath);
-        		    let data = fs.readFileSync(filepath,{encoding:"utf-8"});
-        				//说明：往打包目录发送文件
-        		    let referenceId = this.emitFile({type: 'asset',source:data,fileName});
-        				return `export default import.meta.ROLLUP_FILE_URL_${referenceId}`
-        		}
+         return {
+          name:'changeResPlugin',
+          resolveFileUrl({fileName}){
+            //说明：将import.meta.ROLLUP_FILE_URL 替换成此返回结果
+              return JSON.stringify(new URL(`test/${fileName}`, 'http://www.baidu.com').href);
+          },
+          load(filepath){
+            let fileName = path.basename(filepath);
+              let data = fs.readFileSync(filepath,{encoding:"utf-8"});
+            //说明：往打包目录发送文件
+              let referenceId = this.emitFile({type: 'asset',source:data,fileName});
+            return `export default import.meta.ROLLUP_FILE_URL_${referenceId}`
+          }
         }
         
         //打包结果：
@@ -129,13 +133,13 @@ categories:
         var index = "http://www.zhufeng.com/icon.png";
         export { index as default };
         ```
-        
-    - 引用小图片，可以直接转成base64内容返回
-        
+
+  - 引用小图片，可以直接转成base64内容返回
+
         ```jsx
         //1. 配置
         plugins: [
-        	image({
+         image({
              dom:true
           })
         ]
@@ -147,51 +151,49 @@ categories:
         
         //3. 打包时加载转换
         function changeResPlugin(){
-        	return {
-        		name:'changeResPlugin',
-        		load(id) {
-        		    if (!filter(id)) {
-        		      return null;
-        		    }
-        		
-        		    const mime = mimeTypes[extname(id)];
-        		    if (!mime) {
-        		      // not an image
-        		      return null;
-        		    }
-        		
-        		    const isSvg = mime === mimeTypes['.svg'];
-        		    const format = isSvg ? 'utf-8' : 'base64';
-        		    const source = readFileSync(id, format).replace(/[\r\n]+/gm, '');
-        		    const dataUri = getDataUri({ format, isSvg, mime, source });
-        		    const code = options.dom ? domTemplate({ dataUri }) : constTemplate({ dataUri });
-        		
-        		    return code.trim();
-        		}
-        	}
+         return {
+          name:'changeResPlugin',
+          load(id) {
+              if (!filter(id)) {
+                return null;
+              }
+          
+              const mime = mimeTypes[extname(id)];
+              if (!mime) {
+                // not an image
+                return null;
+              }
+          
+              const isSvg = mime === mimeTypes['.svg'];
+              const format = isSvg ? 'utf-8' : 'base64';
+              const source = readFileSync(id, format).replace(/[\r\n]+/gm, '');
+              const dataUri = getDataUri({ format, isSvg, mime, source });
+              const code = options.dom ? domTemplate({ dataUri }) : constTemplate({ dataUri });
+          
+              return code.trim();
+          }
+         }
         }
         
         ```
-        
 
 ### resolveFileUrl
 
 - 作用：对import.meta.url进行路径的替换
 - 应用场景：
-    
+
     ```jsx
     resolveFileUrl({fileName}){
-    		//说明：将import.meta.ROLLUP_FILE_URL 替换成此返回结果
+      //说明：将import.meta.ROLLUP_FILE_URL 替换成此返回结果
         return JSON.stringify(new URL(`test/${fileName}`, 'http://www.baidu.com').href);
     },
     ```
-    
 
 ### transform
 
 - 作用：最常用的钩子方法，可以实现各种各样的逻辑转化
 - 应用场景：es6 转es5
-    
+
     ```jsx
     import path from 'path';
     import rollupPluginutils from 'rollup-pluginutils'
@@ -227,7 +229,6 @@ categories:
         }
     }
     ```
-    
 
 ### moduleParsed
 
@@ -237,28 +238,27 @@ categories:
 
 - 作用：动态模块导入钩子
 - 应用场景：
-    - 解析动态导入路径， 返回转换后路径
-        
+  - 解析动态导入路径， 返回转换后路径
+
         ```jsx
         //1. 使用
         import('multiple')
         
         //2. 插件转换
         function dynamicPlugin(){
-        	return {
-        		name: 'dynamicPlugin',
-        		resolveDynamicImport(id){
-        			if (id === 'multiple') {
-        	      return path__default["default"].resolve(__dirname, 'src/multiple.js')
-        			}			
-        		}
-        	}
+         return {
+          name: 'dynamicPlugin',
+          resolveDynamicImport(id){
+           if (id === 'multiple') {
+               return path__default["default"].resolve(__dirname, 'src/multiple.js')
+           }   
+          }
+         }
         }
         
         //3. 转换后结果
         import('./multiple.js');
         ```
-        
 
 ### buildEnd
 
@@ -290,7 +290,7 @@ categories:
 
 - 作用：将模块名称，改用hash值作为参数
 - 示例：
-    
+
     ```jsx
     augmentChunkHash(chunkInfo) { // 用全新的hash作为模块的参数
         let hash = Date.now().toString()
@@ -300,7 +300,6 @@ categories:
         }
     }
     ```
-    
 
 ### resolveImportMeta
 
@@ -310,13 +309,12 @@ categories:
 
 - 作用：可对输出代码进行转化处理
 - 示例：
-    
+
     ```jsx
     renderChunk(code) { 
         return code + 'haha'
     }
     ```
-    
 
 ### generateBundle
 
@@ -333,8 +331,6 @@ categories:
 ### renderError
 
 - 作用：渲染出错钩子
-
----
 
 ## 参考文献
 

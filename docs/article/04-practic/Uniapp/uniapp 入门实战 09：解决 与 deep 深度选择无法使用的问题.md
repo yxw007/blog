@@ -1,17 +1,22 @@
+# uniapp 入门实战 09：解决>>> 与 /deep/ 深度选择无法使用的问题
+
 ---
+
 title: uniapp 入门实战 09：解决>>> 与 /deep/ 深度选择无法使用的问题
 author: Potter
 date: 2022/6/16 22:50
-tags: 
+
+tags:
+
 - UniApp
-categories: 
+
+categories:
+
 - UniApp
 
----
+...
 
-# uniapp 入门实战 09：解决>>> 与 /deep/ 深度选择无法使用的问题
-
-# >>> 与 /deep/ 深度选择无法使用的问题
+## >>> 与 /deep/ 深度选择无法使用的问题
 
 - 具体效果
 
@@ -19,7 +24,7 @@ categories:
 
   ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616211009.png)
 
-# 解决办法
+## 解决办法
 
 - 改用::v-deep 解决
 
@@ -29,8 +34,6 @@ categories:
 }
 ```
 
-# 参考文献
+## 参考文献
 
 - **[Deep selector not working](https://forum.vuejs.org/t/deep-selector-not-working/68037)**
-
-

@@ -1,17 +1,22 @@
+# uniapp 入门实战 11：解决给引入的组件添加 class，样式诡异问题
+
 ---
+
 title: uniapp 入门实战 11：解决给引入的组件添加 class，样式诡异问题
 author: Potter
 date: 2022/11/13 16:40
-tags: 
+
+tags:
+
 - UniApp
-categories: 
+
+categories:
+
 - UniApp
 
----
+...
 
-# uniapp 入门实战 11：解决给引入的组件添加 class，样式诡异问题
-
-# 情境
+## 情境
 
 - 实际效果
 
@@ -23,7 +28,7 @@ categories:
 
   ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616211151.png)
 
-# 代码
+## 代码
 
 - Comp.vue
 
@@ -78,12 +83,10 @@ categories:
 
 ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20220616211206.png)
 
-# 总结
+## 总结
 
 - 原来是引入组件添加的 class，view 标签默认是未 display 属性，所以只要设置成 block 元素即可
 
-# 参考文献
+## 参考文献
 
 - [https://github.com/dcloudio/uni-app/issues/3601#issuecomment-1155025002](https://github.com/dcloudio/uni-app/issues/3601#issuecomment-1155025002)
-
-

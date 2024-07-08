@@ -1,16 +1,20 @@
+# Nuxt 入门实战 - 11：如何使用动态组件
+
 ---
+
 title: Nuxt 入门实战 - 11：如何使用动态组件
 author: Potter
 date: 2023-06-26 11:44:45
-tags: 
+
+tags:
+
 - Nuxt
-categories: 
+
+categories:
+
 - Nuxt 入门实战
 
----
-
-
-# Nuxt 入门实战 - 11：如何使用动态组件
+...
 
 ## 背景
 
@@ -19,7 +23,7 @@ categories:
 ## Vue实现demo
 
 - App.vue
-    
+
     ```json
     <script setup>
     import { ref } from 'vue'
@@ -34,37 +38,37 @@ categories:
       <component :is="b?Comp1:Comp2"></component>
     </template>
     ```
-    
+
 - Comp1.vue
-    
+
     ```html
     <template>
-    	<div>组件1</div>
+     <div>组件1</div>
     </template>
     ```
-    
+
 - Comp2.vue
-    
+
     ```html
     <template>
-    	<div>组件1</div>
+     <div>组件1</div>
     </template>
     ```
-    
+
     > **特别注意：<component :is="b?Comp1:Comp2"></component>  引用的是组件而不是组件名称**
-    > 
+    >
 
 ## Nuxt 中如何实现?
 
 1. components 创建两个组件，目录结果如下
-    
+
    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240507114845.png)
-    
+
 2. 利用component is 动态使用这2个组件
-    
+
     ```html
     <template>
-    	<button @click="b=!b"> 切换组件 </button>
+     <button @click="b=!b"> 切换组件 </button>
       <component :is="activeNavComName"></component>
     </template>
     
@@ -75,33 +79,33 @@ categories:
     const activeNavComName = computed(() => b.value ? NavMenuEffect : NavMenuProduct);
     </script>
     ```
-    
+
     > 说明：这是个简单demo虽然实现了，但是还是不够灵活。是否能够通过组件名来动态切换呢？ 答案：可以的
-    > 
+    >
 
 ## 如何通过字符串动态切换组件?
 
 1. 修改nuxt.config.ts 来增加组件扫描规则，让以上2个组件变成全局组件
-    
+
     ```tsx
     //nuxt.config.ts
     export default defineNuxtConfig({
     ...
     components: [
-    		...
-    		{ path: "~/components/NavMenu", global: true },
-    		"~/components"
-    		...
+      ...
+      { path: "~/components/NavMenu", global: true },
+      "~/components"
+      ...
     ],
     ...
     });
     ```
-    
+
 2. 利用vue3给我们提供的resolveComponent来实现通过名称找到对应的组件
-    
+
     ```html
     <template>
-    	<button @click="b=!b"> 切换组件 </button>
+     <button @click="b=!b"> 切换组件 </button>
       <component :is="activeNavComName"></component>
     </template>
     
@@ -111,7 +115,6 @@ categories:
     const activeNavComName = computed(() => resolveComponent(b.value ? "NavMenuEffect" : "NavMenuProduct"));
     </script>
     ```
-    
 
 ## 总结
 

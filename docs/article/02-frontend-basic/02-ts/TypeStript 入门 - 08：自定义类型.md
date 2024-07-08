@@ -1,28 +1,32 @@
+# TypeStript 入门 - 08：自定义类型
+
 ---
+
 title: TypeStript 入门 - 08：自定义类型
 author: Potter
 date: 2022-11-27 22:03
-tags: 
+
+tags:
+
 - TypeScript
-categories: 
+
+categories:
+
 - TypeScript 入门
 
----
-
-# TypeStript 入门 - 08：自定义类型
-
+...
 
 ## Diff：实现
 
-```tsx
+```ts
 let person1 = {
-	name: 'pt',
-	age: 11,
-	address: 'sz'
+ name: 'pt',
+ age: 11,
+ address: 'sz'
 }
 
 let person2 = {
-	address: 'sz',
+ address: 'sz',
 }
 
 //! 1.Diff：实现
@@ -31,23 +35,23 @@ type Diff<T extends Object, K extends Object> = Omit<T, keyof K>
 type DiffPerson = Diff<typeof person1, typeof person2>
 /*
 type DiffPerson = {
-	name: string;
-	age: number;
+ name: string;
+ age: number;
 }
  */
 ```
 
 ## InterSection: 交集
 
-```tsx
+```ts
 let person1 = {
-	name: 'pt',
-	age: 11,
-	address: 'sz'
+ name: 'pt',
+ age: 11,
+ address: 'sz'
 }
 
 let person2 = {
-	address: 'sz',
+ address: 'sz',
 }
 
 //! 2.InterSection: 交集
@@ -63,34 +67,34 @@ type InterSectionPerson = {
 
 # Overwrite: 属性覆盖
 
-```tsx
+```ts
 //注意：OldProps 与 NewProps age 类型分别为number 和string，类型是不同的
-	type OldProps = { name: string, age: number, visible: boolean };
-	type NewProps = { age: string, other: string };
+ type OldProps = { name: string, age: number, visible: boolean };
+ type NewProps = { age: string, other: string };
 
-	type InterSection<T extends Object, K extends Object> = Pick<T, Extract<keyof T, keyof K>>
-	//1. 获取交集部分，也就是age，让NewProps 覆盖 OldProps 属性类型，age 变成string 类型
-	type InterSectionProps = InterSection<NewProps, OldProps>;
+ type InterSection<T extends Object, K extends Object> = Pick<T, Extract<keyof T, keyof K>>
+ //1. 获取交集部分，也就是age，让NewProps 覆盖 OldProps 属性类型，age 变成string 类型
+ type InterSectionProps = InterSection<NewProps, OldProps>;
 
-	type Diff<T extends Object, K extends Object> = Omit<T, keyof K>
-	//2. 获取不同部分，也就是age,visible
-	type DiffProps = Diff<OldProps, NewProps>;//Diff 是从OldProps 类型中忽略掉NewProps 剩余的类型部分
+ type Diff<T extends Object, K extends Object> = Omit<T, keyof K>
+ //2. 获取不同部分，也就是age,visible
+ type DiffProps = Diff<OldProps, NewProps>;//Diff 是从OldProps 类型中忽略掉NewProps 剩余的类型部分
 
-	//3. 组合DiffProps与InterSectionProps，然后pick 提取所有属性就是最终的结果
-	type ComposeProps = DiffProps & InterSectionProps;
-	//! 最终ReplaceProps1 与 ReplaceProps2 类型一致
-	type ReplaceProps1 = Pick<ComposeProps, keyof ComposeProps>;
+ //3. 组合DiffProps与InterSectionProps，然后pick 提取所有属性就是最终的结果
+ type ComposeProps = DiffProps & InterSectionProps;
+ //! 最终ReplaceProps1 与 ReplaceProps2 类型一致
+ type ReplaceProps1 = Pick<ComposeProps, keyof ComposeProps>;
 
-	type Overwrite<T extends Object, K extends Object, I = Diff<T, K> & InterSection<K, T>> = Pick<I, keyof I>
-	//! 3.Overwrite: 属性覆盖
-	type ReplaceProps2 = Overwrite<OldProps, NewProps>
-	/* 
-	type ReplaceProps2 = {
+ type Overwrite<T extends Object, K extends Object, I = Diff<T, K> & InterSection<K, T>> = Pick<I, keyof I>
+ //! 3.Overwrite: 属性覆盖
+ type ReplaceProps2 = Overwrite<OldProps, NewProps>
+ /* 
+ type ReplaceProps2 = {
     name: string;
     age: string;
     visible: boolean;
-	}
-	*/
+ }
+ */
 ```
 
 ## ****Merge对象合并****
@@ -108,11 +112,10 @@ type Merge<T, K> = Compose<Omit<T, keyof K> & K>;
 type MergeObj = Merge<OldProps, NewProps>
 /* 
 type MergeObj = {
-	name: string;
-	visible: boolean;
-	age: string;
-	other: string;
+ name: string;
+ visible: boolean;
+ age: string;
+ other: string;
 }
 */
 ```
-

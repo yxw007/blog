@@ -1,16 +1,20 @@
+# Nuxt 入门实战 - 12：集成NProgess
+
 ---
+
 title: Nuxt 入门实战 - 12：集成NProgess
 author: Potter
 date: 2023-07-01 11:45:04
-tags: 
+
+tags:
+
 - Nuxt
-categories: 
+
+categories:
+
 - Nuxt 入门实战
 
----
-
-
-# Nuxt 入门实战 - 12：集成NProgess
+...
 
 ## 背景
 
@@ -28,35 +32,34 @@ pnpm add -D @types/nprogress
 ## 配置nprogress
 
 - nuxt.config.ts
-    
+
     ```tsx
     export default defineNuxtConfig({
-    	...
-    	plugins: [
-    		{ src: '~/plugins/nprogress.ts', mode: 'client' }
-    	],
-    	...
+     ...
+     plugins: [
+      { src: '~/plugins/nprogress.ts', mode: 'client' }
+     ],
+     ...
     }
     ```
-    
+
 - 新增 nprogress.ts
-    
+
     ```tsx
     import NProgress from 'nprogress'
     import 'nprogress/nprogress.css'
     
     export default defineNuxtPlugin((): void => {
     
-    	useRouter().beforeEach((): void => {
-    		NProgress.start();
-    	});
+     useRouter().beforeEach((): void => {
+      NProgress.start();
+     });
     
-    	useRouter().afterEach((): void => {
-    		NProgress.done();
-    	});
+     useRouter().afterEach((): void => {
+      NProgress.done();
+     });
     })
     ```
-    
 
 此时你可能有这样的疑问，切换导航加了这个进度条。假如我想点某个按钮发送请求也显示出进度条，等请求结束后关闭进度条。那么如何配置呢？
 
@@ -74,10 +77,10 @@ export const NP: TNProgress = NPInstance;
 ```tsx
 NP.start();
 const res: S2CLoginRes = await $fetch("xxx", {
-	method: "POST",
-	body: {
-		...
-	}
+ method: "POST",
+ body: {
+  ...
+ }
 });
 NP.done();
 ```

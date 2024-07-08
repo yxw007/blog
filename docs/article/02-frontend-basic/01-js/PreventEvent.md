@@ -1,27 +1,32 @@
+# 屏蔽：键盘按键、鼠标点击事件
+
 ---
 
 title:  屏蔽：键盘按键、鼠标点击事件
 author: Potter
 date: 2022-05-12 18:50
-tags: 
+
+tags:
+
 - 事件屏蔽
-categories: 
+
+categories:
+
 - H5
 
----
+...
 
-# 屏蔽：键盘按键、鼠标点击事件
+## 概要内容
 
-### 概要内容
 - 屏蔽-键盘按键
 - 屏蔽-鼠标点击
 - 屏蔽-BackSpace
 
 <!--more-->
 
-### 屏蔽-键盘按键
+## 屏蔽-键盘按键
 
-```
+```js
 //添加按键监听
 window.addEventListener('keydown', this.onKeyDown,true);
 
@@ -41,8 +46,9 @@ onKeyDown(val){
 }
 ```
 
-### 屏蔽-鼠标点击
-```
+## 屏蔽-鼠标点击
+
+```js
 //添加鼠标点击监听
 window.addEventListener('mousedown',this.onClick,true);
 
@@ -56,10 +62,13 @@ onClick(val){
 }
 ```
 
-### 屏蔽-BackSpace
+## 屏蔽-BackSpace
+
 在IE页面跳转过程中，按BackSpace退格键默认返回上此浏览页，导致路由中断引起(Vue)页面卡死，所以需要在IE中屏蔽掉BackSpce退格键，但是在输入框中则不屏蔽。
-- preventBackSpce.js： 
-```
+
+- preventBackSpce.js：
+
+```js
 export const banBackSpace = (e) => {
   let ev = e || window.event
   // 各种浏览器下获取事件对象
@@ -95,8 +104,10 @@ function stopIt(ev) {
   return false
 }
 ```
+
 - 使用方法：
-```
+
+```js
 1. 在需要使用的Vue页面引入组件(一般在main.vue中添加)
 import {banBackSpace} from "@/util/preventBackspace";
 

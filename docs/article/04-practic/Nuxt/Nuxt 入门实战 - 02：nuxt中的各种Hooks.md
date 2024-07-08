@@ -1,15 +1,20 @@
+# Nuxt 入门实战 - 02：nuxt中的各种Hooks
+
 ---
+
 title: Nuxt 入门实战 - 02：nuxt中的各种Hooks
 author: Potter
 date: 2023-06-20 11:40:40
-tags: 
+
+tags:
+
 - Nuxt
-categories: 
+
+categories:
+
 - Nuxt 入门实战
 
----
-
-# Nuxt 入门实战 - 02：nuxt中的各种Hooks
+...
 
 ## 两个核心上下文
 

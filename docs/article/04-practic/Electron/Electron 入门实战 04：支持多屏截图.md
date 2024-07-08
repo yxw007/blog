@@ -1,17 +1,23 @@
+# Electron 入门实战 04：支持多屏截图
+
 ---
+
 title: Electron 入门实战 04：支持多屏截图
 author: Potter
 date: 2024-04-15 10:24:25
-tags: 
+
+tags:
+
 - Electron
 - 多屏截图
-categories: 
+
+categories:
+
 - Electron
 
----
 
+...
 
-# Electron 入门实战 04：支持多屏截图
 
 ## 实现效果
 

@@ -1,15 +1,20 @@
+# Nuxt 入门实战 - 03：模块开发指南
+
 ---
+
 title: Nuxt 入门实战 - 03：模块开发指南
 author: Potter
 date: 2023-06-21 11:41:30
-tags: 
+
+tags:
+
 - Nuxt
-categories: 
+
+categories:
+
 - Nuxt 入门实战
 
----
-
-# Nuxt 入门实战 - 03：模块开发指南
+...
 
 ## 创建模块项目
 
@@ -47,8 +52,8 @@ pnpm publish
 //nuxt.config.ts
 
 export default defineNuxtConfig({
-	...
-	modules: [...,"nuxt-my-module"],
+ ...
+ modules: [...,"nuxt-my-module"],
 });
 ```
 

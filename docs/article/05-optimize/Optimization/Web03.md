@@ -1,19 +1,24 @@
+# Web性能优化
+
 ---
 
 title:  Web性能优化
 author: Potter
 date: 2022-05-12 18:48
-tags: 
+
+tags:
+
 - Vue
 - WebPack
-categories: 
+
+categories:
+
 - 性能优化
 
----
+...
 
-# Web性能优化
+## 概要内容
 
-### 概要内容
 - 工具层面
 - Vue代码层面
 - Webpack层面
@@ -25,11 +30,12 @@ categories:
 
 ![](https://cdn.jsdelivr.net/gh/aa4790139/BlogPicBed@master/img/Web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.jpg)
 
-
-### 最后
+## 最后
+>
 > 如果你发现有我没有列出来的优化点，欢迎给我留言，我再更新这个导图
 
-### 参考文献
+## 参考文献
+
 - [Vue 项目性能优化 — 实践指南（网上最全 / 详细）](https://juejin.cn/post/6844903913410314247#heading-22)
 - [Web构建优化](https://yanxuewen.cn/2020/12/30/WebBuild01/#more)
 

@@ -1,13 +1,15 @@
----
-title: 
-tags: 
-- xx
-categories: 
-- xx
+# 概要内容
 
 ---
 
-### 概要内容
-- 
+title:
 
-<!--more-->
+tags:
+
+- xx
+
+categories:
+
+- xx
+
+...

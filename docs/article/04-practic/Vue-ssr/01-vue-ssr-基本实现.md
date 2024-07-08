@@ -1,16 +1,23 @@
+# vue-ssr 1.基本实现
+
 ---
+
 title: vue-ssr 1.基本实现
 author: Potter
 date: 2022-11-02 11:26
-tags: 
+
+tags:
+
 - vue-ssr
 - ssr
-categories: 
+
+categories:
+
 - vue-ssr
 
----
 
-# vue-ssr 1.基本实现
+...
+
 
 ## 流程图
 

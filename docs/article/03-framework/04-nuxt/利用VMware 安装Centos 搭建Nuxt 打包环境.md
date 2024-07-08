@@ -1,17 +1,22 @@
+# 利用VMware 安装Centos 搭建Nuxt 打包环境
+
 ---
+
 title: 利用VMware 安装Centos 搭建Nuxt 打包环境
 author: Potter
 date: 2023-7-13 11:56
-tags: 
+
+tags:
+
 - Nuxt
 - Centos
 - VMware
-categories: 
+
+categories:
+
 - Nuxt
 
----
-
-# 利用VMware 安装Centos 搭建Nuxt 打包环境
+...
 
 VMware 安装Centos 网上教程一大把，我就不在这里赘述了。
 
@@ -51,7 +56,7 @@ AutomaticLogin=root
 ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175240.png)
 
 > 注意：确保主机和虚拟机的ip地址在同一个网段，然后网关和子网掩码跟主机的是一样的。打开虚拟机Centos 配置文件
-> 
+>
 
 ```bash
 vim /etc/sysconfig/network-scripts/ifcfg-ens160
@@ -85,31 +90,31 @@ sudo firewall-cmd --list-all
 操作步骤：
 
 1. 关闭虚拟机，调整磁盘空间大小
-    
+
    ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175536.png)
-    
+
 2. 创建挂载点：选择一个目录作为您的挂载点。例如，您可以在 **`/mnt`** 目录下创建一个新的目录，例如 **`/mnt/mydisk`**：
-    
+
     ```bash
     sudo mkdir /mnt/mydisk
     ```
-    
+
 3. 挂载分区：使用以下命令将分区挂载到先前创建的挂载点上。将 **`<partition>`** 替换为您要挂载的分区设备名称，例如  **/dev/nvme0n1p4**，将 **`<mount_point>`** 替换为先前创建的挂载点路径：
-    
+
     ```bash
     sudo mount <partition> <mount_point>
     ```
-    
+
     例如：
-    
+
     ```bash
     sudo mount **/dev/nvme0n1p4** /mnt/mydisk
     ```
-    
+
 4. 检查挂载：运行 **`df -h`** 命令，您应该能够看到新挂载的分区，并在挂载点处显示其容量信息。
-    
+
     ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175804.png)
-    
+
     > 说明：看到**/dev/nvme0n1p4，**说明成功了
 
 ### yum install 安装报错：`[Failed to download metadata for repo 'AppStream'](https://techglimpse.com/failed-metadata-repo-appstream-centos-8/)`
@@ -120,12 +125,12 @@ Centos 8 2021年12月31 停止维护，Centos 8 不在从官方Centos 获取开�
 
 1. `cd /etc/yum.repos.d/`
 2. 运行以下2条命令
-    
+
     ```bash
     sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
     sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
     ```
-    
+
 3. `yum update -y`
 
 ## 安装Node 环境
@@ -138,9 +143,9 @@ Centos 8 2021年12月31 停止维护，Centos 8 不在从官方Centos 获取开�
 2. `curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash`
 3. `source ~/.bashrc`
 4. nvm install node-version-num  比如：nvm install 16.15.1
-    
+
     > 说明：如何你不知道有哪些那边，可通过nvm ls-remote 查看
-    > 
+    >
 
 相关资料：****[How To Install NVM on CentOS/RHEL 7](https://tecadmin.net/how-to-install-nvm-on-centos-7/)****
 
@@ -158,26 +163,25 @@ export NVM_NODEJS_ORG_MIRROR=https://nodejs.org/dist/
 ## 安装Docker 环境
 
 1. install docker-ce
-    
+
     ```bash
     sudo dnf install --nobest docker-ce
     ```
-    
+
     > 说明：—nobest：不适用最佳包，因为安装最佳包可能会失败。
-    > 
+    >
 2. 启动Docker 守护进程
-    
+
     ```bash
     sudo systemctl enable --now docker
     ```
-    
+
     可以通过以下命令查看是否以及激活和启用
-    
+
     ```bash
     systemctl is-active docker
     systemctl is-enabled docker
     ```
-    
 
 ## Docker 打包和部署
 
@@ -202,7 +206,7 @@ npm isntall
 ### 创建Dockerfile
 
 > 说明：Dockerfile 配置文件放置在getting-started 项目根目录下
-> 
+>
 
 ```bash
 # use node 16 alpine image
@@ -256,73 +260,71 @@ docker build -t aa4790139/nuxt-started-demo:1.0.1 .
 ## Docker run image
 
 1. docker image ls ，get image id
-    
+
     ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175919.png)
-    
+
 2. docker run -itd -p dockerPort:localPort imageID
-    
+
     > 注意：一定要加上-itd，否则启动后就是Unable to Connect。 [相关资料](https://blog.csdn.net/weixin_44847332/article/details/123785555)
-    > 
-    
+    >
+
     ```bash
     docker run -itd -p dockerPort:localPort imageID
     example:
     docker run -itd -p 3000:3000 a4a5e167de0c
     ```
-    
+
     访问你虚拟机ip和3000端口，效果如下：
-    
+
     ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710175950.png)
-    
+
     如果你看到这个界面，那么恭喜你docker 运行 nuxt app 成功了
-    
 
 由于我们不可能打出来的image仅运行在我们的虚拟机中，我们将包推送至docker hub，然后看看我们的image 有没有问题。
 
 ### 推送镜像至docker hub
 
 1. 首先：我们需要登录docker hub 创建对应的仓库
-    
+
     ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180002.png)
-    
+
     ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180010.png)
-    
+
 2. 其次：设置access token，设置好access token 后才能使我们打出来的image 推送至对应参考
-    
+
     ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180024.png)
-    
+
     ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180031.png)
-    
+
 3. 然后将image 推送至刚创建的仓库中
-    
+
     ```bash
     docker push aa4790139/nuxt-started-demo:1.0.1
     ```
-    
+
     ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180040.png)
-    
+
 4. 最后：利用docker play 验证，[平台地址](https://labs.play-with-docker.com/)
-    
+
     ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180048.png)
-    
+
     - 拉取镜像文件
-        
+
         ```bash
         docker pull aa4790139/nuxt-started-demo:1.0.1
         
         ```
-        
+
     - 运行镜像
-        
+
         ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180100.png)
-        
+
     - 效果如下：
-        
+
         ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20230710180106.png)
-        
+
         > 提示：**如果看到这个界面，恭喜你成功了**。 🎉🎉🎉🎉
-        > 
-        
+        >
 
 文章内容有点长，希望能帮助到你，感谢你的耐心阅读，当然也非常感谢文章外链文章作者，没有他们帮助我不可能成功。
 

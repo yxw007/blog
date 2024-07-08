@@ -1,18 +1,22 @@
+# Dev环境用vite替换webpack获得极致开发体验🥰
+
 ---
+
 title: Dev环境用vite替换webpack获得极致开发体验
 author: Potter
 date: 2023-8-14 11:57
-tags: 
+
+tags:
+
 - vite
 - webpack
 - vue3
-categories: 
+
+categories:
+
 - vite
 
----
-
-# Dev环境用vite替换webpack获得极致开发体验🥰
-
+...
 
 ## 背景
 
@@ -42,8 +46,8 @@ yarn add vite -D
 
 需要的东西
 
-1. index.html 
-    
+1. index.html
+
     ```html
     <!doctype html>
     <html lang="en">
@@ -59,11 +63,11 @@ yarn add vite -D
       </body>
     </html>
     ```
-    
+
     此时：入口脚本与html写死了，webpack中都是采用HtmlWebpackPlugin 都是指定入口html然后自动注入入口js，所以这里要调整。可以采用vite-plugin-html-template 解决
-    
+
 2. vite.config.js
-    
+
     ```jsx
     import { defineConfig } from 'vite'
     import vue from '@vitejs/plugin-vue'
@@ -73,57 +77,56 @@ yarn add vite -D
       plugins: [vue()],
     })
     ```
-    
+
     示例demo看不到什么配置，我们看webpack.dev.config 的配置
-    
 
 由于我的项目webpack.dev.conf内容较多，我就只把相关的配置列出来。
 
 ```jsx
 module.exports = merge(baseWebpackConfig, {
-	mode: "development",
-	...
-	devServer: {
-		...
-		proxy: config.dev.proxyTable,
-		...
-	},
-	module: {
-		rules: [
-			...
-			{
-				test: /\.s[ac]ss$/i,
-				use: [
-					"vue-style-loader",
-					...autoInjectSourceMap([
-						"css-loader",
-						"postcss-loader",
-						"sass-loader",
-						{
-							loader: "sass-resources-loader",
-							options: {
-								resources: [resolveResouce("variables.scss")],
-								sourceMap: config.dev.sourceMap,
-							},
-						},
-					]),
-				],
-			},
-			...
-		],
-	},
-	stats: { children: false },
-	plugins: [
-		new webpack.DefinePlugin({
-			"process.env": config.dev.env,
-		}),
-		new VueLoaderPlugin(),
-		new HtmlWebpackPlugin({
-			filename: "index.html",
-			template: config.htmlTempletePath,
-			inject: true,
-		}),
-	],
+ mode: "development",
+ ...
+ devServer: {
+  ...
+  proxy: config.dev.proxyTable,
+  ...
+ },
+ module: {
+  rules: [
+   ...
+   {
+    test: /\.s[ac]ss$/i,
+    use: [
+     "vue-style-loader",
+     ...autoInjectSourceMap([
+      "css-loader",
+      "postcss-loader",
+      "sass-loader",
+      {
+       loader: "sass-resources-loader",
+       options: {
+        resources: [resolveResouce("variables.scss")],
+        sourceMap: config.dev.sourceMap,
+       },
+      },
+     ]),
+    ],
+   },
+   ...
+  ],
+ },
+ stats: { children: false },
+ plugins: [
+  new webpack.DefinePlugin({
+   "process.env": config.dev.env,
+  }),
+  new VueLoaderPlugin(),
+  new HtmlWebpackPlugin({
+   filename: "index.html",
+   template: config.htmlTempletePath,
+   inject: true,
+  }),
+ ],
 });
 ```
 
@@ -150,72 +153,72 @@ const Inspector = require('vite-plugin-vue-inspector').default;
 ...
 
 function normalizeAutoInjectConfig(injectConfig) {
-	const links = injectConfig.links?.map(item => {
-		const res = {};
-		for (const key of Object.keys(item)) {
-			if (item[key]) {
-				res[key] = item[key];
-			}
-		}
-		return res;
-	}) ?? [];
-	const headScripts = injectConfig.scripts?.map(item => {
-		let { importName, globalVariableName, position, ...itemSurplus } = item;
-		return itemSurplus;
-	}) ?? [];
-	return { links, headScripts }
+ const links = injectConfig.links?.map(item => {
+  const res = {};
+  for (const key of Object.keys(item)) {
+   if (item[key]) {
+    res[key] = item[key];
+   }
+  }
+  return res;
+ }) ?? [];
+ const headScripts = injectConfig.scripts?.map(item => {
+  let { importName, globalVariableName, position, ...itemSurplus } = item;
+  return itemSurplus;
+ }) ?? [];
+ return { links, headScripts }
 }
 
 module.exports = defineConfig(() => {
-	const env = config.dev.env;
-	const envObj = {};
-	for (const key of Object.keys(env)) {
-		envObj[`process.env.${key}`] = env[key];
-	}
+ const env = config.dev.env;
+ const envObj = {};
+ for (const key of Object.keys(env)) {
+  envObj[`process.env.${key}`] = env[key];
+ }
 
-	return {
-		define: envObj,
-		mode: "development",
-		resolve: {
-			alias: {
-				"@": path.join(pcwd, "src")
-			},
-			extensions: [".mjs", ".js", ".mts", ".jsx", ".json", ".vue", ".svg", ".png", ".jpg", ".jpeg"]
-		},
-		css: {
-			devSourcemap: true,
-			preprocessorOptions: {
-				scss: {
-					additionalData: "@import '@/style/variables.scss';",
-				}
-			}
-		},
-		server: {
-			proxy: config.dev.proxyTable
-		},
-		plugins: [
-			vue(),
-			envCompatible({
-				moutedPath: "process.env",
-			}),
-			htmlTemplate({
-				entry: "./src/main.js"
-			}),
-			Inspector({ vue: 2, toggleComboKey: "alt-`" }),
-			//! 说明：存在循环依赖解决方法，相关资料：https://github.com/vitejs/vite/issues/3033
-			{
-				name: "singleHMR",
-				handleHotUpdate({ modules }) {
-					modules.map((m) => {
-						m.importedModules = new Set();
-						m.importers = new Set();
-					});
+ return {
+  define: envObj,
+  mode: "development",
+  resolve: {
+   alias: {
+    "@": path.join(pcwd, "src")
+   },
+   extensions: [".mjs", ".js", ".mts", ".jsx", ".json", ".vue", ".svg", ".png", ".jpg", ".jpeg"]
+  },
+  css: {
+   devSourcemap: true,
+   preprocessorOptions: {
+    scss: {
+     additionalData: "@import '@/style/variables.scss';",
+    }
+   }
+  },
+  server: {
+   proxy: config.dev.proxyTable
+  },
+  plugins: [
+   vue(),
+   envCompatible({
+    moutedPath: "process.env",
+   }),
+   htmlTemplate({
+    entry: "./src/main.js"
+   }),
+   Inspector({ vue: 2, toggleComboKey: "alt-`" }),
+   //! 说明：存在循环依赖解决方法，相关资料：https://github.com/vitejs/vite/issues/3033
+   {
+    name: "singleHMR",
+    handleHotUpdate({ modules }) {
+     modules.map((m) => {
+      m.importedModules = new Set();
+      m.importers = new Set();
+     });
 
-					return modules;
-				},
-			},
-		],
-	}
+     return modules;
+    },
+   },
+  ],
+ }
 })
 ```
 
@@ -224,7 +227,7 @@ module.exports = defineConfig(() => {
 - 当我们无从下手时，就可以从一个官网的demo来入手
 - 当从webpack切换至vite时，你想不到会出现哪些问题，就先配出一个最简单的配置，然后逐步完善掉
 
-自从用上vite+https://github.com/webfansplz/vite-plugin-vue-inspector，我再也不用纠结我的代码有没有改对位置了，而且开发体验极速提升。赶快把dev webpack换成vite吧🥰
+自从用上vite+<https://github.com/webfansplz/vite-plugin-vue-inspector，我再也不用纠结我的代码有没有改对位置了，而且开发体验极速提升。赶快把dev> webpack换成vite吧🥰
 
 ## 参考文献
 

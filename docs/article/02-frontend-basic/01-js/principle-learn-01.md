@@ -1,17 +1,21 @@
+# 响应式根基：Object.defineProperty 与 Proxy 拦截区别
+
 ---
 
 title:  响应式根基：Object.defineProperty 与 Proxy 拦截区别
 author: Potter
 date: 2022-05-12 18:42
-tags: 
+
+tags:
+
 - Object.defineProperty
 - Proxy
-categories: 
+
+categories:
+
 - 响应式原理
 
----
-
-# 响应式根基：Object.defineProperty 与 Proxy 拦截区别
+...
 
 ## 概要内容
 
@@ -22,9 +26,6 @@ categories:
 ---
 
 > 假如你熟悉Vue，同时好奇心比较强，你肯定会想知道Vue是如何实现响应式的，要了解响应式原理就需要我们了解Object.defineProperty 和 Proxy 这两个API。针对这两个API编写对应的测试例子看看情况如何。
-
-
-<!--more-->
 
 ## Object.defineProperty 拦截测试
 
@@ -148,7 +149,7 @@ Object.keys(hero).forEach(key => {
 
 ---
 
-### 公共代码：
+### 公共代码
 
 ```jsx
 let hero = {
@@ -263,22 +264,21 @@ let heroProxy = new Proxy(hero, handler);
 
 ---
 
-> demo 源码：[vue-principle-learn](https://github.com/yxw007/vue-principle-learn/tree/master/Proxy%26Reflect)   
+> demo 源码：[vue-principle-learn](https://github.com/yxw007/vue-principle-learn/tree/master/Proxy%26Reflect)
 后续我会把vue原理相关的学习资料和demo都会更新到此仓库，欢迎star收藏~
 
-## 总结：
+## 总结
 
 - Object.defineProperty
-    - 缺点1：只能遍历对象已存在的属性，进行get set拦截，无法针对新增、删除元素进行拦截
-    - 缺点2：针对array 拦截，需要拦截push、shift、pop、unshift等，拦截操作复杂
+  - 缺点1：只能遍历对象已存在的属性，进行get set拦截，无法针对新增、删除元素进行拦截
+  - 缺点2：针对array 拦截，需要拦截push、shift、pop、unshift等，拦截操作复杂
 - Proxy
-    - 优势1：新增、删减字段都能轻松拦截
-    - 优势2：针对array 拦截，跟object 属性get set一样拦截，无需特殊处理
+  - 优势1：新增、删减字段都能轻松拦截
+  - 优势2：针对array 拦截，跟object 属性get set一样拦截，无需特殊处理
 
----
+...
 
 ## 参考文献
 
 - [深入实践 ES6 Proxy & Reflect](https://zhuanlan.zhihu.com/p/60126477)
 - [how-to-watch-for-array-changes](https://stackoverflow.com/questions/5100376/how-to-watch-for-array-changes)
-
