@@ -116,7 +116,7 @@ const navs = [
 			},
 			{
 				text: "Artipub",
-				link: "artipub 是什么",
+				link: "artipub是什么",
 				activeMatch: "Artipub",
 			},
 		],
