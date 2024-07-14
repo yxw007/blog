@@ -114,6 +114,11 @@ const navs = [
 				link: "Nuxt 入门实战 - 01：目录结构",
 				activeMatch: "Nuxt",
 			},
+			{
+				text: "Artipub",
+				link: "artipub 是什么",
+				activeMatch: "Artipub",
+			},
 		],
 	},
 	{
