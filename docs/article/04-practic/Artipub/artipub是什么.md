@@ -101,7 +101,7 @@ Medium编辑器后，文章格式全乱了，这个过程让我非常痛苦，�
 我就在想这样不是办法，第一个问题我的版本增长得太快了，第二个问题我发了这么多坏的包，对artipub使用者不负责，会对以后artipub的宣传带来不好的影响。
 
 第一个问题的解决方案：我在网上搜了一大圈，有很多更新版本和生成changelog的库，最终还是没有选出用哪个库。偶然的在地铁上打开github看探索页面，看到版本发布。这时就想哪个库发版生成的changelog好看我就选哪个，最终发现[changelogen](https://github.com/unjs/changelogen)简单好用，就选用了这个库。
-![alt text](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/1720842654579.png)
+![alt text](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240715113205.png)
 
 第二个问题的解决方案：就想到在artipub项目中加一个playground，这样避免需要频繁发包，这样就可以在playground中测试artipub的各种功能，然后再把artipub的功能集成到blog项目中，这样为了避免掉发布很多坏的包。
 
