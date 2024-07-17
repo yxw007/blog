@@ -3,11 +3,12 @@ import path from "path";
 import { fileNameWithOutExtension, log, getDraftDir, getArticleDir, renameFileName } from "./utils.js";
 import fs from "fs-extra";
 import fg from "fast-glob";
-import { ArticleProcessor, PublisherManager, NotionPublisherPlugin } from "@pup007/artipub";
+import { ArticleProcessor, PublisherManager, NotionPublisherPlugin, DevToPublisherPlugin } from "@pup007/artipub";
 
 const { glob } = fg;
 
 const { NOTION_API_KEY, NOTION_PAGE_ID } = process.env;
+const { DEV_TO_API_KEY } = process.env;
 let { GITHUB_OWNER, GITHUB_REPO, GITHUB_DIR, GITHUB_BRANCH, GITHUB_TOKEN, GITHUB_COMMIT_AUTHOR, GITHUB_COMMIT_EMAIL } = process.env;
 
 function commitCode(message) {
@@ -128,6 +129,12 @@ async function run(articleTargetDir) {
 		publisher.addPlugin(
 			NativePlatformPublisherPlugin({
 				targetDir: getArticleDir(),
+			})
+		);
+		publisher.addPlugin(
+			DevToPublisherPlugin({
+				api_key: DEV_TO_API_KEY ?? "",
+				published: false,
 			})
 		);
 
