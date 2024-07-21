@@ -15,13 +15,13 @@ Hi, 我是Potter。一个从事多年开发工作的同学，目前专注web前�
 - Github: [yxw007](https://github.com/yxw007)
 - QQ: 75838259
 - wechat: aa4790139
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240715145952.jpg)
+
+ > <img style="max-width: 180px;height: auto;" src="https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/202407211735356.jpeg">
+
+ </img>
 
 ## 💰赞助我
 
-- 微信
- ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240715150330.jpg)
-- 支付宝
- ![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master//img/20240715150346.jpg)
+![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/202407211724509.jpeg)
 
 > 感谢每一位支持和帮助过我的人，您的支持是我最大的动力！❤️
