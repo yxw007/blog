@@ -3,7 +3,7 @@ import path from "path";
 import { fileNameWithOutExtension, log, getDraftDir, getArticleDir, renameFileName } from "./utils.js";
 import fs from "fs-extra";
 import fg from "fast-glob";
-import { ArticleProcessor, PublisherManager, NotionPublisherPlugin, DevToPublisherPlugin } from "@pup007/artipub";
+import { ArticleProcessor, PublisherManager, NotionPublisherPlugin, DevToPublisherPlugin, NativePublisherPlugin } from "@artipub/core";
 
 const { glob } = fg;
 
@@ -52,45 +52,26 @@ async function findDraft(dir) {
 	return mdPath;
 }
 
-function BlogPublisherPlugin({ targetDir }) {
-	return async function (articleTitle, visit, toMarkdown) {
-		let regex = /https:\/\/(raw.githubusercontent.com)\/(.*?)\/(.*?)\/(.*?)(.png|.jpg|jpeg|svg|jif)/im;
-		visit("image", (node) => {
-			if (node.url && regex.test(node.url)) {
-				regex.lastIndex = 0;
-				let match = regex.exec(node.url);
-				let [, , p3, p4, p5, p6] = match;
-				let cdnUrl = `https://cdn.jsdelivr.net/gh/${p3}/${p4}@${p5}${p6}`;
-				node.url = cdnUrl;
-			}
-		});
-		let { content } = toMarkdown();
-		let targetPath = path.join(targetDir, `${articleTitle}.md`);
-		await fs.writeFile(targetPath, content, { encoding: "utf8" });
-		return {
-			success: true,
-			info: `Published [${articleTitle}] to Blog successfully!`,
-		};
-	};
-}
-
 function NativePlatformPublisherPlugin({ targetDir }) {
-	return async function (articleTitle, visit, toMarkdown) {
-		visit("heading", (_node, _index, parent) => {
-			let node = _node;
-			if (parent && node.depth === 1) {
-				parent.children.splice(0, (_index ?? 0) + 1);
-				return true;
-			}
-		});
-		let { content } = toMarkdown();
-		let targetPath = path.join(targetDir, `${articleTitle}.md`);
-		await fs.writeFile(targetPath, content, { encoding: "utf8" });
-		return {
-			success: true,
-			info: `Published [${articleTitle}] to NativePlatform successfully!`,
-		};
-	};
+	return {
+		name: "NativePlatformPublisherPlugin",
+		async process(articleTitle, visit, toMarkdown) {
+			visit("heading", (_node, _index, parent) => {
+				let node = _node;
+				if (parent && node.depth === 1) {
+					parent.children.splice(0, (_index ?? 0) + 1);
+					return true;
+				}
+			});
+			let { content } = toMarkdown();
+			let targetPath = path.join(targetDir, `${articleTitle}.md`);
+			await fs.writeFile(targetPath, content, { encoding: "utf8" });
+			return {
+				success: true,
+				info: `Published [${articleTitle}] to NativePlatform successfully!`,
+			};
+		}
+	}
 }
 
 /**
@@ -122,8 +103,8 @@ async function run(articleTargetDir) {
 			})
 		);
 		publisher.addPlugin(
-			BlogPublisherPlugin({
-				targetDir: articleTargetDir,
+			NativePublisherPlugin({
+				destination_path: articleTargetDir,
 			})
 		);
 		publisher.addPlugin(
