@@ -37,8 +37,8 @@ importers:
         specifier: ^2.55.3
         version: 2.55.3(vue@3.4.31)
       '@artipub/core':
-        specifier: 1.1.5-beta.0
-        version: 1.1.5-beta.0(@types/mdast@4.0.4)(@types/unist@3.0.2)
+        specifier: latest
+        version: 1.1.5(@types/mdast@4.0.4)(@types/unist@3.0.2)
       '@notionhq/client':
         specifier: ^2.2.15
         version: 2.2.15
@@ -163,8 +163,8 @@ packages:
     peerDependencies:
       vue: ^3.1.0
 
-  '@artipub/core@1.1.5-beta.0':
-    resolution: {integrity: sha512-dxJMl5sEdH39iwL2A08AAqJt3tSk+aguVcEzBfRIJYoHSjY8cHTF6NrFWiVob2ZPrsCw/T7gHw6rUlMqRIJVRw==}
+  '@artipub/core@1.1.5':
+    resolution: {integrity: sha512-n79S8Zk6g5XCe1TNGZs4Z12MJ7oaNw3nH66UPG1HQvldxeSNYBiXTHX2s/YzV90lRZ2599GU5+RKKSnuaDahWw==}
     peerDependencies:
       '@types/mdast': ^4.0.4
       '@types/unist': ^3.0.2
@@ -2036,7 +2036,7 @@ snapshots:
       scroll-into-view-if-needed: 2.2.31
       vue: 3.4.31
 
-  '@artipub/core@1.1.5-beta.0(@types/mdast@4.0.4)(@types/unist@3.0.2)':
+  '@artipub/core@1.1.5(@types/mdast@4.0.4)(@types/unist@3.0.2)':
     dependencies:
       '@notionhq/client': 2.2.15
       '@tryfabric/martian': 1.2.4

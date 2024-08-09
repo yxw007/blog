@@ -22,7 +22,7 @@
   "license": "ISC",
   "devDependencies": {
     "@arco-design/web-vue": "^2.55.3",
-    "@artipub/core": "1.1.5-beta.0",
+    "@artipub/core": "latest",
     "@notionhq/client": "^2.2.15",
     "@tryfabric/martian": "^1.2.4",
     "@vue/devtools-api": "^6.6.3",
