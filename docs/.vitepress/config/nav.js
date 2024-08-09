@@ -49,6 +49,11 @@ const navs = [
 				activeMatch: "03-pinia",
 			},
 			{
+				text: "Nuxt",
+				link: "分享给明星开源项目Nuxt，提交人生的第一个PR全过程",
+				activeMatch: "04-nuxt",
+			},
+			{
 				text: "React",
 				link: "1.更新队列(构建+处理)",
 				activeMatch: "20-react",
