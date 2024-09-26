@@ -1,6 +1,14 @@
 import fs from "fs";
 import inquirer from "inquirer";
 import { publish } from "../script/publish.js";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+function normalizePath(path) {
+	return path.replace(/\\/g, "/");
+}
 
 inquirer
 	.prompt([
@@ -12,7 +20,7 @@ inquirer
 				if (!val) {
 					return "article directory is invalid !";
 				}
-				if (!fs.existsSync(val)) {
+				if (!fs.existsSync(path.resolve(__dirname, `../${val}`))) {
 					return "article directory is not exist !";
 				}
 				return true;
@@ -21,5 +29,5 @@ inquirer
 	])
 	.then(async (answer) => {
 		let { articleTargetDir } = answer;
-		await publish(articleTargetDir);
+		await publish(normalizePath(path.resolve(__dirname, `../${articleTargetDir}`)));
 	});
