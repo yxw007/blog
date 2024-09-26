@@ -1,6 +1,6 @@
 ---
 
-id: u0ts1xdl
+id: qepxagqw
 title: 经过2个多月终于把我的github Sponsor弄好🎉
 author: Potter
 date: 2024-09-24 13:18
@@ -43,18 +43,18 @@ categories:
 
 - 办卡分行：
 
-  ![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1727328808357.png)
+  ![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1727328913420.png)
 
 - 路线：从福田口岸过关，过关后就是落马洲做B1线大巴，坐到天水围运动场下车，然后走路过去就可以了。（当天我们坐的车在天水围运动场没停，直接让我们坐到总站，真想Fuck还要走回去再过去，还好也不是很远）
 
-  ![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1723180089942.png)
+  ![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1727328916933.png)
 
 ## 开通Github Sponsor
 
-![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1723180088999.png)
+![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1727328917801.png)
 
 点进去按指引填写就可以了，接下来就是漫长的等待审核，等一周没处理都是很正常的事情，我就利用网友分享的方法，他们不处理就给他们提工单，如果提一个过几天还没有反应就再提一个，这样就可以加快审核速度，看效果：
-![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1723180087602.png)
+![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1727328918639.png)
 
 ## 开通Github Sponsor需要创建Stripe账号
 
@@ -73,17 +73,17 @@ categories:
 
 ## 前几天终于审核通过了，收到了这个邮件
 
-![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1723180090763.png)
+![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1727328919518.png)
 
 ## 配置Github Sponsor
 
-![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1723180091796.png)
+![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1727328920365.png)
 
-![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1723180092610.png)
+![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1727328921261.png)
 
 ## 最后
 
 以上我是经过2个多月把github Sponsor开通的经验，希望能给大家一份参考，避免少走弯路提供一点帮助。希朋友们可以支持一下：关注我、帮我点star、提PR、反馈意见都可以，当然赞助我更好😄，能让我早点实现独立开发者的梦想，感谢大家！🌹
 
 加我微信，拉你入群：开源逐梦之路，一起交流学习，共同探索开源之路！💪
-![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1723180093580.png)
+![alt text](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1727328922535.png)
