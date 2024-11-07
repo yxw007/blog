@@ -20,7 +20,8 @@ inquirer
 				if (!val) {
 					return "article directory is invalid !";
 				}
-				if (!fs.existsSync(path.resolve(__dirname, `../${val}`))) {
+				val = normalizePath(val);
+				if (!fs.existsSync(path.resolve(path.join(__dirname, `../${val}`)))) {
 					return "article directory is not exist !";
 				}
 				return true;
