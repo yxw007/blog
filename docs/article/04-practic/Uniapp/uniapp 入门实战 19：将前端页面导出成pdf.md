@@ -1,3 +1,19 @@
+---
+title: uniapp 入门实战 19：将前端页面导出成pdf
+author: Potter
+date: 2024-11-07 17:54
+tags: 
+- uniapp
+- pdf
+- html2canvas
+- jsPDF
+- 微信小程序
+
+categories: 
+- uniapp 入门实战
+
+---
+
 # uniapp 入门实战 19：将前端页面导出成pdf
 
 ---

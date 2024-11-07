@@ -1,4 +1,3 @@
-
 ---
 title:  webpack 01：原理雏形思考
 author: Potter
@@ -16,8 +15,8 @@ categories:
 
 # webpack 01：原理雏形思考
 
-
 ---
+
 - 代码如下：
 
     ```jsx
@@ -47,10 +46,10 @@ categories:
     解决后输出：
 
     ![https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20210808170605.png](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/20210808170605.png)
+
 ---
 
 ## 概要内容
-
 
 ### 反问1：require 浏览器不认识，怎么办？
 

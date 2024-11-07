@@ -1,3 +1,3 @@
 <ClientOnly>
-	<Archive />
+ <Archive />
 </ClientOnly>

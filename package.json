@@ -12,6 +12,7 @@
     "zipToArticle": "node --env-file=.env script/mdZipToArticle.js",
     "toArticle": "node --env-file=.env bin/toArticle.js",
     "toNotion": "node --env-file=.env bin/toNotion.js",
+    "checkMarkdownHeader": "node script/checkMarkdownHeader.js",
     "push": "node --env-file=.env bin/publish.js"
   },
   "keywords": [
