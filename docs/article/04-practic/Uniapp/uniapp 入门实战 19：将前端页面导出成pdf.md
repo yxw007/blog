@@ -8,7 +8,7 @@
 
 ## 实现效果
 
-![导出效果.gif](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1730970006234.gif)
+![导出效果.gif](https://raw.githubusercontent.com/yxw007/BlogPicBed/master/img/1730970162288.gif)
 
 ## Web网站
 
