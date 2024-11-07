@@ -8,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const { sync } = fg;
 const { resolve } = path;
 
-sync("docs/article/**/*.md", { onlyFiles: true, objectMode: true }).forEach(({ path }) => {
+sync("docs/article/**/*.md", { onlyFiles: true, objectMode: true, cwd: resolve(__dirname, "../") }).forEach(({ path }) => {
 	let absolutePath = resolve(__dirname, "../" + path);
 	console.log(absolutePath);
 	let content = fs.readFileSync(absolutePath, { encoding: "utf8" });
