@@ -30,5 +30,5 @@ inquirer
 	])
 	.then(async (answer) => {
 		let { articleTargetDir } = answer;
-		await publish(normalizePath(path.resolve(__dirname, `../${articleTargetDir}`)));
+		await publish(normalizePath(path.resolve(path.join(__dirname, `../${articleTargetDir}`))));
 	});
