@@ -4,6 +4,7 @@ import { fileNameWithOutExtension, log, getDraftDir, getArticleDir, renameFileNa
 import fs from "fs-extra";
 import fg from "fast-glob";
 import { ArticleProcessor, PublisherManager, NotionPublisherPlugin, DevToPublisherPlugin, NativePublisherPlugin } from "@artipub/core";
+import { checkMarkdownHeader } from "./checkMarkdownHeader.js";
 
 const { glob } = fg;
 
@@ -79,6 +80,10 @@ function NativePlatformPublisherPlugin({ targetDir }) {
  */
 async function run(articleTargetDir) {
 	const draftMdPath = await findDraft(getDraftDir());
+
+	if (checkMarkdownHeader(draftMdPath) === false) {
+		throw new Error(`Markdown Header is invalid ! please check it ! draftMdPath: ${draftMdPath}`);
+	}
 
 	let processor = new ArticleProcessor({
 		uploadImgOption: {
