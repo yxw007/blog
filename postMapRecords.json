@@ -1,17 +1,7 @@
 {
-  "jr1x8pn1": {
-    "NotionPublisherPlugin": "ff8756c1-c815-4bfc-a357-26aa784b5cb4",
-    "DevToPublisherPlugin": 1952922
-  },
-  "y605zk0s": {
-    "NotionPublisherPlugin": "f3ff6887-206d-4c20-9a81-686ea0bd4c3d"
-  },
-  "u0ts1xdl": {
-    "DevToPublisherPlugin": 2015345,
-    "NotionPublisherPlugin": "10d5faf1-8a2e-81cc-8bbf-e8321c8e8f3b"
-  },
-  "qepxagqw": {
-    "NotionPublisherPlugin": "10d5faf1-8a2e-81da-9cf1-fc6d7cc7f26c",
-    "DevToPublisherPlugin": 2015348
-  }
+  "jr1x8pn1": "p:NotionPublisherPlugin,k:ff8756c1-c815-4bfc-a357-26aa784b5cb4;p:DevToPublisherPlugin,k:1952922;",
+  "y605zk0s": "p:NotionPublisherPlugin,k:f3ff6887-206d-4c20-9a81-686ea0bd4c3d;",
+  "u0ts1xdl": "p:DevToPublisherPlugin,k:2015345;p:NotionPublisherPlugin,k:10d5faf1-8a2e-81cc-8bbf-e8321c8e8f3b;",
+  "qepxagqw": "p:NotionPublisherPlugin,k:10d5faf1-8a2e-81da-9cf1-fc6d7cc7f26c;p:DevToPublisherPlugin,k:2015348;",
+  "ekhpydy5": "p:NotionPublisherPlugin,k:undefined;"
 }
