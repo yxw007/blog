@@ -61,6 +61,6 @@ Hi, 我是Potter。一个从事多年开发工作的同学，目前专注web前�
 
 ## 💰赞助我
 
-![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/%E8%B5%9E%E5%8A%A9.jpg)
+![](https://cdn.jsdelivr.net/gh/yxw007/BlogPicBed@master/img/202505252015941.jpg)
 
 > 感谢每一位支持和帮助过我的人，您的支持是我最大的动力！❤️
