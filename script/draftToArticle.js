@@ -5,12 +5,16 @@ import { log } from "./utils.js";
 import sharp from "sharp";
 import axios from "axios";
 import mime from "mime";
+import { fileURLToPath } from "url";
 
 const { glob } = fg;
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const draftDir = path
 	.normalize(path.resolve(__dirname, "../studio/draft"))
 	.replace(/\\/g, "/");
+
 const articleDir = path
 	.normalize(path.resolve(__dirname, "../studio/article"))
 	.replace(/\\/g, "/");
@@ -184,7 +188,7 @@ function generateArticle(content, relateImgs, articleDir, filename) {
 	return { articleCDNPath, articlePath };
 }
 
-async function run() {
+export async function toArticle() {
 	try {
 		const draftMdPath = await findDraft(draftDir);
 		const filenameWithExtension = path.basename(draftMdPath);
@@ -210,4 +214,3 @@ async function run() {
 	}
 }
 
-module.exports = { toArticle: run };
