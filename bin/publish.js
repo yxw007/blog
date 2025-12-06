@@ -21,7 +21,7 @@ inquirer
 					return "article directory is invalid !";
 				}
 				val = normalizePath(val);
-				if (!fs.existsSync(path.resolve(path.join(__dirname, `../${val}`)))) {
+				if (!fs.existsSync(path.resolve(process.cwd(), val))) {
 					return "article directory is not exist !";
 				}
 				return true;
@@ -30,5 +30,6 @@ inquirer
 	])
 	.then(async (answer) => {
 		let { articleTargetDir } = answer;
-		await publish(normalizePath(path.resolve(path.join(__dirname, `../${articleTargetDir}`))));
+		const targetDir = path.resolve(process.cwd(), articleTargetDir);
+		await publish(normalizePath(targetDir));
 	});
